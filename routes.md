@@ -21,20 +21,21 @@ delete a business ('/biz/<int:bizId>')
 
 
 Search/Filters:
-business by category ('/biz')
-business owned by user ('/user/<int:id>/biz)
-businesses open or close ('/biz)
+business by category ('/biz/categories/<int:categoryId>')
+business owned by user ('/user/<int:id>/biz')
+businesses open ('/biz/open')
 
 
 Reviews:
 get all reviews of business ('/biz/<int:bizId>/reviews')
-create a review ('/biz/<int:bizId>)
-edit a review ('/biz/<int:bizId>/<int:reviewId>)
-delete a review ('/biz/<int:bizId>/<int:reviewId>)
+create a review ('/biz/<int:bizId>/reviews)
+edit a review ('/biz/<int:bizId>/reviews/<int:reviewId>)
+delete a review ('/biz/<int:bizId>/reviews/<int:reviewId>)
 
 
 Map:
-located on the biz page on yelp so most likely going to be ('/biz/<int:bizId>')
+get map ('/map/<int:bizId>')
+creating a pin on map
 
 
 
