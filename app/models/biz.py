@@ -22,8 +22,9 @@ class Biz(db.Model):
     preview_image = db.Column(db.String, nullable=True)
     num_reviews = db.Column(db.Integer, nullable=True)
 
-    users = db.relationship('User', back_populates='bizes')
-    reviews = db.relationship('Review', back_populates='bizes')
+    users = db.relationship('User', back_populates='biz')
+    reviews = db.relationship('Review', back_populates='biz')
+    hours = db.relationship('Hours', back_populates='biz')
 
 
 

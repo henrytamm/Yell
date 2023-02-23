@@ -6,7 +6,7 @@ class Hour(db.Model):
         __table_args__ = {'schema': SCHEMA}
     
     id = db.Column(db.Integer, primary_key=True)
-    biz_id = db.Column(db.Integer, nullable=False)
+    biz_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('biz.id')), nullable=False)
     mondayOpen = db.Column(db.Time, nullable=False)
     mondayClose = db.Column(db.Time, nullable=False)
     tuesdayOpen = db.Column(db.Time, nullable=False)
@@ -21,3 +21,5 @@ class Hour(db.Model):
     saturdayClose = db.Column(db.Time, nullable=False)
     sundayOpen = db.Column(db.Time, nullable=False)
     sundayClose = db.Column(db.Time, nullable=False)
+
+    biz = db.relationship('Biz', back_populates='hours')
