@@ -14,3 +14,5 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime, nullable=False)
 
     biz = db.relationship('Biz', back_populates='reviews')
+    users = db.relationship('Users', back_populates='reviews')
+    review_images = db.relationship('ReviewImage', back_populates='reviews')

@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .business_categories_jointable import  business_categories
 
 class Biz(db.Model):
     __tablename__ = 'bizes'
@@ -6,9 +7,8 @@ class Biz(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
-    owner_id = db.Column(db.Integer, nullable=False)
-    category_id = db.Column(db.Integer, nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('user.id')), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('category.id')), nullable=False)
     address = db.Column(db.String, nullable=False)
     city = db.Column(db.String, nullable=False)
     state = db.Column(db.String, nullable=False)
@@ -25,6 +25,8 @@ class Biz(db.Model):
     users = db.relationship('User', back_populates='biz')
     reviews = db.relationship('Review', back_populates='biz')
     hours = db.relationship('Hours', back_populates='biz')
+    categories = db.relationship('Categories', secondary=business_categories, back_populates='biz')
+    biz_images = db.relationship('BusinessImage', back_populates="biz")
 
 
 

@@ -8,3 +8,5 @@ class BusinessImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     biz_id = db.Column(db.Integer, nullable=False)
     url = db.Column(db.String, nullable=False)
+
+    biz = db.relationship('Biz', back_populates='biz_images')

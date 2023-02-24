@@ -8,3 +8,5 @@ class ReviewImage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     review_id = db.Column(db.Integer, nullable=False)
     url = db.Column(db.String, nullable=False)
+
+    reviews = db.relationship('Review', back_populates='review_images')

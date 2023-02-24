@@ -1,4 +1,3 @@
-created models, not 100% sure if relationship is being done correctly
-models may also not be correct but LOOKS correct
-
 order by created_at for our reviews for recent activity
+
+work on the rest of relationships / foreign keys
