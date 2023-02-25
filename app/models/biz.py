@@ -1,5 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from .business_categories_jointable import  business_categories
+from sqlalchemy.sql import func
 
 class Biz(db.Model):
     __tablename__ = 'bizes'
@@ -17,16 +18,37 @@ class Biz(db.Model):
     lng = db.Column(db.Float, nullable=False)
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.DateTime, nullable=False)
-    updated_at = db.Column(db.DateTime, nullable=False)
     preview_image = db.Column(db.String, nullable=True)
     num_reviews = db.Column(db.Integer, nullable=True)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
+    updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+
 
     users = db.relationship('User', back_populates='biz')
     reviews = db.relationship('Review', back_populates='biz')
     hours = db.relationship('Hours', back_populates='biz')
     categories = db.relationship('Categories', secondary=business_categories, back_populates='biz')
     biz_images = db.relationship('BusinessImage', back_populates="biz")
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'ownerId': self.owner_id,
+            'categoryId': self.category_id,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'country': self.country,
+            'lat': self.lat,
+            'lng': self.lng,
+            'name': self.name,
+            'description': self.description,
+            'numReviews': self.num_reviews,
+            'previewImage': self.preview_image,
+            'createdAt': self.created_at,
+            'updatedAt': self.updated_at
+        }
 
 
 
