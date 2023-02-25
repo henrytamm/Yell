@@ -20,8 +20,8 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
-    biz = db.relationship('Biz', back_populates='users')
-    reviews = db.relationship('Reviews', back_populates='users')
+    biz = db.relationship('Biz', cascade="all, delete", back_populates='users')
+    reviews = db.relationship('Review', cascade="all, delete", back_populates='users')
 
     @property
     def password(self):

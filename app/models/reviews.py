@@ -15,8 +15,8 @@ class Review(db.Model):
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
     biz = db.relationship('Biz', back_populates='reviews')
-    users = db.relationship('Users', back_populates='reviews')
-    review_images = db.relationship('ReviewImage', back_populates='reviews')
+    users = db.relationship('User', back_populates='reviews')
+    review_images = db.relationship('ReviewImage', cascade="all, delete", back_populates='reviews')
 
     def to_dict(self):
         return {
