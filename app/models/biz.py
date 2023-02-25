@@ -19,7 +19,6 @@ class Biz(db.Model):
     name = db.Column(db.String, nullable=False)
     description = db.Column(db.String, nullable=True)
     preview_image = db.Column(db.String, nullable=True)
-    num_reviews = db.Column(db.Integer, nullable=True)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
