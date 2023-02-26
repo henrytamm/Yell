@@ -2,7 +2,7 @@ from app.models import db, BusinessImage, environment, SCHEMA
 
 
 # Adds a demo user, you can add other users here if you want
-def seed_business_image():
+def seed_business_images():
     soup_kitchen_image_1 = BusinessImage(
         biz_id = 1,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwUbqm7PzL4jsPfa26nUSyoQsWnjNG6vYdhZKwcAMasV04R5wZVtCumQ5werObGSivppo&usqp=CAU',
@@ -44,11 +44,11 @@ def seed_business_image():
 # incrementing primary key, CASCADE deletes any dependent entities.  With
 # sqlite3 in development you need to instead use DELETE to remove all data and
 # it will reset the primary keys for you as well.
-def undo_seed_business_image():
+def undo_seed_business_images():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.undo_seed_business_image RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.businessImages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM undo_seed_business_image")
+        db.session.execute("DELETE FROM businessImages")
 
     db.session.commit()
