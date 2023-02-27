@@ -4,48 +4,56 @@ from app.models import db, Review, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_reviews():
     soup_kitchen_review_1 = Review(
+        id = 1,
         biz_id = 1,
         user_id = 2,
         review = "review1 text for soupkitchen!!!",
         stars = 1,
     )
     soup_kitchen_review_2 = Review(
+        id = 2,
         biz_id = 1,
         user_id = 3,
         review = "review2 text for soupkitchen!!!",
         stars = 2,
     )
     phosizzle_review_1 = Review(
+        id = 3,
         biz_id = 2,
         user_id = 1,
         review = "review1 text for phosizzle!!!",
         stars = 3,
     )
     phosizzle_review_2 = Review(
+        id = 4,
         biz_id = 2,
         user_id = 3,
         review = "review2 text for phosizzle!!!",
         stars = 4,
     )
     vegan_for_the_win_review_1 = Review(
+        id = 5,
         biz_id = 3,
         user_id = 1,
         review = "review1 text for vegan for the win!!!",
         stars = 5,
     )
     vegan_for_the_win_review_2 = Review(
+        id = 6,
         biz_id = 3,
         user_id = 2,
         review = "review2 text for vegan for the win!!!",
         stars = 4,
     )
     curry_shop_review_1 = Review(
+        id = 7,
         biz_id = 3,
         user_id = 2,
         review = "review1 text for curry shop!!!",
         stars = 5,
     )
     curry_shop_review_2 = Review(
+        id = 8,
         biz_id = 3,
         user_id = 3,
         review = "review2 text for curry shop!!!",
