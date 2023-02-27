@@ -5,7 +5,6 @@ from app.models import db, Biz, Category, environment, SCHEMA
 def seed_biz():
     soup_kitchen = Biz(
         owner_id=1,
-        category_id=1,
         address='1234 First Street',
         city='Oakland',
         state='California',
@@ -18,7 +17,6 @@ def seed_biz():
     )
     phosizzle = Biz(
         owner_id=2,
-        category_id=2,
         address='5678 Second Street',
         city='Berkeley',
         state='California',
@@ -31,7 +29,6 @@ def seed_biz():
     )
     vegan_for_the_win = Biz(
         owner_id=3,
-        category_id=3,
         address='910 Third Street',
         city='San Francisco',
         state='California',
@@ -41,6 +38,18 @@ def seed_biz():
         name='Vegan For The Win',
         description='Save the animals',
         preview_image='veganfood.com/images/1',
+    )
+    curry_shop = Biz(
+        owner_id=3,
+        address='456 fourth Street',
+        city='San Francisco',
+        state='California',
+        country='United States',
+        lat=31231,
+        lng=123123,
+        name='Curry Shop',
+        description='curry all day',
+        preview_image='curry.com/images/1',
     )
 
 #Category seeders
@@ -60,18 +69,21 @@ def seed_biz():
         id=4,
         name="soup",
     )
-    db.session.add(soup_kitchen)
-    db.session.add(phosizzle)
-    db.session.add(vegan_for_the_win)
-    db.session.add(vegan)
-    db.session.add(mexican)
-    db.session.add(asian)
-    db.session.add(soup)
     soup_kitchen.categories.append(soup)
     soup_kitchen.categories.append(vegan)
     phosizzle.categories.append(soup)
     phosizzle.categories.append(asian)
     vegan_for_the_win.categories.append(vegan)
+    curry_shop.categories.append(asian)
+    curry_shop.categories.append(vegan)
+    db.session.add(soup_kitchen)
+    db.session.add(phosizzle)
+    db.session.add(vegan_for_the_win)
+    db.session.add(curry_shop)
+    db.session.add(vegan)
+    db.session.add(mexican)
+    db.session.add(asian)
+    db.session.add(soup)
     db.session.commit()
 
 
