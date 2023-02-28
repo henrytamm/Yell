@@ -26,7 +26,7 @@ class Biz(db.Model):
     users = db.relationship('User', back_populates='biz')
     reviews = db.relationship('Review', cascade="all, delete", back_populates='biz')
     hours = db.relationship('Hour', back_populates='biz')
-    categories = db.relationship('Category', secondary=business_categories, cascade="all, delete, delete-orphan", back_populates='biz')
+    categories = db.relationship('Category', secondary=business_categories, cascade="all, delete", back_populates='biz')
     biz_images = db.relationship('BusinessImage', cascade="all, delete", back_populates="biz")
 
 
@@ -34,7 +34,7 @@ class Biz(db.Model):
         return {
             'id': self.id,
             'ownerId': self.owner_id,
-            'categoryId': self.category_id,
+            # 'categoryId': self.category_id,
             'address': self.address,
             'city': self.city,
             'state': self.state,
@@ -43,7 +43,7 @@ class Biz(db.Model):
             'lng': self.lng,
             'name': self.name,
             'description': self.description,
-            'numReviews': self.num_reviews,
+            # 'numReviews': self.num_reviews,
             'previewImage': self.preview_image,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
