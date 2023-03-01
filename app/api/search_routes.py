@@ -4,24 +4,31 @@ from app.models import Biz, Review, Category, business_categories, db
 
 search_routes = Blueprint('categories', __name__)
 
+
 @search_routes.route('/<int:categoryId>')
 def bizes_by_category(categoryId):
-  """
-  Query for all bizes of the specified category by id
-  """
-  print("in search route")
+    """
+    Query for all bizes of the specified category by id
+    """
+    print("in search route")
 
-  category = Category.query.filter(Category.id == categoryId).first()
-  bizes = category.biz
-  print("----------------", type(bizes), bizes)
-  # bizzes = Biz.query.get(id for id in bizes.)
-  return "bizes"
-  # biz_categories = db.session.query(Biz, Category).join(Biz.categories).join(Category.biz).filter(Biz.id == 1).all()
-  # print("------------------------------biz_categories", biz_categories)
-  # return biz_categories
-  # return "1"
-  # biz_categories = db.session.query(Biz) \
-  #                       .join(Category)  \
-  #                       .filter(Category.id == categoryId)
-  # print(biz_categories)
-  # return dict(biz_categories)
+    category = Category.query.filter(Category.id == categoryId).first()
+    bizes = category.biz
+    newDict = {}
+    index = 1
+    for biz in bizes:
+        newDict[index] = {
+            "owner_id" : biz.owner_id,
+            "address" : biz.address,
+            "city" : biz.city,
+            "state" : biz.state,
+            "country" : biz.country,
+            "lat" : biz.lat,
+            "lng" : biz.lng,
+            "name" : biz.name,
+            "description" : biz.description,
+            "preview_image" : biz.preview_image,
+        }
+        index += 1
+
+    return newDict
