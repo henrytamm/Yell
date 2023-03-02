@@ -5,6 +5,7 @@ from datetime import datetime, date, time, timedelta
 # Adds a demo user, you can add other users here if you want
 def seed_business_hours():
     soup_kitchen = Hour(
+        id=1,
         biz_id = 1,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -22,6 +23,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     phosizzle = Hour(
+        id=2,
         biz_id = 2,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -39,6 +41,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     vegan_for_the_win = Hour(
+        id=3,
         biz_id = 3,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -56,13 +59,14 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     curry_shop = Hour(
+        id=4,
         biz_id = 4,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
         tuesday_open = time(10, 00),
         tuesday_close = time(18, 00),
         wednesday_open = time(10, 00),
-        wednesday_close = time(18, 00),
+        wednesday_close = time(22, 00),
         thursday_open = time(10, 00),
         thursday_close = time(18, 00),
         friday_open = time(10, 00),
