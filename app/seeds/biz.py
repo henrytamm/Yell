@@ -4,6 +4,7 @@ from app.models import db, Biz, Category, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_biz():
     soup_kitchen = Biz(
+        id=1,
         owner_id=1,
         address='1234 First Street',
         city='Oakland',
@@ -16,6 +17,7 @@ def seed_biz():
         preview_image='goodsoup.com/images/1',
     )
     phosizzle = Biz(
+        id=2,
         owner_id=2,
         address='5678 Second Street',
         city='Berkeley',
@@ -28,6 +30,7 @@ def seed_biz():
         preview_image='picturesofpho.com/images/1',
     )
     vegan_for_the_win = Biz(
+        id=3,
         owner_id=3,
         address='910 Third Street',
         city='San Francisco',
@@ -40,6 +43,7 @@ def seed_biz():
         preview_image='veganfood.com/images/1',
     )
     curry_shop = Biz(
+        id=4,
         owner_id=3,
         address='456 fourth Street',
         city='San Francisco',
