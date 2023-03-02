@@ -3,7 +3,7 @@ from flask_login import login_required, current_user
 from app.models import Biz, Review, Category, business_categories, db, Hour
 from datetime import date, datetime, time
 
-search_routes = Blueprint('categories', __name__)
+search_routes = Blueprint('search', __name__)
 
 
 @search_routes.route('/<int:categoryId>')
