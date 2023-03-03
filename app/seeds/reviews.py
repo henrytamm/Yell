@@ -47,14 +47,14 @@ def seed_reviews():
     )
     curry_shop_review_1 = Review(
         id = 7,
-        biz_id = 3,
+        biz_id = 4,
         user_id = 2,
         review = "review1 text for curry shop!!!",
         stars = 5,
     )
     curry_shop_review_2 = Review(
         id = 8,
-        biz_id = 3,
+        biz_id = 4,
         user_id = 3,
         review = "review2 text for curry shop!!!",
         stars = 4,
