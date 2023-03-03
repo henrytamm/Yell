@@ -95,7 +95,7 @@ export const deletedReview = (bizId, reviewId) => async (dispatch) => {
 
 const initialState = {}
 
-const reviewsReducer = (state = initialState, action) => {
+export const reviewsReducer = (state = initialState, action) => {
     let newState = {...state}
     switch(action.type) {
         case GET_REVIEWS:

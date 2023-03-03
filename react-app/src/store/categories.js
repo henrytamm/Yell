@@ -12,7 +12,7 @@ const getOneCategoryAction = (category) => ({
 });
 
 export const getAllCategory = () => async (dispatch) => {
-  const res = await fetch(`/api/search/${categoryId}`);
+  const res = await fetch(`/api/categories/`);
   if (res.ok) {
     const category = await res.json();
     dispatch(getAllCategoryAction(category));
@@ -31,7 +31,7 @@ export const getOneCategory = (categoryId) => async (dispatch) => {
 
 const initialState = {};
 
-export const bizReducer = (state = initialState, action) => {
+export const categoryReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
 
