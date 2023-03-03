@@ -94,6 +94,9 @@ export const bizReducer = (state = initialState, action) => {
       return newState;
     }
 
+    case GET_ONE_BIZ:
+      return action.biz
+
     case CREATE_BIZ:
         newState[action.biz.id] = action.biz;
 

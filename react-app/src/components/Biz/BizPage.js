@@ -9,11 +9,12 @@ const BizPage = () => {
   const dispatch = useDispatch();
   const { bizId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false)
-  const biz = useSelector((state) => state?.bizReducer[1])
+//   const biz = useSelector((state) => state?.bizReducer[1])
+  const biz = useSelector((state) => state?.bizReducer)
   const bizReviewsObj = useSelector((state) => state?.reviewsReducer)
 
   const reviews = Object.values(bizReviewsObj)
-  console.log(reviews)
+//   console.log(reviews)
  
   
 //   useEffect(() => {
@@ -22,8 +23,8 @@ const BizPage = () => {
     
     console.log(biz)
   useEffect(() => {
-    dispatch(getBizes())
-    // dispatch(getOneBiz(bizId));
+    // dispatch(getBizes())
+    dispatch(getOneBiz(bizId));
     dispatch(allReviews(bizId));
   }, [dispatch]);
 
