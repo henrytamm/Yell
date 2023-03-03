@@ -88,8 +88,8 @@ export const bizReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
     case GET_ALL_BIZ: {
-      action.biz.forEach((biz) => {
-        newState[biz.id] = biz;
+      action.bizes?.bizes.forEach((el) => {
+        newState[el.id] = el;
       });
       return newState;
     }
