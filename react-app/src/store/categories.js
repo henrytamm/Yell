@@ -12,10 +12,11 @@ const getOneCategoryAction = (category) => ({
 });
 
 export const getAllCategory = () => async (dispatch) => {
-  const res = await fetch(`/api/search/${categoryId}`);
+  const res = await fetch(`/api/categories`);
   if (res.ok) {
     const category = await res.json();
     dispatch(getAllCategoryAction(category));
+    console.log("category in action", category)
     return category;
   }
 };
@@ -31,22 +32,23 @@ export const getOneCategory = (categoryId) => async (dispatch) => {
 
 const initialState = {};
 
-export const bizReducer = (state = initialState, action) => {
+export const categoryReducer = (state = initialState, action) => {
   let newState = { ...state };
   switch (action.type) {
 
     case GET_ALL_CATEGORY: {
-        action.category.forEach((category) => {
+        action.categories.categories.forEach((category) => {
             newState[category.id] = category;
           });
           return newState;
         }
 
     case GET_ONE_CATEGORY:
-        newState[action.categoryId] = action.category
+      newState[action.categoryId] = action.category;
+      return newState;
 
     default:
         return state;
   }
-        
+
 };
