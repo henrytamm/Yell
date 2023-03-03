@@ -17,6 +17,7 @@ class User(db.Model, UserMixin):
     first_name = db.Column(db.String(255), nullable=False)
     last_name = db.Column(db.String(255), nullable=False)
     zip_code = db.Column(db.Integer, nullable=False)
+    user_picture_url = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
@@ -42,6 +43,7 @@ class User(db.Model, UserMixin):
             'firstName': self.first_name,
             'lastName': self.last_name,
             'zipCode': self.zip_code,
+            'userPictureUrl': self.user_picture_url,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at
         }

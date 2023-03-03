@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Biz, Review, db
+from app.models import Biz, Review, db, Hour
 from ..forms.biz_form import BizForm
 from ..forms.review_form import ReviewForm
 
@@ -24,7 +24,32 @@ def biz(id):
     biz = Biz.query.get(id)
     return biz.to_dict()
 
-    
+
+@biz_routes.route('/<int:id>/hours')
+def bizHours(id):
+    """
+    Query for a biz by id and returns that biz in a dictionary
+    """
+    hours = Hour.query.filter(Hour.biz_id == id).all()
+
+    hoursDict = {
+        'bizId': str(hours[0].biz_id),
+        'mondayOpen': str(hours[0].monday_open),
+        'mondayClose': str(hours[0].monday_close),
+        'tuesdayOpen': str(hours[0].tuesday_open),
+        'tuesdayClose': str(hours[0].tuesday_close),
+        'wednesdayOpen': str(hours[0].wednesday_open),
+        'wednesdayClose': str(hours[0].wednesday_close),
+        'thursdayOpen': str(hours[0].thursday_open),
+        'thursdayClose': str(hours[0].thursday_close),
+        'fridayOpen': str(hours[0].friday_open),
+        'fridayClose': str(hours[0].friday_close),
+        'saturdayOpen': str(hours[0].saturday_open),
+        'saturdayClose': str(hours[0].saturday_close),
+        'sundayOpen': str(hours[0].sunday_open),
+        'sundayClose': str(hours[0].sunday_close),
+    }
+    return hoursDict
 
 
 @biz_routes.route('/', methods=["POST"])
@@ -58,6 +83,7 @@ def new_bizes():
 
     return new_biz.to_dict()
 
+
 @biz_routes.route('/<int:bizId>', methods=["PUT"])
 @login_required
 def edit_biz(bizId):
@@ -69,7 +95,7 @@ def edit_biz(bizId):
     data = form.data
     biz = Biz.query.get(bizId)
 
-    if(biz.owner_id==int(current_user.get_id())):
+    if (biz.owner_id == int(current_user.get_id())):
         for key, value in data.items():
             if hasattr(biz, key) and value is not None:
                 setattr(biz, key, value)
@@ -77,6 +103,7 @@ def edit_biz(bizId):
     db.session.commit()
 
     return biz.to_dict()
+
 
 @biz_routes.route('/<int:bizId>', methods=["DELETE"])
 @login_required
@@ -86,7 +113,7 @@ def delete_biz(bizId):
     """
 
     biz = Biz.query.get(bizId)
-    if(biz.owner_id==int(current_user.get_id())):
+    if (biz.owner_id == int(current_user.get_id())):
         db.session.delete(biz)
         db.session.commit()
         return 'Successfully deleted'
@@ -149,7 +176,7 @@ def edit_review(bizId, reviewId):
     data = form.data
     review = Review.query.get(reviewId)
 
-    if(review.user_id==int(current_user.get_id())):
+    if (review.user_id == int(current_user.get_id())):
         for key, value in data.items():
             if hasattr(review, key) and value is not None:
                 setattr(review, key, value)
@@ -167,7 +194,7 @@ def delete_review(bizId, reviewId):
     """
 
     review = Review.query.get(reviewId)
-    if(review.user_id==int(current_user.get_id())):
+    if (review.user_id == int(current_user.get_id())):
         db.session.delete(review)
         db.session.commit()
         return 'Successfully deleted'
