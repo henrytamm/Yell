@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const BizByCategoryCard = ({ biz }) => {
-  console.log("biz", biz)
+  
   return (
     <div className="BizByCategoryCard">
       <img src={biz.preview_image} />

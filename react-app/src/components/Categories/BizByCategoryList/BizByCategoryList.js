@@ -1,3 +1,4 @@
+import './BizByCategoryList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getOneCategory } from '../../../store/categories';
 import { useParams, useHistory } from 'react-router-dom';
@@ -30,10 +31,12 @@ const BizByCategoryList = () => {
       {isLoaded && (
         <>
           <div className="BizByCategoryList">
-            Businesses of Category: {categoryNameUpper}
-            {bizesArr.map((biz) => (
-              <BizByCategoryCard key={biz.id} biz={biz} />
-            ))}
+            {categoryNameUpper} Businesses
+            <div className="bizCardContainer">
+              {bizesArr.map((biz) => (
+                <BizByCategoryCard key={biz.id} biz={biz} />
+              ))}
+            </div>
           </div>
         </>
       )}
