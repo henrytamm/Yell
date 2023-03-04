@@ -18,6 +18,10 @@ const BizByCategoryList = () => {
   let bizes = useSelector(state => state.categoryReducer);
   let bizesArr = Object.values(bizes);
 
+  if (bizesArr.length == 0) {
+    return "No bizes in that category"
+  }
+
   let categoryName;
   let categoryNameUpper;
   if (isLoaded) {
