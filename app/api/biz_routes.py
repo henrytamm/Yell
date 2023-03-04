@@ -1,8 +1,10 @@
 from flask import Blueprint, jsonify
+from sqlalchemy.exc import SQLAlchemyError
 from flask_login import login_required, current_user
 from app.models import Biz, Review, db, Hour
 from ..forms.biz_form import BizForm
 from ..forms.review_form import ReviewForm
+from ..forms.hours_form import HoursForm
 
 biz_routes = Blueprint('bizes', __name__)
 
@@ -13,7 +15,7 @@ def bizes():
     Query for all bizes and returns them in a list of biz dictionaries
     """
     bizes = Biz.query.all()
-    return {'bizes': [biz.to_dict() for biz in bizes]}
+    return jsonify({'bizes': [biz.to_dict() for biz in bizes]})
 
 
 @biz_routes.route('/<int:id>')
@@ -21,35 +23,153 @@ def biz(id):
     """
     Query for a biz by id and returns that biz in a dictionary
     """
-    biz = Biz.query.get(id)
-    return biz.to_dict()
+    try:
+        biz = Biz.query.get(id)
+        if biz is None:
+            raise SQLAlchemyError("Business not found!")
+        return jsonify(biz.to_dict())
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:id>/hours')
 def bizHours(id):
     """
-    Query for a biz by id and returns that biz in a dictionary
+    Query for hours of a biz by id and returns that hours in a dictionary
     """
-    hours = Hour.query.filter(Hour.biz_id == id).all()
+    try:
+        biz = Biz.query.get(id)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't get hours!")
+        hours = Hour.query.filter(Hour.biz_id == id).first()
+        if hours is None:
+            return 'No hours added for business yet.'
+        hoursDict = {
+            'bizId': str(hours.biz_id),
+            'mondayOpen': str(hours.monday_open),
+            'mondayClose': str(hours.monday_close),
+            'tuesdayOpen': str(hours.tuesday_open),
+            'tuesdayClose': str(hours.tuesday_close),
+            'wednesdayOpen': str(hours.wednesday_open),
+            'wednesdayClose': str(hours.wednesday_close),
+            'thursdayOpen': str(hours.thursday_open),
+            'thursdayClose': str(hours.thursday_close),
+            'fridayOpen': str(hours.friday_open),
+            'fridayClose': str(hours.friday_close),
+            'saturdayOpen': str(hours.saturday_open),
+            'saturdayClose': str(hours.saturday_close),
+            'sundayOpen': str(hours.sunday_open),
+            'sundayClose': str(hours.sunday_close),
+        }
+        return hoursDict
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
-    hoursDict = {
-        'bizId': str(hours[0].biz_id),
-        'mondayOpen': str(hours[0].monday_open),
-        'mondayClose': str(hours[0].monday_close),
-        'tuesdayOpen': str(hours[0].tuesday_open),
-        'tuesdayClose': str(hours[0].tuesday_close),
-        'wednesdayOpen': str(hours[0].wednesday_open),
-        'wednesdayClose': str(hours[0].wednesday_close),
-        'thursdayOpen': str(hours[0].thursday_open),
-        'thursdayClose': str(hours[0].thursday_close),
-        'fridayOpen': str(hours[0].friday_open),
-        'fridayClose': str(hours[0].friday_close),
-        'saturdayOpen': str(hours[0].saturday_open),
-        'saturdayClose': str(hours[0].saturday_close),
-        'sundayOpen': str(hours[0].sunday_open),
-        'sundayClose': str(hours[0].sunday_close),
-    }
-    return hoursDict
+
+@biz_routes.route('/<int:id>/hours', methods=["POST"])
+def createBizHours(id):
+    """
+    Create hours for a biz by id and returns that hours in a dictionary
+    """
+    form = HoursForm()
+    data = form.data
+    try:
+        biz = Biz.query.get(id)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't add hours!")
+        try:
+
+            if (biz.owner_id == int(current_user.get_id())):
+                hours = Hour(
+                    biz_id=id,
+                    monday_open=data['monday_open'],
+                    monday_close=data['monday_close'],
+                    tuesday_open=data['tuesday_open'],
+                    tuesday_close=data['tuesday_close'],
+                    wednesday_open=data['wednesday_open'],
+                    wednesday_close=data['wednesday_close'],
+                    thursday_open=data['thursday_open'],
+                    thursday_close=data['thursday_close'],
+                    friday_open=data['friday_open'],
+                    friday_close=data['friday_close'],
+                    saturday_open=data['saturday_open'],
+                    saturday_close=data['saturday_close'],
+                    sunday_open=data['sunday_open'],
+                    sunday_close=data['sunday_close']
+                )
+                db.session.add(hours)
+                db.session.commit()
+                hoursDict = {
+                    'bizId': str(hours.biz_id),
+                    'mondayOpen': str(hours.monday_open),
+                    'mondayClose': str(hours.monday_close),
+                    'tuesdayOpen': str(hours.tuesday_open),
+                    'tuesdayClose': str(hours.tuesday_close),
+                    'wednesdayOpen': str(hours.wednesday_open),
+                    'wednesdayClose': str(hours.wednesday_close),
+                    'thursdayOpen': str(hours.thursday_open),
+                    'thursdayClose': str(hours.thursday_close),
+                    'fridayOpen': str(hours.friday_open),
+                    'fridayClose': str(hours.friday_close),
+                    'saturdayOpen': str(hours.saturday_open),
+                    'saturdayClose': str(hours.saturday_close),
+                    'sundayOpen': str(hours.sunday_open),
+                    'sundayClose': str(hours.sunday_close),
+                }
+                return hoursDict
+            else:
+                raise SQLAlchemyError(
+                    'User not authorized to add hours.')
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 401
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
+
+
+@biz_routes.route('/<int:id>/hours', methods=["PUT"])
+def editBizHours(id):
+    """
+    Edit hours of a biz by id and returns that hours in a dictionary
+    """
+    form = HoursForm()
+    data = form.data
+    try:
+        biz = Biz.query.get(id)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't edit hours!")
+        try:
+            hours = Hour.query.filter(Hour.biz_id == id).first()
+
+            if (biz.owner_id == int(current_user.get_id())):
+                for key, value in data.items():
+                    if hasattr(hours, key) and value is not None:
+                        setattr(hours, key, value)
+                db.session.commit()
+                hoursDict = {
+                    'bizId': str(hours.biz_id),
+                    'mondayOpen': str(hours.monday_open),
+                    'mondayClose': str(hours.monday_close),
+                    'tuesdayOpen': str(hours.tuesday_open),
+                    'tuesdayClose': str(hours.tuesday_close),
+                    'wednesdayOpen': str(hours.wednesday_open),
+                    'wednesdayClose': str(hours.wednesday_close),
+                    'thursdayOpen': str(hours.thursday_open),
+                    'thursdayClose': str(hours.thursday_close),
+                    'fridayOpen': str(hours.friday_open),
+                    'fridayClose': str(hours.friday_close),
+                    'saturdayOpen': str(hours.saturday_open),
+                    'saturdayClose': str(hours.saturday_close),
+                    'sundayOpen': str(hours.sunday_open),
+                    'sundayClose': str(hours.sunday_close),
+                }
+                return hoursDict
+            else:
+                raise SQLAlchemyError(
+                    'User not authorized to edit hours.')
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 401
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/', methods=["POST"])
@@ -59,11 +179,8 @@ def new_bizes():
     Create a new biz
     """
     form = BizForm()
-    # if form.validate_on_submit():
+
     data = form.data
-    # biz = Biz.query.filter(Biz.address == data['address']).all()
-    # if(biz):
-    #   tell user that address is already taken
 
     new_biz = Biz(
         owner_id=current_user.get_id(),
@@ -91,18 +208,26 @@ def edit_biz(bizId):
     Edit current biz
     """
     form = BizForm()
-
     data = form.data
-    biz = Biz.query.get(bizId)
 
-    if (biz.owner_id == int(current_user.get_id())):
-        for key, value in data.items():
-            if hasattr(biz, key) and value is not None:
-                setattr(biz, key, value)
-
-    db.session.commit()
-
-    return biz.to_dict()
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't make edits!")
+        try:
+            if (biz.owner_id == int(current_user.get_id())):
+                for key, value in data.items():
+                    if hasattr(biz, key) and value is not None:
+                        setattr(biz, key, value)
+                db.session.commit()
+                return biz.to_dict()
+            else:
+                raise SQLAlchemyError(
+                    'User not authorized to edit business.')
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 401
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>', methods=["DELETE"])
@@ -111,14 +236,22 @@ def delete_biz(bizId):
     """
     Delete current biz
     """
-
-    biz = Biz.query.get(bizId)
-    if (biz.owner_id == int(current_user.get_id())):
-        db.session.delete(biz)
-        db.session.commit()
-        return 'Successfully deleted'
-
-    return 'Not authorized to delete'
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't delete!")
+        try:
+            if (biz.owner_id == int(current_user.get_id())):
+                db.session.delete(biz)
+                db.session.commit()
+                return 'Successfully deleted business!'
+            else:
+                raise SQLAlchemyError(
+                    'User not authorized to delete business.')
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 401
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>/reviews')
@@ -126,8 +259,14 @@ def reviews(bizId):
     """
     Query for all reviews of a business and returns them in a list of review dictionaries
     """
-    reviews = Review.query.filter(Review.biz_id == bizId).all()
-    return {'reviews': [review.to_dict() for review in reviews]}
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't get reviews!")
+        reviews = Review.query.filter(Review.biz_id == bizId).all()
+        return {'reviews': [review.to_dict() for review in reviews]}
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>/reviews/<int:reviewId>')
@@ -135,8 +274,20 @@ def review(bizId, reviewId):
     """
     Query for a review by id and returns that review in a dictionary
     """
-    review = Review.query.get(reviewId)
-    return review.to_dict()
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't get review!")
+        try:
+            review = Review.query.filter(
+                Review.biz_id == bizId, Review.id == reviewId).first()
+            if review is None:
+                raise SQLAlchemyError("Review not found!")
+            return review.to_dict()
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 404
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>/reviews', methods=['POST'])
@@ -146,23 +297,26 @@ def review_create(bizId):
     Create a review for a business
     """
     form = ReviewForm()
-    # if form.validate_on_submit():
+
     data = form.data
-    # biz = Biz.query.filter(Biz.address == data['address']).all()
-    # if(biz):
-    #   tell user that address is already taken
 
-    new_review = Review(
-        user_id=current_user.get_id(),
-        biz_id=bizId,
-        stars=data['stars'],
-        review=data['review']
-    )
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't add a review!")
+        new_review = Review(
+            user_id=current_user.get_id(),
+            biz_id=bizId,
+            stars=data['stars'],
+            review=data['review']
+        )
 
-    db.session.add(new_review)
-    db.session.commit()
+        db.session.add(new_review)
+        db.session.commit()
 
-    return new_review.to_dict()
+        return new_review.to_dict()
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>/reviews/<int:reviewId>', methods=["PUT"])
@@ -174,16 +328,32 @@ def edit_review(bizId, reviewId):
     form = ReviewForm()
 
     data = form.data
-    review = Review.query.get(reviewId)
 
-    if (review.user_id == int(current_user.get_id())):
-        for key, value in data.items():
-            if hasattr(review, key) and value is not None:
-                setattr(review, key, value)
-
-    db.session.commit()
-
-    return review.to_dict()
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't get review!")
+        try:
+            review = Review.query.filter(
+                Review.biz_id == bizId, Review.id == reviewId).first()
+            if review is None:
+                raise SQLAlchemyError("Review not found!")
+            try:
+                if (review.user_id == int(current_user.get_id())):
+                    for key, value in data.items():
+                        if hasattr(review, key) and value is not None:
+                            setattr(review, key, value)
+                    db.session.commit()
+                    return review.to_dict()
+                else:
+                    raise SQLAlchemyError(
+                        'User not authorized to edit review.')
+            except SQLAlchemyError as e:
+                return jsonify({'error': str(e)}), 401
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 404
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
 
 
 @biz_routes.route('/<int:bizId>/reviews/<int:reviewId>', methods=["DELETE"])
@@ -192,11 +362,27 @@ def delete_review(bizId, reviewId):
     """
     Delete a review for a business
     """
-
-    review = Review.query.get(reviewId)
-    if (review.user_id == int(current_user.get_id())):
-        db.session.delete(review)
-        db.session.commit()
-        return 'Successfully deleted'
-
-    return 'Not authorized to delete'
+    try:
+        biz = Biz.query.get(bizId)
+        if biz is None:
+            raise SQLAlchemyError("Business not found so can't get review!")
+        try:
+            review = Review.query.filter(
+                Review.biz_id == bizId, Review.id == reviewId).first()
+            if review is None:
+                raise SQLAlchemyError(
+                    "Review not found so can't delete review!")
+            try:
+                if (review.user_id == int(current_user.get_id())):
+                    db.session.delete(review)
+                    db.session.commit()
+                    return 'Successfully deleted review!'
+                else:
+                    raise SQLAlchemyError(
+                        'User not authorized to delete review.')
+            except SQLAlchemyError as e:
+                return jsonify({'error': str(e)}), 401
+        except SQLAlchemyError as e:
+            return jsonify({'error': str(e)}), 404
+    except SQLAlchemyError as e:
+        return jsonify({'error': str(e)}), 404
