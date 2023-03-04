@@ -1,13 +1,13 @@
 const GET_REVIEWS = 'reviews/getReviews';
 const ADD_REVIEW = 'reviews/addReview';
-const EDIT_REVIEW = 'reviews/editReview'
-const DELETE_REVIEW = 'reviews/deleteReview'
+const EDIT_REVIEW = 'reviews/editReview';
+const DELETE_REVIEW = 'reviews/deleteReview';
 
 
 //Get All Reviews Action
 const getReviews = (reviews) => {
     return {
-        type: LOAD_REVIEW_BY_BUSINESS_ID,
+        type: GET_REVIEWS,
         reviews
     }
 }
@@ -16,7 +16,7 @@ const getReviews = (reviews) => {
 const addReview = (payload) => {
     return {
         type: ADD_REVIEW,
-        payload 
+        payload
     }
 }
 
@@ -112,7 +112,7 @@ export const reviewsReducer = (state = initialState, action) => {
         case DELETE_REVIEW:
             delete newState[action.reviewId];
             return newState;
-        default: 
+        default:
             return state
-    }       
+    }
 }
