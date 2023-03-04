@@ -14,9 +14,10 @@ def bizes_by_category(categoryId):
     category = Category.query.filter(Category.id == categoryId).first()
     bizes = category.biz
     newDict = {}
-    index = 1
+
     for biz in bizes:
-        newDict[index] = {
+        newDict[biz.id] = {
+            "biz_id": biz.id,
             "owner_id": biz.owner_id,
             "address": biz.address,
             "city": biz.city,
@@ -28,9 +29,8 @@ def bizes_by_category(categoryId):
             "description": biz.description,
             "preview_image": biz.preview_image,
         }
-        index += 1
 
-    return newDict
+    return {'bizes_in_category': [biz for biz in newDict.values()]}
 
 
 @search_routes.route('/open')

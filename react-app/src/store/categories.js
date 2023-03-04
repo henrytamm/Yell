@@ -16,7 +16,6 @@ export const getAllCategory = () => async (dispatch) => {
   if (res.ok) {
     const category = await res.json();
     dispatch(getAllCategoryAction(category));
-    console.log("category in action", category)
     return category;
   }
 };
@@ -43,9 +42,13 @@ export const categoryReducer = (state = initialState, action) => {
           return newState;
         }
 
-    case GET_ONE_CATEGORY:
-      newState[action.categoryId] = action.category;
+    case GET_ONE_CATEGORY: {
+      newState = {  };
+      action.category.bizes_in_category.forEach((biz_in_category) => {
+        newState[biz_in_category.biz_id] = biz_in_category;
+      })
       return newState;
+    }
 
     default:
         return state;

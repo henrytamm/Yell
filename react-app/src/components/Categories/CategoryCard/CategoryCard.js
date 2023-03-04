@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 const CategoryCard = ({ category }) => {
-console.log(category)
   return (
     <div className="categoryCard">
       <NavLink className='category-name' to={`/categories/${category.id}`}>

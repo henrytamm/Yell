@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CategoryList from "./components/Categories/CategoryList/CategoryList";
+import BizByCategoryList from "./components/Categories/BizByCategoryList/BizByCategoryList";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/categories/:categoryId">
+            <BizByCategoryList />
           </Route>
           <Route path="/">
             <CategoryList />
