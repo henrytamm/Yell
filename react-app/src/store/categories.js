@@ -36,7 +36,7 @@ export const categoryReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case GET_ALL_CATEGORY: {
-        action.category.forEach((category) => {
+        action.category?.category.forEach((category) => {
             newState[category.id] = category;
           });
           return newState;

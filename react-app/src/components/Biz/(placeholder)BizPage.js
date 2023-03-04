@@ -3,6 +3,7 @@ import { allReviews } from "../../store/review";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import BizCard from "../Biz/BizCard/BizCard"
 
 
 const BizPage = () => {
@@ -31,12 +32,7 @@ const BizPage = () => {
   return (
     <>
       <div className="biz-info-container">
-        <h1>{biz?.name}</h1>
-        <h2>{biz?.description}</h2>
-        <h3>{biz?.address}</h3>
-        <h4>
-          {biz?.city}, {biz?.state}
-        </h4>
+       <BizCard />
 
         {
             reviews.map(review => {

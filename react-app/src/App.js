@@ -5,7 +5,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
-import BizPage from './components/Biz/BizPage'
+import BizPage from './components/Biz/(placeholder)BizPage'
+import CreateBizForm from "./components/Biz/CreateBizForm";
+import EditBizForm from "./components/Biz/EditBizForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,14 +21,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path="/biz/:bizId">
-            <BizPage />
-          </Route>
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/biz/:bizId/edit">
+            <EditBizForm />
+          </Route>
+          <Route exact path="/biz/new">
+            <CreateBizForm />
+          </Route>
+          <Route exact path="/biz/:bizId">
+            <BizPage />
           </Route>
         </Switch>
       )}

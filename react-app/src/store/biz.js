@@ -48,8 +48,10 @@ export const getOneBiz = (bizId) => async (dispatch) => {
 };
 
 export const createBiz = (payload) => async (dispatch) => {
-  const res = await fetch(`api/biz/`, {
+  console.log("create biz", payload);
+  const res = await fetch("/api/biz/", {
     method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
@@ -61,8 +63,9 @@ export const createBiz = (payload) => async (dispatch) => {
 };
 
 export const editBiz = (payload, bizId) => async (dispatch) => {
-  const res = await fetch(`api/biz/${bizId}`, {
+  const res = await fetch(`/api/biz/${bizId}`, {
     method: "PUT",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
 
@@ -74,7 +77,8 @@ export const editBiz = (payload, bizId) => async (dispatch) => {
 };
 
 export const removeBiz = (bizId) => async (dispatch) => {
-  const res = await fetch(`api/biz/${bizId}`, {
+  console.log('this is bizid', bizId)
+  const res = await fetch(`/api/biz/${bizId}`, {
     method: "DELETE",
   });
   if (res.ok) {
@@ -95,18 +99,21 @@ export const bizReducer = (state = initialState, action) => {
     }
 
     case GET_ONE_BIZ:
-      return action.biz
+      return action.biz;
 
     case CREATE_BIZ:
-        newState[action.biz.id] = action.biz;
+      newState[action.biz.id] = action.biz;
+      return newState;
+
+    case EDIT_BIZ:
+      newState[action.biz.id] = action.biz;
+      return newState;
 
     case REMOVE_BIZ:
-        delete newState[action.bizId]
-        return newState;
+      delete newState[action.bizId];
+      return newState;
 
     default:
-        return state;
+      return state;
   }
-        
 };
-

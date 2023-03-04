@@ -67,6 +67,7 @@ def edit_biz(bizId):
     form = BizForm()
 
     data = form.data
+    print('data eherer*****', data)
     biz = Biz.query.get(bizId)
 
     if(biz.owner_id==int(current_user.get_id())):
