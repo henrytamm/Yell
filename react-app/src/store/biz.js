@@ -95,7 +95,8 @@ export const bizReducer = (state = initialState, action) => {
     }
 
     case CREATE_BIZ:
-        newState[action.biz.id] = action.biz;
+      newState[action.biz.id] = action.biz;
+      return newState;
 
     case REMOVE_BIZ:
         delete newState[action.bizId]
@@ -104,6 +105,5 @@ export const bizReducer = (state = initialState, action) => {
     default:
         return state;
   }
-        
-};
 
+};
