@@ -7,6 +7,9 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import CategoryList from "./components/Categories/CategoryList/CategoryList";
 import BizByCategoryList from "./components/Categories/BizByCategoryList/BizByCategoryList";
+import BizPage from './components/Biz/(placeholder)BizPage'
+import CreateBizForm from "./components/Biz/CreateBizForm";
+import EditBizForm from "./components/Biz/EditBizForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,11 +23,20 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/biz/:bizId/edit">
+            <EditBizForm />
+          </Route>
+          <Route exact path="/biz/new">
+            <CreateBizForm />
+          </Route>
+          <Route exact path="/biz/:bizId">
+            <BizPage />
           </Route>
           <Route path="/categories/:categoryId">
             <BizByCategoryList />

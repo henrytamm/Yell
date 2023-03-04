@@ -7,7 +7,7 @@ const DELETE_REVIEW = 'reviews/deleteReview'
 //Get All Reviews Action
 const getReviews = (reviews) => {
     return {
-        type: LOAD_REVIEW_BY_BUSINESS_ID,
+        type: GET_REVIEWS,
         reviews
     }
 }
@@ -99,7 +99,7 @@ export const reviewsReducer = (state = initialState, action) => {
     let newState = {...state}
     switch(action.type) {
         case GET_REVIEWS:
-            action.reviews.forEach(review => {
+            action.reviews?.reviews.forEach(review => {
                 newState[review.id] = review
             })
             return newState

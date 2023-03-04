@@ -209,6 +209,11 @@ def edit_biz(bizId):
     """
     form = BizForm()
     data = form.data
+<<<<<<< HEAD
+=======
+    print('data eherer*****', data)
+    biz = Biz.query.get(bizId)
+>>>>>>> henry-branch
 
     try:
         biz = Biz.query.get(bizId)

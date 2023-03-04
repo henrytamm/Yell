@@ -19,3 +19,10 @@ flask seed all
 flask run
 
 #for mac users make sure to change port to 5005 in react-app/package.json and when running flask run -p 5005
+
+
+
+
+#review in bizPage.js needs to be put in a card, placeholder atm
+
+#need to fix selector in bizPage because we hard coded the biz
