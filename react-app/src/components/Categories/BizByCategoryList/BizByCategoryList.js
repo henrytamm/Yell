@@ -2,23 +2,42 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getOneCategory } from '../../../store/categories';
 import { useParams, useHistory } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import BizByCategoryCard from '../BizByCategoryCard/BizByCategoryCard';
 
 const BizByCategoryList = () => {
   const dispatch = useDispatch();
   const { categoryId } = useParams();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(getOneCategory(categoryId))
+    dispatch(getOneCategory(categoryId)).then(() => setIsLoaded(true))
   }, [dispatch, categoryId]);
 
-  const bizes = useSelector(state => state.categoryReducer.bizes);
-  // let bizesArr = Object.values(bizes);
-  // console.log(bizesArr)
-  // let categoryName = bizes[0].categoryName
+
+  let bizes = useSelector(state => state.categoryReducer);
+  let bizesArr = Object.values(bizes);
+
+  let categoryName;
+  let categoryNameUpper;
+  if (isLoaded) {
+    categoryName = bizesArr[0].category;
+    categoryNameUpper = categoryName.charAt(0).toUpperCase() + categoryName.slice(1)
+  }
+
 
   return (
-    <div className="BizByCategoryList">
-      BizByCategoryList
+    <div className="BizByCategoryListContainer">
+      {isLoaded && (
+        <>
+          <div className="BizByCategoryList">
+            Businesses of Category: {categoryNameUpper}
+            {bizesArr.map((biz) => (
+              <BizByCategoryCard key={biz.id} biz={biz} />
+            ))}
+          </div>
+        </>
+      )}
+
     </div>
   )
 }

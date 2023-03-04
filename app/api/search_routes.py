@@ -16,6 +16,7 @@ def bizes_by_category(categoryId):
     newDict = {}
 
     for biz in bizes:
+
         newDict[biz.id] = {
             "biz_id": biz.id,
             "owner_id": biz.owner_id,
@@ -28,6 +29,7 @@ def bizes_by_category(categoryId):
             "name": biz.name,
             "description": biz.description,
             "preview_image": biz.preview_image,
+            "category": category.name
         }
 
     return {'bizes_in_category': [biz for biz in newDict.values()]}
