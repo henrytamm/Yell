@@ -19,15 +19,15 @@ const ReviewCard = ({review}) => {
     console.log(review.userInfo.firstName)
 
     const sessionUser = useSelector(state => state.session.user)
-    const isOwner = sessionUser.id === review.userId;
+    // const isOwner = sessionUser.id === review.userId;
 
     return (
         <div>
             <dl>{review.userInfo.firstName} {review.userInfo.lastName}: {review.review}</dl>
             <div>{review.stars}</div>
             <div>
-               { isOwner && <button onClick={editedReviewInfo}>Edit Review</button>}
-               { isOwner && <button onClick={deleteButton}>Delete Review</button>}
+                <button onClick={editedReviewInfo}>Edit Review</button>
+                <button onClick={deleteButton}>Delete Review</button>
             </div>
         </div>
     )

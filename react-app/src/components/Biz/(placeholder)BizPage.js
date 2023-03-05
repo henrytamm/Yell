@@ -17,10 +17,10 @@ const BizPage = () => {
   const bizReviewsObj = useSelector((state) => state?.reviewsReducer)
   const sessionUser = useSelector(state => state.session.user)
 
-  let isOwner;
-  if (biz) {
-    isOwner = sessionUser.id == biz.id
-  }
+  // let isOwner;
+  // if (biz) {
+  //   isOwner = sessionUser.id == biz.id
+  // }
 
   const reviews = Object.values(bizReviewsObj)
 //   console.log(reviews)
@@ -51,7 +51,7 @@ const BizPage = () => {
             })
         } */}
       <h2>
-        {isOwner || <CreateReviewForm/>}
+        <CreateReviewForm/>
       </h2>
       </div>
     </>

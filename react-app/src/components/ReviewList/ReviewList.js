@@ -23,7 +23,8 @@ export const ReviewList = () => {
             <div> 
             {
                 bizReviews.map(review => {
-                    {return <div>
+                    {
+                        return <div>
                         <div>
                              <ReviewCard review={review}/>
                         </div>
