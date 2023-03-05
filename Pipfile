@@ -28,6 +28,7 @@ Mako = "==1.2.4"
 pycodestyle = "*"
 pylint = "*"
 psycopg2-binary = "*"
+email-validator = "*"
 
 [dev-packages]
 

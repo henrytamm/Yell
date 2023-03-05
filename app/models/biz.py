@@ -25,7 +25,7 @@ class Biz(db.Model):
 
     users = db.relationship('User', back_populates='biz')
     reviews = db.relationship('Review', cascade="all, delete", back_populates='biz')
-    hours = db.relationship('Hour', back_populates='biz')
+    hours = db.relationship('Hour', cascade="all, delete", back_populates='biz')
     categories = db.relationship('Category', secondary=business_categories, cascade="all, delete", back_populates='biz')
     biz_images = db.relationship('BusinessImage', cascade="all, delete", back_populates="biz")
 

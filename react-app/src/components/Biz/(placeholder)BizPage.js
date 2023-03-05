@@ -1,8 +1,10 @@
 import { getBizes, getOneBiz } from "../../store/biz";
-import { allReviews } from "../../store/review";
+import { allReviewsByBizId } from "../../store/review";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import { ReviewList } from '../ReviewList/ReviewList'
+import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
 import BizCard from "../Biz/BizCard/BizCard"
 
 
@@ -13,6 +15,12 @@ const BizPage = () => {
 //   const biz = useSelector((state) => state?.bizReducer[1])
   const biz = useSelector((state) => state?.bizReducer)
   const bizReviewsObj = useSelector((state) => state?.reviewsReducer)
+  const sessionUser = useSelector(state => state.session.user)
+
+  let isOwner;
+  if (biz) {
+    isOwner = sessionUser.id == biz.id
+  }
 
   const reviews = Object.values(bizReviewsObj)
 //   console.log(reviews)
@@ -26,22 +34,25 @@ const BizPage = () => {
   useEffect(() => {
     // dispatch(getBizes())
     dispatch(getOneBiz(bizId));
-    dispatch(allReviews(bizId));
+    dispatch(allReviewsByBizId(bizId));
   }, [dispatch]);
 
   return (
     <>
       <div className="biz-info-container">
        <BizCard />
-
-        {
+       <ReviewList/> 
+        {/* {
             reviews.map(review => {
                 return <div>
                     {review.review}
                     {review.stars}
                 </div>
             })
-        }
+        } */}
+      <h2>
+        {isOwner || <CreateReviewForm/>}
+      </h2>
       </div>
     </>
   );
