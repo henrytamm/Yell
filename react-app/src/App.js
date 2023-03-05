@@ -10,6 +10,7 @@ import BizByCategoryList from "./components/Categories/BizByCategoryList/BizByCa
 import BizPage from './components/Biz/(placeholder)BizPage'
 import CreateBizForm from "./components/Biz/CreateBizForm";
 import EditBizForm from "./components/Biz/EditBizForm";
+import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,6 +44,9 @@ function App() {
           </Route>
           <Route path="/">
             <CategoryList />
+          </Route>
+          <Route path='/biz/:bizId/reviews/edit/:reviewId'>
+            <EditReviewForm />
           </Route>
         </Switch>
       )}
