@@ -16,13 +16,14 @@ const ReviewCard = ({review}) => {
             dispatch(deletedReview(review.bizId, review.id))
         }
     }
-    
+    console.log(review.userInfo.firstName)
+
     const sessionUser = useSelector(state => state.session.user)
     const isOwner = sessionUser.id === review.userId;
 
     return (
         <div>
-            <dl>{review.review}</dl>
+            <dl>{review.userInfo.firstName} {review.userInfo.lastName}: {review.review}</dl>
             <div>{review.stars}</div>
             <div>
                { isOwner && <button onClick={editedReviewInfo}>Edit Review</button>}
