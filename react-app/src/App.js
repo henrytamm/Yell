@@ -6,6 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import BizPage from './components/Biz/BizPage'
+import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/biz/:bizId/reviews/edit/:reviewId'>
+            <EditReviewForm />
           </Route>
         </Switch>
       )}
