@@ -29,6 +29,12 @@ class Biz(db.Model):
     categories = db.relationship('Category', secondary=business_categories, cascade="all, delete", back_populates='biz')
     biz_images = db.relationship('BusinessImage', cascade="all, delete", back_populates="biz")
 
+    def category_to_dict(self):
+        categoryObj = {}
+        for category in self.categories:
+            categoryObj[category.id] = category.name
+        return categoryObj
+
 
     def to_dict(self):
         return {
@@ -46,5 +52,6 @@ class Biz(db.Model):
             # 'numReviews': self.num_reviews,
             'previewImage': self.preview_image,
             'createdAt': self.created_at,
-            'updatedAt': self.updated_at
+            'updatedAt': self.updated_at,
+            'categoryObj': self.category_to_dict()
         }
