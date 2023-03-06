@@ -1,10 +1,11 @@
 from flask import Blueprint, jsonify
 from sqlalchemy.exc import SQLAlchemyError
 from flask_login import login_required, current_user
-from app.models import Biz, Review, db, Hour
+from app.models import Biz, Review, db, Hour, Category
 from ..forms.biz_form import BizForm
 from ..forms.review_form import ReviewForm
 from ..forms.hours_form import HoursForm
+
 
 biz_routes = Blueprint('bizes', __name__)
 
@@ -193,10 +194,11 @@ def new_bizes():
         name=data['name'],
         description=data['description'],
         preview_image=data['preview_image'],
-
+        
     )
-    # new_biz.append(data)
-    print('######################', data)
+    newCategory = Category.query.filter(Category.name==data['category']).first()
+    new_biz.categories.append(newCategory)
+    print('######################', data['category'])
     db.session.add(new_biz)
     db.session.commit()
 

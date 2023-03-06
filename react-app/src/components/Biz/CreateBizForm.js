@@ -42,7 +42,7 @@ const CreateBizForm = () => {
             name,
             description,
             previewImage,
-            category,
+            category
         };
         let newBiz;
         newBiz = dispatch(createBiz(payload))
