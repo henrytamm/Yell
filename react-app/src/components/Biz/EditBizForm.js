@@ -51,7 +51,7 @@ const EditBizForm = () => {
               Name
               <input
                 type="text"
-                value={name}
+                value={this?.name}
                 required
                 onChange={(e) => setName(e.target.value)}/>
             </label>
@@ -60,7 +60,7 @@ const EditBizForm = () => {
               Address
               <input
                 type="text"
-                value={address}
+                value={this?.address}
                 required
                 onChange={(e) => setAddress(e.target.value)}/>
             </label>
@@ -69,7 +69,7 @@ const EditBizForm = () => {
               City
               <input
                 type="text"
-                value={city}
+                value={this?.city}
                 required
                 onChange={(e) => setCity(e.target.value)}/>
             </label>
@@ -78,7 +78,7 @@ const EditBizForm = () => {
               State
               <input
                 type="text"
-                value={state}
+                value={this?.state}
                 required
                 onChange={(e) => setState(e.target.value)}/>
             </label>
@@ -87,7 +87,7 @@ const EditBizForm = () => {
               Country
               <input
                 type="text"
-                value={country}
+                value={this?.country}
                 required
                 onChange={(e) => setCountry(e.target.value)}/>
             </label>
@@ -96,7 +96,7 @@ const EditBizForm = () => {
               Latitiude
               <input
                 type="text"
-                value={lat}
+                value={this?.lat}
                 required
                 onChange={(e) => setLat(e.target.value)}/>
             </label>
@@ -105,7 +105,7 @@ const EditBizForm = () => {
               Longitude
               <input
                 type="text"
-                value={lng}
+                value={this?.lng}
                 required
                 onChange={(e) => setLng(e.target.value)}/>
             </label>
@@ -114,7 +114,7 @@ const EditBizForm = () => {
               Description
               <input
                 type="text"
-                value={description}
+                value={this?.description}
                 required
                 onChange={(e) => setDescription(e.target.value)}/>
             </label>
@@ -123,7 +123,7 @@ const EditBizForm = () => {
               Preview Image
               <input
                 type="text"
-                value={previewImage}
+                value={this?.previewImage}
                 required
                 onChange={(e) => setPreviewImage(e.target.value)}/>
             </label>

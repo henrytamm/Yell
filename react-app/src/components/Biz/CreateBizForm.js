@@ -129,6 +129,7 @@ const CreateBizForm = () => {
                 Category
                 <select
                     value={category}
+                    // multiple={true}
                     onChange={(e) => setCategory(e.target.value)}
                 >
                     <option value={'default'}>Pick your category</option>
