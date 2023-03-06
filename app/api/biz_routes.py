@@ -192,9 +192,11 @@ def new_bizes():
         lng=data['lng'],
         name=data['name'],
         description=data['description'],
-        preview_image=data['preview_image']
-    )
+        preview_image=data['preview_image'],
 
+    )
+    # new_biz.append(data)
+    print('######################', data)
     db.session.add(new_biz)
     db.session.commit()
 

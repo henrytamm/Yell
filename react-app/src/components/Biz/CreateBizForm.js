@@ -1,4 +1,5 @@
 import { createBiz, getBizes } from "../../store/biz";
+import { getAllCategory } from "../../store/categories";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
@@ -7,6 +8,10 @@ const CreateBizForm = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const ownerId = useSelector((state) => state.session.user.id)
+    const categories = useSelector((state) => state.categoryReducer)
+    const categoriesArr = categories ? Object.values(categories) : null
+    console.log('cat array', categoriesArr)
+    
     
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
@@ -17,7 +22,12 @@ const CreateBizForm = () => {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [previewImage, setPreviewImage] = useState("")
+    const [category, setCategory] = useState('default')
     const [errors, setErrors] = useState([])
+
+    useEffect(() => {
+        dispatch(getAllCategory());
+    }, [dispatch])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -31,11 +41,11 @@ const CreateBizForm = () => {
             lng,
             name,
             description,
-            previewImage
+            previewImage,
+            category,
         };
         let newBiz;
         newBiz = dispatch(createBiz(payload))
-        console.log('adasdasdasd', newBiz)
         history.push(`/`)
     }
 
@@ -114,6 +124,18 @@ const CreateBizForm = () => {
             required
             onChange={(e) => setPreviewImage(e.target.value)} 
             />
+            </label>
+            <label>
+                Category
+                <select
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                >
+                    <option value={'default'}>Pick your category</option>
+                    {categoriesArr?.map((category, i) => (
+                        <option value={category.name} key={i}>{category.name}</option>
+                    ))}
+                </select>
             </label>
             <button type="submit">Create new Business</button>
             </form>
