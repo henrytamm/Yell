@@ -3,8 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import SearchBar from '../SearchBar/SearchBar';
 
-function Navigation({ isLoaded }){
+function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
@@ -17,8 +18,18 @@ function Navigation({ isLoaded }){
 					<ProfileButton user={sessionUser} />
 				</li>
 			)}
+			<div>
+				<SearchBar/>
+			</div>
 		</ul>
 	);
 }
 
 export default Navigation;
+
+
+
+
+
+
+
