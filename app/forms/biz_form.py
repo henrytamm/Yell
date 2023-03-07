@@ -24,3 +24,5 @@ class BizForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired()])
     preview_image = StringField('Preview Image URL', validators=[DataRequired(), URL(require_tld=True)])
     category = StringField('Category', validators=[])
+    oldCategory = StringField('Old Category', validators=[])
+    newCategory = StringField('New Category', validators=[])
