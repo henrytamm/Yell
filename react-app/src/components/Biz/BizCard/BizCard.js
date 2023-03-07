@@ -2,6 +2,7 @@ import { getBizes, getOneBiz, removeBiz } from "../../../store/biz";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import MyContainer from '../GoogleMaps'
 
 
 const BizCard = () => {
@@ -43,6 +44,7 @@ const BizCard = () => {
         <button className="edit-and-delete-button" onClick={deleteBizHandler}>
             Delete Spot
         </button>
+        <MyContainer biz={biz}/>
       </div>
     </>
   );
