@@ -37,6 +37,7 @@ const BizPage = () => {
     dispatch(allReviewsByBizId(bizId));
   }, [dispatch]);
 
+
   return (
     <>
       <div className="biz-info-container">
@@ -51,7 +52,7 @@ const BizPage = () => {
             })
         } */}
       <h2>
-        <CreateReviewForm/>
+        {(sessionUser && biz.ownerId !==sessionUser.id) && <CreateReviewForm/>}
       </h2>
       </div>
     </>
