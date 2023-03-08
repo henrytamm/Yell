@@ -1,4 +1,4 @@
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deletedReview } from "../../store/review";
 import './ReviewCard.css'
@@ -16,14 +16,19 @@ const ReviewCard = ({review}) => {
             dispatch(deletedReview(review.bizId, review.id))
         }
     }
-    console.log(review.userInfo.firstName)
 
     const sessionUser = useSelector(state => state.session.user)
 
     return (
         <div>
-            <dl>{review.userInfo.firstName} {review.userInfo.lastName}: {review.review}</dl>
-            <div>{review.stars}</div>
+            <img className="profile-pic" src={review.userInfo.userPictureUrl} alt='profile pic' style={{width: 50, height:50}}/>
+            <NavLink to={`/users/${review.userInfo.id}`}>{review.userInfo.firstName} {review.userInfo.lastName} </NavLink>
+            <dl> {review.createdAt}</dl>
+            <dl> {review.review}</dl>
+            <div className="stars-container">
+            <i class="fa-sharp fa-solid fa-star"></i>
+                {review.stars}
+                </div>
             <div>
             {(sessionUser && review.userId === sessionUser.id) && <button onClick={editedReviewInfo}>Edit Review {review.userId}</button>}
             {(sessionUser && review.userId === sessionUser.id) && <button onClick={deleteButton}>Delete Review</button>}

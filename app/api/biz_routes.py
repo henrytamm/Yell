@@ -222,10 +222,10 @@ def edit_biz(bizId):
         try:
             if (biz.owner_id == int(current_user.get_id())):
                 oldCategory = Category.query.filter(Category.name==data['oldCategory']).first()
-                if (oldCategory in biz.categories):
+                if (oldCategory and oldCategory in biz.categories):
                     biz.categories.remove(oldCategory)
                 newCategory = Category.query.filter(Category.name==data['newCategory']).first()
-                if (newCategory not in biz.categories):
+                if (newCategory and newCategory not in biz.categories):
                     biz.categories.append(newCategory)
                 for key, value in data.items():
                     if hasattr(biz, key) and value is not None:

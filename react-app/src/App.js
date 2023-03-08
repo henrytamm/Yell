@@ -11,6 +11,7 @@ import BizPage from './components/Biz/(placeholder)BizPage'
 import CreateBizForm from "./components/Biz/CreateBizForm";
 import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
+import UserProfile from "./components/User/UserProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/biz/:bizId">
             <BizPage />
+          </Route>
+          <Route exact path='/users/:userId'>
+          <UserProfile />
           </Route>
           <Route path="/categories/:categoryId">
             <CategoryList />

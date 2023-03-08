@@ -6,6 +6,7 @@ import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session';
+import { Link } from "react-router-dom";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -55,6 +56,9 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li><Link to='/biz/new' className="create-biz-button">
+            Create your business!
+              </Link></li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>
