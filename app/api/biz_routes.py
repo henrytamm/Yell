@@ -5,10 +5,20 @@ from app.models import Biz, Review, db, Hour, Category
 from ..forms.biz_form import BizForm
 from ..forms.review_form import ReviewForm
 from ..forms.hours_form import HoursForm
+from ..forms.biz_edit_form import BizEditForm
 
 
 biz_routes = Blueprint('bizes', __name__)
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
 
 @biz_routes.route('/')
 def bizes():
@@ -182,27 +192,27 @@ def new_bizes():
     form = BizForm()
 
     data = form.data
+    if form.validate_on_submit():
+        new_biz = Biz(
+            owner_id=current_user.get_id(),
+            address=data['address'],
+            city=data['city'],
+            state=data['state'],
+            country=data['country'],
+            lat=data['lat'],
+            lng=data['lng'],
+            name=data['name'],
+            description=data['description'],
+            preview_image=data['preview_image'],
 
-    new_biz = Biz(
-        owner_id=current_user.get_id(),
-        address=data['address'],
-        city=data['city'],
-        state=data['state'],
-        country=data['country'],
-        lat=data['lat'],
-        lng=data['lng'],
-        name=data['name'],
-        description=data['description'],
-        preview_image=data['preview_image'],
-        
-    )
-    newCategory = Category.query.filter(Category.name==data['category']).first()
-    new_biz.categories.append(newCategory)
-    print('######################', data['category'])
-    db.session.add(new_biz)
-    db.session.commit()
+        )
+        newCategory = Category.query.filter(Category.name==data['category']).first()
+        new_biz.categories.append(newCategory)
+        db.session.add(new_biz)
+        db.session.commit()
 
-    return new_biz.to_dict()
+        return new_biz.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @biz_routes.route('/<int:bizId>', methods=["PUT"])
@@ -211,9 +221,8 @@ def edit_biz(bizId):
     """
     Edit current biz
     """
-    form = BizForm()
+    form = BizEditForm()
     data = form.data
-    print('#############', data)
 
     try:
         biz = Biz.query.get(bizId)
@@ -221,17 +230,19 @@ def edit_biz(bizId):
             raise SQLAlchemyError("Business not found so can't make edits!")
         try:
             if (biz.owner_id == int(current_user.get_id())):
-                oldCategory = Category.query.filter(Category.name==data['oldCategory']).first()
-                if (oldCategory and oldCategory in biz.categories):
-                    biz.categories.remove(oldCategory)
-                newCategory = Category.query.filter(Category.name==data['newCategory']).first()
-                if (newCategory and newCategory not in biz.categories):
-                    biz.categories.append(newCategory)
-                for key, value in data.items():
-                    if hasattr(biz, key) and value is not None:
-                        setattr(biz, key, value)
-                db.session.commit()
-                return biz.to_dict()
+                if form.validate_on_submit():
+                    oldCategory = Category.query.filter(Category.name==data['oldCategory']).first()
+                    if (oldCategory and oldCategory in biz.categories):
+                        biz.categories.remove(oldCategory)
+                    newCategory = Category.query.filter(Category.name==data['newCategory']).first()
+                    if (newCategory and newCategory not in biz.categories):
+                        biz.categories.append(newCategory)
+                    for key, value in data.items():
+                        if hasattr(biz, key) and value is not None:
+                            setattr(biz, key, value)
+                    db.session.commit()
+                    return biz.to_dict()
+                return {'errors': validation_errors_to_error_messages(form.errors)}, 401
             else:
                 raise SQLAlchemyError(
                     'User not authorized to edit business.')

@@ -7,11 +7,13 @@ def location_exists(form, field):
     address = form.data['address']
     city = form.data['city']
     state = form.data['state']
-    biz = Biz.query.filter(Biz.address == address, Biz.city == city, Biz.state == state).first()
+    id = form.data['id']
+    biz = Biz.query.filter(Biz.address == address, Biz.city == city, Biz.state == state, Biz.id != id).first()
     if biz:
         raise ValidationError('Location is already in use.')
 
-class BizForm(FlaskForm):
+class BizEditForm(FlaskForm):
+    id = IntegerField('Id')
     address = StringField('Address', validators=[DataRequired(), location_exists, Length(min=4)])
     city = StringField('City', validators=[DataRequired(), location_exists, Length(min=2)])
     state = StringField('State', validators=[DataRequired(), location_exists, Length(min=2)])
@@ -21,7 +23,8 @@ class BizForm(FlaskForm):
     name = StringField('Business Name', validators=[DataRequired(), Length(min=2)])
     description = TextAreaField('Description', validators=[DataRequired()])
     preview_image = StringField('Preview Image URL', validators=[DataRequired(), URL(require_tld=True, message='url must start with http:// or https://')])
-    category = StringField('Category', validators=[])
+    oldCategory = StringField('Old Category', validators=[])
+    newCategory = StringField('New Category', validators=[])
 
     class Meta:
         csrf=False

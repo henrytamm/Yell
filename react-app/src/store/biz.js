@@ -58,11 +58,13 @@ export const createBiz = (payload) => async (dispatch) => {
   if (res.ok) {
     const biz = await res.json();
     dispatch(createBizAction(biz));
-    return biz;
+    // return biz;
   }
+  return res
 };
 
 export const editBiz = (payload, bizId) => async (dispatch) => {
+  console.log('payload from editbiz thunk', payload)
   const res = await fetch(`/api/biz/${bizId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -72,7 +74,7 @@ export const editBiz = (payload, bizId) => async (dispatch) => {
   if (res.ok) {
     const editedBiz = await res.json();
     dispatch(editBizAction(editedBiz));
-    return editedBiz;
+    // return editedBiz;
   }
   return res
 };

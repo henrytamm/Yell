@@ -10,9 +10,7 @@ const CreateBizForm = () => {
     const ownerId = useSelector((state) => state.session.user.id)
     const categories = useSelector((state) => state.categoryReducer)
     const categoriesArr = categories ? Object.values(categories) : null
-    console.log('cat array', categoriesArr)
-    
-    
+
     const [address, setAddress] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
@@ -22,7 +20,7 @@ const CreateBizForm = () => {
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [previewImage, setPreviewImage] = useState("")
-    const [category, setCategory] = useState('default')
+    const [category, setCategory] = useState('')
     const [errors, setErrors] = useState([])
 
     useEffect(() => {
@@ -31,6 +29,7 @@ const CreateBizForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors([]);
         const payload = {
             ownerId,
             address,
@@ -41,106 +40,120 @@ const CreateBizForm = () => {
             lng,
             name,
             description,
-            previewImage,
+            "preview_image": previewImage,
             category
         };
-        let newBiz;
-        newBiz = dispatch(createBiz(payload))
-        history.push(`/`)
+
+        dispatch(createBiz(payload))
+            .then(async (data) => {
+                if (data.ok) {
+                    window.alert(`Business successfully created!`)
+                    return history.push(`/`)
+                } else {
+                    const dataErr = await data.json()
+                    setErrors(dataErr.errors)
+                }
+            })
     }
 
     return (
         <>
-        <div>
-            <form method="POST" onSubmit={handleSubmit}>
-            <label>
-            <input
-            type="text"
-            placeholder="Business Name"
-            required
-            onChange={(e) => setName(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Address"
-            required
-            onChange={(e) => setAddress(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="City"
-            required
-            onChange={(e) => setCity(e.target.value)} 
-            />
-             <label>
-            <input
-            type="text"
-            placeholder="State"
-            required
-            onChange={(e) => setState(e.target.value)} 
-            />
-            </label>
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Country"
-            required
-            onChange={(e) => setCountry(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Latitude"
-            required
-            onChange={(e) => setLat(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Longitude"
-            required
-            onChange={(e) => setLng(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Description"
-            required
-            onChange={(e) => setDescription(e.target.value)} 
-            />
-            </label>
-            <label>
-            <input
-            type="text"
-            placeholder="Preview Image URL"
-            required
-            onChange={(e) => setPreviewImage(e.target.value)} 
-            />
-            </label>
-            <label>
-                Category
-                <select
-                    value={category}
-                    // multiple={true}
-                    onChange={(e) => setCategory(e.target.value)}
-                >
-                    <option value={'default'}>Pick your category</option>
-                    {categoriesArr?.map((category, i) => (
-                        <option value={category.name} key={i}>{category.name}</option>
-                    ))}
-                </select>
-            </label>
-            <button type="submit">Create new Business</button>
-            </form>
-        </div>
+            <div>
+                <form method="POST" onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <label>Name:
+                        <input
+                            type="text"
+                            placeholder="Business Name"
+                            required
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </label>
+                    <label>Address:
+                        <input
+                            type="text"
+                            placeholder="Address"
+                            required
+                            onChange={(e) => setAddress(e.target.value)}
+                        />
+                    </label>
+                    <label>City:
+                        <input
+                            type="text"
+                            placeholder="City"
+                            required
+                            onChange={(e) => setCity(e.target.value)}
+                        />
+                    </label>
+                    <label>State:
+                        <input
+                            type="text"
+                            placeholder="State"
+                            required
+                            onChange={(e) => setState(e.target.value)}
+                        />
+                    </label>
+                    <label>Country:
+                        <input
+                            type="text"
+                            placeholder="Country"
+                            required
+                            onChange={(e) => setCountry(e.target.value)}
+                        />
+                    </label>
+                    <label>Latitude:
+                        <input
+                            type="number"
+                            step='0.00001'
+                            placeholder="Latitude"
+                            required
+                            onChange={(e) => setLat(e.target.value)}
+                        />
+                    </label>
+                    <label>Longitude:
+                        <input
+                            type="number"
+                            step='0.00001'
+                            placeholder="Longitude"
+                            required
+                            onChange={(e) => setLng(e.target.value)}
+                        />
+                    </label>
+                    <label>Description:
+                        <textarea
+                            type="text"
+                            placeholder="Description"
+                            required
+                            onChange={(e) => setDescription(e.target.value)}
+                        ></textarea>
+                    </label>
+                    <label>Image Url:
+                        <input
+                            type="url"
+                            placeholder="Preview Image URL"
+                            required
+                            onChange={(e) => setPreviewImage(e.target.value)}
+                        />
+                    </label>
+                    <label>
+                        Category:
+                        <select
+                            value={category}
+                            // multiple={true}
+                            required
+                            onChange={(e) => setCategory(e.target.value)}
+                        >
+                            <option value=''>Pick your category</option>
+                            {categoriesArr?.map((category, i) => (
+                                <option value={category.name} key={i}>{category.name}</option>
+                            ))}
+                        </select>
+                    </label>
+                    <button type="submit">Create new Business</button>
+                </form>
+            </div>
         </>
     )
 }
