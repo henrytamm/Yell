@@ -25,7 +25,7 @@ const ReviewCard = ({review}) => {
             <dl>{review.userInfo.firstName} {review.userInfo.lastName}: {review.review}</dl>
             <div>{review.stars}</div>
             <div>
-            {(sessionUser && review.userId === sessionUser.id) && <button onClick={editedReviewInfo}>Edit Review {review.userId}</button>}
+            {(sessionUser && review.userId === sessionUser.id) && <button onClick={editedReviewInfo}>Edit Review</button>}
             {(sessionUser && review.userId === sessionUser.id) && <button onClick={deleteButton}>Delete Review</button>}
             </div>
         </div>
