@@ -4,6 +4,8 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { Redirect } from "react-router-dom";
+import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -33,6 +35,12 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(logout());
   };
+
+  const handleSubmitDemo = (e) => {
+    e.preventDefault();
+    <Redirect to="/" />
+    return dispatch(sessionActions.demoLoginThunk())
+  }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
@@ -67,6 +75,11 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
+      <form onSubmit={handleSubmitDemo}>
+        <button>
+          Demo Login
+        </button>
+      </form>
     </>
   );
 }

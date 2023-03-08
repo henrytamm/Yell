@@ -74,6 +74,7 @@ export const editBiz = (payload, bizId) => async (dispatch) => {
     dispatch(editBizAction(editedBiz));
     return editedBiz;
   }
+  return res
 };
 
 export const removeBiz = (bizId) => async (dispatch) => {
@@ -116,5 +117,5 @@ export const bizReducer = (state = initialState, action) => {
     default:
       return state;
   }
-        
+
 };
