@@ -19,7 +19,7 @@ const BizByCategoryList = () => {
   let bizesArr = Object.values(bizes);
 
   if (bizesArr.length == 0) {
-    return "No bizes in that category"
+    return "No businesses in that category"
   }
 
   let categoryName;

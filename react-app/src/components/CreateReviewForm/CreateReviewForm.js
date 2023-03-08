@@ -13,7 +13,7 @@ const CreateReviewForm = () => {
 
     const [review, setReview] = useState('');
     const [stars, setStars] = useState(0);
-    const [errors, setErors] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -33,13 +33,13 @@ const CreateReviewForm = () => {
         <h1>Create Review Form</h1>
         <section>
             <form onSubmit={handleSubmit}>
-              <textarea 
+              <textarea
               type='text'
               placeholder='Add Review'
               value={review}
               onChange={e => setReview(e.target.value)}
               />
-            <input 
+            <input
             type='number'
             placeholder='Stars'
             value={stars}

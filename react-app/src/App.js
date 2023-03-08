@@ -40,6 +40,7 @@ function App() {
             <BizPage />
           </Route>
           <Route path="/categories/:categoryId">
+            <CategoryList />
             <BizByCategoryList />
           </Route>
           <Route path="/">

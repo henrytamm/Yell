@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllCategory } from '../../../store/categories';
+import { getAllSearchCategory } from '../../../store/search';
 import CategoryCard from '../CategoryCard/CategoryCard';
 
 const CategoryList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCategory())
+    dispatch(getAllSearchCategory())
   }, [dispatch]);
 
-  let categories = useSelector(state => state.categoryReducer);
+  let categories = useSelector(state => state.searchCategoryReducer);
   let categoriesArr = Object.values(categories);
 
   return (
