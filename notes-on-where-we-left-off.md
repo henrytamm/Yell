@@ -26,3 +26,5 @@ flask run
 #review in bizPage.js needs to be put in a card, placeholder atm
 
 #need to fix selector in bizPage because we hard coded the biz
+
+#when you delete SoupKitchen, it also deletes both categories (vegan and soup) from the database
