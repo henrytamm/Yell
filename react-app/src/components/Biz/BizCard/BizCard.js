@@ -29,6 +29,11 @@ const BizCard = () => {
     }
   };
 
+  const sessionUser = useSelector(state => state.session.user)
+  console.log('sesh', sessionUser)
+  console.log('biz', biz)
+ 
+
   return (
     <>
       <div className="biz-info-container">
@@ -38,12 +43,14 @@ const BizCard = () => {
         <h4>
           {biz?.city}, {biz?.state}
         </h4>
-        <button className="edit-and-delete-button" onClick={editBizHandler}>
-              Edit Spot
-        </button>
-        <button className="edit-and-delete-button" onClick={deleteBizHandler}>
+        <div>
+        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={editBizHandler}>
+            Edit Spot
+        </button>}
+        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={deleteBizHandler}>
             Delete Spot
-        </button>
+        </button>}
+        </div>
         <MyContainer biz={biz}/>
       </div>
     </>

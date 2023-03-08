@@ -41,17 +41,11 @@ const BizPage = () => {
     <>
       <div className="biz-info-container">
        <BizCard />
+       <div className="review-list-container">
        <ReviewList/> 
-        {/* {
-            reviews.map(review => {
-                return <div>
-                    {review.review}
-                    {review.stars}
-                </div>
-            })
-        } */}
-      <h2>
-        <CreateReviewForm/>
+       </div>
+      <h2 className="create-review-container">
+      {(sessionUser && biz.ownerId !==sessionUser.id) && <CreateReviewForm/>}
       </h2>
       </div>
     </>
