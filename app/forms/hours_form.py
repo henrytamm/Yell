@@ -19,3 +19,6 @@ class HoursForm(FlaskForm):
     saturday_close = TimeField("Saturday Close", validators=[DataRequired()])
     sunday_open = TimeField("Sunday Open", validators=[DataRequired()])
     sunday_close = TimeField("Sunday Close", validators=[DataRequired()])
+
+    class Meta:
+        csrf=False

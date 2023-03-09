@@ -84,6 +84,7 @@ def createBizHours(id):
     """
     form = HoursForm()
     data = form.data
+    print('printing data from backend', data)
     try:
         biz = Biz.query.get(id)
         if biz is None:
@@ -91,43 +92,45 @@ def createBizHours(id):
         try:
 
             if (biz.owner_id == int(current_user.get_id())):
-                hours = Hour(
-                    biz_id=id,
-                    monday_open=data['monday_open'],
-                    monday_close=data['monday_close'],
-                    tuesday_open=data['tuesday_open'],
-                    tuesday_close=data['tuesday_close'],
-                    wednesday_open=data['wednesday_open'],
-                    wednesday_close=data['wednesday_close'],
-                    thursday_open=data['thursday_open'],
-                    thursday_close=data['thursday_close'],
-                    friday_open=data['friday_open'],
-                    friday_close=data['friday_close'],
-                    saturday_open=data['saturday_open'],
-                    saturday_close=data['saturday_close'],
-                    sunday_open=data['sunday_open'],
-                    sunday_close=data['sunday_close']
-                )
-                db.session.add(hours)
-                db.session.commit()
-                hoursDict = {
-                    'bizId': str(hours.biz_id),
-                    'mondayOpen': str(hours.monday_open),
-                    'mondayClose': str(hours.monday_close),
-                    'tuesdayOpen': str(hours.tuesday_open),
-                    'tuesdayClose': str(hours.tuesday_close),
-                    'wednesdayOpen': str(hours.wednesday_open),
-                    'wednesdayClose': str(hours.wednesday_close),
-                    'thursdayOpen': str(hours.thursday_open),
-                    'thursdayClose': str(hours.thursday_close),
-                    'fridayOpen': str(hours.friday_open),
-                    'fridayClose': str(hours.friday_close),
-                    'saturdayOpen': str(hours.saturday_open),
-                    'saturdayClose': str(hours.saturday_close),
-                    'sundayOpen': str(hours.sunday_open),
-                    'sundayClose': str(hours.sunday_close),
-                }
-                return hoursDict
+                 if form.validate_on_submit():
+                    hours = Hour(
+                        biz_id=id,
+                        monday_open=data['monday_open'],
+                        monday_close=data['monday_close'],
+                        tuesday_open=data['tuesday_open'],
+                        tuesday_close=data['tuesday_close'],
+                        wednesday_open=data['wednesday_open'],
+                        wednesday_close=data['wednesday_close'],
+                        thursday_open=data['thursday_open'],
+                        thursday_close=data['thursday_close'],
+                        friday_open=data['friday_open'],
+                        friday_close=data['friday_close'],
+                        saturday_open=data['saturday_open'],
+                        saturday_close=data['saturday_close'],
+                        sunday_open=data['sunday_open'],
+                        sunday_close=data['sunday_close']
+                    )
+                    db.session.add(hours)
+                    db.session.commit()
+                    hoursDict = {
+                        'bizId': str(hours.biz_id),
+                        'mondayOpen': str(hours.monday_open),
+                        'mondayClose': str(hours.monday_close),
+                        'tuesdayOpen': str(hours.tuesday_open),
+                        'tuesdayClose': str(hours.tuesday_close),
+                        'wednesdayOpen': str(hours.wednesday_open),
+                        'wednesdayClose': str(hours.wednesday_close),
+                        'thursdayOpen': str(hours.thursday_open),
+                        'thursdayClose': str(hours.thursday_close),
+                        'fridayOpen': str(hours.friday_open),
+                        'fridayClose': str(hours.friday_close),
+                        'saturdayOpen': str(hours.saturday_open),
+                        'saturdayClose': str(hours.saturday_close),
+                        'sundayOpen': str(hours.sunday_open),
+                        'sundayClose': str(hours.sunday_close),
+                    }
+                    return hoursDict
+                 return {'errors': validation_errors_to_error_messages(form.errors)}, 401
             else:
                 raise SQLAlchemyError(
                     'User not authorized to add hours.')
