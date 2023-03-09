@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigation from "./components/Navigation";
 import CategoryList from "./components/Categories/CategoryList/CategoryList";
 import BizByCategoryList from "./components/Categories/BizByCategoryList/BizByCategoryList";
@@ -34,7 +35,9 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/biz/:bizId/reviews/edit/:reviewId'>
-            <EditReviewForm />
+            <ProtectedRoute>
+              <EditReviewForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/biz/:bizId/edit">
             <ProtectedRoute>
@@ -42,7 +45,9 @@ function App() {
             </ProtectedRoute>
           </Route>
           <Route exact path="/biz/new">
-            <CreateBizForm />
+            <ProtectedRoute>
+              <CreateBizForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/biz/:bizId">
             <BizPage />
