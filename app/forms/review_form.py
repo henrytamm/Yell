@@ -7,8 +7,11 @@ from app.models import User, Biz, Review
 def stars_validator(form, field):
     stars = form.data['stars']
     if stars < 1 or stars > 5:
-        raise ValidationError("Rating must be a number between 1 and 5")
+        raise ValidationError("Rating must be between 1 and 5")
 
 class ReviewForm(FlaskForm):
     review = TextAreaField('Review', validators=[DataRequired()])
-    stars = IntegerField('Rating', validators=[DataRequired(), stars_validator, NumberRange(min=1, max=5)])
+    stars = IntegerField('Rating', validators=[DataRequired(), stars_validator])
+
+    class Meta:
+        csrf=False

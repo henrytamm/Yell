@@ -65,8 +65,9 @@ export const createReview = (newReview) => async (dispatch) => {
         let addedReview;
         addedReview = await response.json();
         dispatch(addReview(addedReview))
-        return response;
+        // return response;
     }
+    return response
 }
 
 //GET REVIEW BY REVIEW ID
@@ -89,7 +90,7 @@ export const editReviewThunk = (reviewEdit) => async (dispatch) => {
             "Content-Type": 'application/json',
         },
         body: JSON.stringify({
-            review, 
+            review,
             stars
         })
     })
@@ -97,7 +98,7 @@ export const editReviewThunk = (reviewEdit) => async (dispatch) => {
     if (response.ok) {
         const editedReview = await response.json();
         dispatch(editReview(editedReview));
-        return editedReview
+        // return editedReview
     }
     return response;
 }

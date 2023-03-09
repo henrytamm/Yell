@@ -25,33 +25,43 @@ const EditReviewForm = () => {
             review,
             stars
         }
-        
-        let updatedReview;
-        updatedReview = await dispatch(editReviewThunk(payload))
-        history.push(`/biz/${editedReview.bizId}`)
-        
+
+        dispatch(editReviewThunk(payload))
+            .then(async (data) => {
+                if (data.ok) {
+                    window.alert(`Review successfully edited!`)
+                    history.push(`/biz/${editedReview.bizId}`)
+                } else {
+                    const dataErr = await data.json()
+                    setErrors(dataErr.errors)
+                }
+            })
+
     }
 
     return (
         <>
-        <h1>Edit Review Form</h1>
-        <section>
-            <form onSubmit={handleSubmit}>
-              <textarea 
-              type='text'
-              placeholder='Edit Review'
-              value={review}
-              onChange={e => setReview(e.target.value)}
-              />
-            <input 
-            type='number'
-            placeholder='Stars'
-            value={stars}
-            onChange={e => setStars(e.target.value)}
-            />
-            <button type='submit'>Edit Review</button>
-            </form>
-        </section>
+            <h1>Edit Review Form</h1>
+            <section>
+                <form onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <textarea
+                        type='text'
+                        placeholder='Edit Review'
+                        value={review}
+                        onChange={e => setReview(e.target.value)}
+                    />
+                    <input
+                        type='number'
+                        placeholder='Stars'
+                        value={stars}
+                        onChange={e => setStars(e.target.value)}
+                    />
+                    <button type='submit'>Edit Review</button>
+                </form>
+            </section>
         </>
     )
 }

@@ -326,17 +326,19 @@ def review_create(bizId):
         biz = Biz.query.get(bizId)
         if biz is None:
             raise SQLAlchemyError("Business not found so can't add a review!")
-        new_review = Review(
-            user_id=current_user.get_id(),
-            biz_id=bizId,
-            stars=data['stars'],
-            review=data['review']
-        )
+        if form.validate_on_submit():
+            new_review = Review(
+                user_id=current_user.get_id(),
+                biz_id=bizId,
+                stars=data['stars'],
+                review=data['review']
+            )
 
-        db.session.add(new_review)
-        db.session.commit()
+            db.session.add(new_review)
+            db.session.commit()
 
-        return new_review.to_dict()
+            return new_review.to_dict()
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
     except SQLAlchemyError as e:
         return jsonify({'error': str(e)}), 404
 
@@ -362,11 +364,13 @@ def edit_review(bizId, reviewId):
                 raise SQLAlchemyError("Review not found!")
             try:
                 if (review.user_id == int(current_user.get_id())):
-                    for key, value in data.items():
-                        if hasattr(review, key) and value is not None:
-                            setattr(review, key, value)
-                    db.session.commit()
-                    return review.to_dict()
+                    if form.validate_on_submit():
+                        for key, value in data.items():
+                            if hasattr(review, key) and value is not None:
+                                setattr(review, key, value)
+                        db.session.commit()
+                        return review.to_dict()
+                    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
                 else:
                     raise SQLAlchemyError(
                         'User not authorized to edit review.')

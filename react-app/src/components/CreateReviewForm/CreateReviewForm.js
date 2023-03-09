@@ -15,7 +15,7 @@ const CreateReviewForm = () => {
     const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = async(e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let newReview = {
             bizId,
@@ -25,29 +25,42 @@ const CreateReviewForm = () => {
         }
 
         dispatch(createReview(newReview))
-        .then(() => setReview('')).then(() => setStars(0))
+            .then(async (data) => {
+                if (data.ok) {
+                    window.alert(`Review successfully created!`)
+                    setReview('')
+                    setStars(0)
+                    setErrors([])
+                } else {
+                    const dataErr = await data.json()
+                    setErrors(dataErr.errors)
+                }
+            })
     }
 
     return (
         <>
-        <h1>Create Review Form</h1>
-        <section>
-            <form onSubmit={handleSubmit}>
-              <textarea
-              type='text'
-              placeholder='Add Review'
-              value={review}
-              onChange={e => setReview(e.target.value)}
-              />
-            <input
-            type='number'
-            placeholder='Stars'
-            value={stars}
-            onChange={e => setStars(e.target.value)}
-            />
-            <button type='submit'>Add Review</button>
-            </form>
-        </section>
+            <h1>Create Review Form</h1>
+            <section>
+                <form onSubmit={handleSubmit}>
+                    <ul>
+                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+                    </ul>
+                    <textarea
+                        type='text'
+                        placeholder='Add Review'
+                        value={review}
+                        onChange={e => setReview(e.target.value)}
+                    />
+                    <input
+                        type='number'
+                        placeholder='Stars'
+                        value={stars}
+                        onChange={e => setStars(e.target.value)}
+                    />
+                    <button type='submit'>Add Review</button>
+                </form>
+            </section>
         </>
     )
 }
