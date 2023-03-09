@@ -36,6 +36,7 @@ const BizCard = () => {
   return (
     <>
       <div className="biz-info-container">
+        <img className="biz-image" src={biz?.previewImage}></img>
         <h1>{biz?.name}</h1>
         <h2>{biz?.description}</h2>
         <h3>{biz?.address}</h3>

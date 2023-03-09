@@ -14,6 +14,7 @@ import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 import UserProfile from "./components/User/UserProfile";
 import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
+import Homepage from "./components/Homepage/Homepage";
 import CreateHoursForm from "./components/Hours/CreateHoursForm";
 
 function App() {
@@ -43,9 +44,7 @@ function App() {
             <CreateHoursForm />
           </Route>
           <Route exact path="/biz/:bizId/edit">
-            <ProtectedRoute>
-              <EditBizForm />
-            </ProtectedRoute>
+            <EditBizForm />
           </Route>
           <Route exact path="/biz/new">
             <ProtectedRoute>
@@ -66,7 +65,7 @@ function App() {
             <OpenBizList />
           </Route>
           <Route path="/">
-            <CategoryList />
+            <Homepage />
           </Route>
         </Switch>
       )}

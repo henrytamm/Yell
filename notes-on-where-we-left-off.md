@@ -23,6 +23,8 @@ flask run
 
 
 
+
+
 #review in bizPage.js needs to be put in a card, placeholder atm
 
 #need to fix selector in bizPage because we hard coded the biz
@@ -32,3 +34,5 @@ flask run
 
 
 #changed the HTML for fontawesome to use a new account code so that we can pull fontawesome icons
+
+#change homepage slice to 0, 8
