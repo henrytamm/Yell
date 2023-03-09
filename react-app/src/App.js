@@ -46,14 +46,11 @@ function App() {
             <CreateHoursForm />
             </ProtectedRoute>
           </Route>
-          <Route exact path="/biz/:bizId/hours/edit">
-            <ProtectedRoute>
-            <EditHoursForm />
-            </ProtectedRoute>
-          </Route>
           <Route exact path="/biz/:bizId/edit">
+            <ProtectedRoute>
             <EditBizForm />
             <EditHoursForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/biz/new">
             <ProtectedRoute>
