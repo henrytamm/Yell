@@ -13,6 +13,8 @@ import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 import UserProfile from "./components/User/UserProfile";
 import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
+import ProtectedRoute from "./components/auth/ProtectedRoute"
+import Homepage from "./components/Homepage/Homepage";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,9 +37,9 @@ function App() {
           <Route path='/biz/:bizId/reviews/edit/:reviewId'>
             <EditReviewForm />
           </Route>
-          <Route exact path="/biz/:bizId/edit">
+          <ProtectedRoute exact path="/biz/:bizId/edit">
             <EditBizForm />
-          </Route>
+          </ProtectedRoute>
           <Route exact path="/biz/new">
             <CreateBizForm />
           </Route>
@@ -55,7 +57,7 @@ function App() {
             <OpenBizList />
           </Route>
           <Route path="/">
-            <CategoryList />
+            <Homepage />
           </Route>
         </Switch>
       )}
