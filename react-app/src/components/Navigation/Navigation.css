@@ -5,3 +5,23 @@
 .hidden {
   display: none;
 }
+
+.home-button-container{
+  display: flex;
+  padding: 3px 3px 3px 10px;
+}
+
+.profile-button-container{
+  display: flex;
+  float: right;
+  margin-right:100px;
+}
+
+.demo-login-container {
+  float: right;
+}
+
+.search-bar-container {
+  width: 400px;
+  height: 30px;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllSearchCategory } from '../../store/search';
 import { useHistory } from 'react-router-dom';
+import "./SearchBar.css"
 
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -42,13 +43,17 @@ const SearchBar = () => {
     }
 
     return (
+        
         <form onSubmit={handleSubmit}>
-            <input type="text" value={searchTerm} onChange={handleInputChange} />
-            <button type="submit">Search</button>
+            <input className='search-bar' placeholder='Search...'type="text" value={searchTerm} onChange={handleInputChange} />
+            <button type="submit" className='search-bar-button'>
+            <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
             {recommendations.map((recommendation, index) => (
                 <div key={index}>{recommendation}</div>
-            ))}
+                ))}
         </form>
+                
     );
 };
 

@@ -28,3 +28,7 @@ flask run
 #need to fix selector in bizPage because we hard coded the biz
 
 #when you delete SoupKitchen, it also deletes both categories (vegan and soup) from the database
+
+
+
+#changed the HTML for fontawesome to use a new account code so that we can pull fontawesome icons
