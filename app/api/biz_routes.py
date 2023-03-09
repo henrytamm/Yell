@@ -6,6 +6,7 @@ from ..forms.biz_form import BizForm
 from ..forms.review_form import ReviewForm
 from ..forms.hours_form import HoursForm
 from ..forms.biz_edit_form import BizEditForm
+from ..forms.hours_edit_form import HoursEditForm
 
 
 biz_routes = Blueprint('bizes', __name__)
@@ -140,12 +141,12 @@ def createBizHours(id):
         return jsonify({'error': str(e)}), 404
 
 
-@biz_routes.route('/<int:id>/hours', methods=["PUT"])
+@biz_routes.route('/<int:id>/hours/edit', methods=["PUT"])
 def editBizHours(id):
     """
     Edit hours of a biz by id and returns that hours in a dictionary
     """
-    form = HoursForm()
+    form = HoursEditForm()
     data = form.data
     try:
         biz = Biz.query.get(id)

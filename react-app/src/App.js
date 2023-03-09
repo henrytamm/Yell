@@ -16,6 +16,7 @@ import UserProfile from "./components/User/UserProfile";
 import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
 import Homepage from "./components/Homepage/Homepage";
 import CreateHoursForm from "./components/Hours/CreateHoursForm";
+import EditHoursForm from "./components/Hours/EditHoursForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,16 +36,24 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/biz/:bizId/reviews/edit/:reviewId'>
+          <Route exact path='/biz/:bizId/reviews/edit/:reviewId'>
             <ProtectedRoute>
               <EditReviewForm />
             </ProtectedRoute>
           </Route>
-          <Route path='/biz/:bizId/hours/new'>
+          <Route exact path='/biz/:bizId/hours/new'>
+            <ProtectedRoute>
             <CreateHoursForm />
+            </ProtectedRoute>
+          </Route>
+          <Route exact path="/biz/:bizId/hours/edit">
+            <ProtectedRoute>
+            <EditHoursForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/biz/:bizId/edit">
             <EditBizForm />
+            <EditHoursForm />
           </Route>
           <Route exact path="/biz/new">
             <ProtectedRoute>
@@ -57,14 +66,14 @@ function App() {
           <Route exact path='/users/:userId'>
             <UserProfile />
           </Route>
-          <Route path="/categories/:categoryId">
+          <Route exact path="/categories/:categoryId">
             <CategoryList />
             <BizByCategoryList />
           </Route>
-          <Route path="/search/open">
+          <Route exact path="/search/open">
             <OpenBizList />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Homepage />
           </Route>
         </Switch>

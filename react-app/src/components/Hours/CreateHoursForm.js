@@ -1,5 +1,4 @@
-import { createBiz, getBizes } from "../../store/biz";
-import { getAllCategory } from "../../store/categories";
+import { getOneBiz } from "../../store/biz";
 import { createHours } from "../../store/hours";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,10 +9,9 @@ const CreateHoursForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const ownerId = useSelector((state) => state.session.user.id)
-  const {bizId} = useParams()
+  const { bizId } = useParams()
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  // const categories = useSelector((state) => state.categoryReducer)
-  // const categoriesArr = categories ? Object.values(categories) : null
 
   const [mondayOpen, setMondayOpen] = useState("")
   const [mondayClose, setMondayClose] = useState("")
@@ -29,22 +27,22 @@ const CreateHoursForm = () => {
   const [saturdayClose, setSaturdayClose] = useState("")
   const [sundayOpen, setSundayOpen] = useState("")
   const [sundayClose, setSundayClose] = useState("")
-
-  // const [city, setCity] = useState("")
-  // const [state, setState] = useState("")
-  // const [country, setCountry] = useState("")
-  // const [lat, setLat] = useState(0)
-  // const [lng, setLng] = useState(0)
-  // const [name, setName] = useState("")
-  // const [description, setDescription] = useState("")
-  // const [previewImage, setPreviewImage] = useState("")
-  // const [category, setCategory] = useState('')
   const [errors, setErrors] = useState([])
 
-  // useEffect(() => {
-  //   dispatch(getAllCategory());
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getOneBiz(bizId))
+      .then(() => {
+      setIsLoaded(true)
+    })
+  }, [dispatch]);
 
+  const bizOwnerId = useSelector((state) => state.bizReducer.ownerId)
+
+  if (isLoaded) {
+    if (ownerId != bizOwnerId) {
+      return ('You are not the owner of this business')
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
@@ -81,7 +79,7 @@ const CreateHoursForm = () => {
 
   return (
     <>
-      <div>
+      <div>Create Hours for your Business
         <form method="POST" onSubmit={handleSubmit} className='create-hours-form-container'>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
