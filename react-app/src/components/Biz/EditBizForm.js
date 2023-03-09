@@ -4,6 +4,7 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { editBiz, getOneBiz } from "../../store/biz";
 import { getAllCategory } from "../../store/categories";
+import "./BizForm.css"
 
 const EditBizForm = () => {
   const dispatch = useDispatch();
@@ -75,12 +76,12 @@ const EditBizForm = () => {
   }
   return (
     <div>
-      <form className="edit-form" onSubmit={handleSubmit}>
+      <form className="create-biz-form-container" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <h1 className="update">Update your Business!</h1>
-        <label>
+        <label className='create-biz-label'>
           Name
           <input
             type="text"
@@ -90,7 +91,7 @@ const EditBizForm = () => {
             onChange={(e) => setName(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Address
           <input
             type="text"
@@ -100,7 +101,7 @@ const EditBizForm = () => {
             onChange={(e) => setAddress(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           City
           <input
             type="text"
@@ -110,7 +111,7 @@ const EditBizForm = () => {
             onChange={(e) => setCity(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           State
           <input
             type="text"
@@ -120,7 +121,7 @@ const EditBizForm = () => {
             onChange={(e) => setState(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Country
           <input
             type="text"
@@ -130,7 +131,7 @@ const EditBizForm = () => {
             onChange={(e) => setCountry(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Latitiude
           <input
             type="number"
@@ -141,7 +142,7 @@ const EditBizForm = () => {
             onChange={(e) => setLat(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Longitude
           <input
             type="number"
@@ -152,7 +153,7 @@ const EditBizForm = () => {
             onChange={(e) => setLng(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Description
           <input
             type="text"
@@ -162,7 +163,7 @@ const EditBizForm = () => {
             onChange={(e) => setDescription(e.target.value)} />
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Preview Image
           <input
             type="url"
@@ -171,7 +172,7 @@ const EditBizForm = () => {
             required
             onChange={(e) => setPreviewImage(e.target.value)} />
         </label>
-        <label>
+        <label className='create-biz-label'>
           Add Category
           <select
             // value={this?.category}
@@ -186,7 +187,7 @@ const EditBizForm = () => {
 
         </label>
 
-        <label>
+        <label className='create-biz-label'>
           Remove Category
           <ul>
             {bizCategories.map((category, idx) => <li key={idx}>{category}</li>)}

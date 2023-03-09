@@ -1,0 +1,12 @@
+.create-biz-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-biz-label{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    line-height: 30px;
+}

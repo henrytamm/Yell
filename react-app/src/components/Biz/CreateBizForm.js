@@ -3,6 +3,7 @@ import { getAllCategory } from "../../store/categories";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import "./BizForm.css"
 
 const CreateBizForm = () => {
     const dispatch = useDispatch();
@@ -59,11 +60,11 @@ const CreateBizForm = () => {
     return (
         <>
             <div>
-                <form method="POST" onSubmit={handleSubmit}>
+                <form method="POST" onSubmit={handleSubmit} className='create-biz-form-container'>
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
-                    <label>Name:
+                    <label className='create-biz-label'>Name: 
                         <input
                             type="text"
                             placeholder="Business Name"
@@ -71,7 +72,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
-                    <label>Address:
+                    <label className='create-biz-label'>Address:
                         <input
                             type="text"
                             placeholder="Address"
@@ -79,7 +80,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setAddress(e.target.value)}
                         />
                     </label>
-                    <label>City:
+                    <label className='create-biz-label'>City:
                         <input
                             type="text"
                             placeholder="City"
@@ -87,7 +88,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setCity(e.target.value)}
                         />
                     </label>
-                    <label>State:
+                    <label className='create-biz-label'>State:
                         <input
                             type="text"
                             placeholder="State"
@@ -95,7 +96,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setState(e.target.value)}
                         />
                     </label>
-                    <label>Country:
+                    <label className='create-biz-label'>Country:
                         <input
                             type="text"
                             placeholder="Country"
@@ -103,7 +104,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setCountry(e.target.value)}
                         />
                     </label>
-                    <label>Latitude:
+                    <label className='create-biz-label'>Latitude:
                         <input
                             type="number"
                             step='0.00001'
@@ -112,7 +113,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setLat(e.target.value)}
                         />
                     </label>
-                    <label>Longitude:
+                    <label className='create-biz-label'>Longitude:
                         <input
                             type="number"
                             step='0.00001'
@@ -121,7 +122,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setLng(e.target.value)}
                         />
                     </label>
-                    <label>Description:
+                    <label className='create-biz-label'>Description:
                         <textarea
                             type="text"
                             placeholder="Description"
@@ -129,7 +130,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                     </label>
-                    <label>Image Url:
+                    <label className='create-biz-label'>Image Url:
                         <input
                             type="url"
                             placeholder="Preview Image URL"
@@ -137,7 +138,7 @@ const CreateBizForm = () => {
                             onChange={(e) => setPreviewImage(e.target.value)}
                         />
                     </label>
-                    <label>
+                    <label className='create-biz-label'>
                         Category:
                         <select
                             value={category}

@@ -7,6 +7,7 @@ import SignupFormModal from "../SignupFormModal";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import { Link } from "react-router-dom";
+import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -21,10 +22,8 @@ function ProfileButton({ user }) {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
+    const closeMenu = () => {
         setShowMenu(false);
-      }
     };
 
     document.addEventListener("click", closeMenu);
@@ -37,11 +36,11 @@ function ProfileButton({ user }) {
     dispatch(logout());
   };
 
-  const handleSubmitDemo = (e) => {
-    e.preventDefault();
-    <Redirect to="/" />
-    return dispatch(sessionActions.demoLoginThunk())
-  }
+  // const handleSubmitDemo = (e) => {
+  //   e.preventDefault();
+  //   <Redirect to="/" />
+  //   return dispatch(sessionActions.demoLoginThunk())
+  // }
 
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const closeMenu = () => setShowMenu(false);
@@ -49,7 +48,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <i class="fa-solid fa-user"></i>
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -79,11 +78,11 @@ function ProfileButton({ user }) {
           </>
         )}
       </ul>
-      <form onSubmit={handleSubmitDemo}>
+      {/* <form onSubmit={handleSubmitDemo}>
         <button>
           Demo Login
         </button>
-      </form>
+      </form> */}
     </>
   );
 }
