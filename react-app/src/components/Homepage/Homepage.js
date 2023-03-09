@@ -26,10 +26,10 @@ function Homepage(bizes) {
     return (
         <>
         <div className="homepage-img-container">
-            <img className='homepage-img' src='https://i.imgur.com/61wiR4s.png'></img>
+            <img className='homepage-img' src='https://i.imgur.com/61wiR4s.png' ></img>
         </div>
         <div className='biz-list-container'>
-            <h1>Check out these businesses!</h1>
+            <h1 className='biz-title'>Check out these businesses!</h1>
             <div className='biz-card-container'>
                 {bizArr && bizArr.slice(0, 8).map(biz => (
                     <div className='biz-img-container'>

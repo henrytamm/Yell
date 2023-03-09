@@ -71,3 +71,13 @@ a:link{
     height: 130px;
 }
 
+.biz-name{
+    overflow: visible;
+    flex-wrap: wrap;
+}
+
+.biz-title{
+    display: flex;
+    justify-content: center;
+}
+

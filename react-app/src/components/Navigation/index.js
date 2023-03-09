@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
         </button>
       </form>
 			<div className='search-bar-container'>
-				<SearchBar/>
+				<p className='search-bar-input'><SearchBar/></p>
 			</div>
 		</ul>
 	);

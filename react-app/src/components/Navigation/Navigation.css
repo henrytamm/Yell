@@ -25,3 +25,7 @@
   width: 400px;
   height: 30px;
 }
+
+.search-bar-input{
+  overflow: auto;
+}

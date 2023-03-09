@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import MyContainer from '../GoogleMaps'
 import BizHoursCard from "../BizHoursCard";
-
+import "./BizCard.css"
 
 const BizCard = () => {
   const dispatch = useDispatch();
@@ -35,16 +35,16 @@ const BizCard = () => {
 
   return (
     <>
-      <div className="biz-info-container">
+      <div className="biz-top-container">
         <img className="biz-image" src={biz?.previewImage}></img>
-        <h1>{biz?.name}</h1>
-        <h2>{biz?.description}</h2>
-        <h3>{biz?.address}</h3>
-        <h4>
-          {biz?.city}, {biz?.state}
-        </h4>
+        <p className="biz-hours"><BizHoursCard/></p>
         <div>
-          <BizHoursCard/>
+        <h1 className="biz-name">{biz?.name}</h1>
+        <h2 className="biz-desc">About the business </h2>
+        <h2 className="biz-desc-2">{biz?.description}</h2>
+        <h2 className="biz-location">Location </h2>
+        <p className="biz-address">{biz?.address}</p>
+        <p className="biz-city-state">{biz?.city}, {biz?.state}</p>
         </div>
         <div>
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={editBizHandler}>
