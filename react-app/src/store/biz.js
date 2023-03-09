@@ -58,7 +58,8 @@ export const createBiz = (payload) => async (dispatch) => {
   if (res.ok) {
     const biz = await res.json();
     dispatch(createBizAction(biz));
-    // return biz;
+    console.log('printing biz from thunk', biz)
+    return biz;
   }
   return res
 };

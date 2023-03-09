@@ -5,6 +5,7 @@ import { bizReducer } from './biz';
 import { categoryReducer } from './categories';
 import { reviewsReducer } from './review';
 import { searchCategoryReducer } from './search';
+import { hoursReducer } from './hours';
 import { openBizReducer } from './openBiz';
 import { bizHoursReducer } from './bizHours';
 
@@ -15,7 +16,8 @@ const rootReducer = combineReducers({
   reviewsReducer,
   searchCategoryReducer,
   openBizReducer,
-  bizHoursReducer
+  bizHoursReducer,
+  hoursReducer
 });
 
 

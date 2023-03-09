@@ -14,6 +14,7 @@ import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 import UserProfile from "./components/User/UserProfile";
 import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
+import CreateHoursForm from "./components/Hours/CreateHoursForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +38,9 @@ function App() {
             <ProtectedRoute>
               <EditReviewForm />
             </ProtectedRoute>
+          </Route>
+          <Route path='/biz/:bizId/hours/new'>
+            <CreateHoursForm />
           </Route>
           <Route exact path="/biz/:bizId/edit">
             <ProtectedRoute>

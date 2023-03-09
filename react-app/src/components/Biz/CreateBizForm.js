@@ -47,12 +47,12 @@ const CreateBizForm = () => {
 
         dispatch(createBiz(payload))
             .then(async (data) => {
-                if (data.ok) {
-                    window.alert(`Business successfully created!`)
-                    return history.push(`/`)
-                } else {
+                if (data.ok===false) {
                     const dataErr = await data.json()
                     setErrors(dataErr.errors)
+                } else {
+                    window.alert(`Business successfully created!`)
+                    return history.push(`/biz/${data.id}/hours/new`)
                 }
             })
     }
@@ -64,7 +64,7 @@ const CreateBizForm = () => {
                     <ul>
                         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
-                    <label className='create-biz-label'>Name: 
+                    <label className='create-biz-label'>Name:
                         <input
                             type="text"
                             placeholder="Business Name"
@@ -152,6 +152,7 @@ const CreateBizForm = () => {
                             ))}
                         </select>
                     </label>
+
                     <button type="submit">Create new Business</button>
                 </form>
             </div>
