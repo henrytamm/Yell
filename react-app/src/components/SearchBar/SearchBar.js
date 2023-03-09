@@ -23,6 +23,7 @@ const SearchBar = () => {
     }
 
     let categoryNamesArr = categoriesArr.map(category => category.name)
+    categoryNamesArr.push('open')
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -43,7 +44,7 @@ const SearchBar = () => {
     }
 
     return (
-        
+
         <form onSubmit={handleSubmit}>
             <input className='search-bar' placeholder='Search...'type="text" value={searchTerm} onChange={handleInputChange} />
             <button type="submit" className='search-bar-button'>
@@ -53,7 +54,7 @@ const SearchBar = () => {
                 <div key={index}>{recommendation}</div>
                 ))}
         </form>
-                
+
     );
 };
 

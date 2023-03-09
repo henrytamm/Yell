@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 import Navigation from "./components/Navigation";
 import CategoryList from "./components/Categories/CategoryList/CategoryList";
 import BizByCategoryList from "./components/Categories/BizByCategoryList/BizByCategoryList";
@@ -13,8 +14,7 @@ import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 import UserProfile from "./components/User/UserProfile";
 import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
-import ProtectedRoute from "./components/auth/ProtectedRoute"
-import Homepage from "./components/Homepage/Homepage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,13 +35,17 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route path='/biz/:bizId/reviews/edit/:reviewId'>
-            <EditReviewForm />
+            <ProtectedRoute>
+              <EditReviewForm />
+            </ProtectedRoute>
           </Route>
-          <ProtectedRoute exact path="/biz/:bizId/edit">
+          <Route exact path="/biz/:bizId/edit">
             <EditBizForm />
-          </ProtectedRoute>
+          </Route>
           <Route exact path="/biz/new">
-            <CreateBizForm />
+            <ProtectedRoute>
+              <CreateBizForm />
+            </ProtectedRoute>
           </Route>
           <Route exact path="/biz/:bizId">
             <BizPage />
