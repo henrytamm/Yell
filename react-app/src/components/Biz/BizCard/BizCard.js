@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import MyContainer from '../GoogleMaps'
+import BizHoursCard from "../BizHoursCard";
 
 
 const BizCard = () => {
@@ -30,9 +31,7 @@ const BizCard = () => {
   };
 
   const sessionUser = useSelector(state => state.session.user)
-  console.log('sesh', sessionUser)
-  console.log('biz', biz)
- 
+
 
   return (
     <>
@@ -43,6 +42,9 @@ const BizCard = () => {
         <h4>
           {biz?.city}, {biz?.state}
         </h4>
+        <div>
+          <BizHoursCard/>
+        </div>
         <div>
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={editBizHandler}>
             Edit Spot

@@ -12,7 +12,7 @@ const BizPage = () => {
   const dispatch = useDispatch();
   const { bizId } = useParams();
   const [isLoaded, setIsLoaded] = useState(false)
-//   const biz = useSelector((state) => state?.bizReducer[1])
+  //   const biz = useSelector((state) => state?.bizReducer[1])
   const biz = useSelector((state) => state?.bizReducer)
   const bizReviewsObj = useSelector((state) => state?.reviewsReducer)
   const sessionUser = useSelector(state => state.session.user)
@@ -24,14 +24,14 @@ const BizPage = () => {
   // }
 
   const reviews = Object.values(bizReviewsObj)
-//   console.log(reviews)
- 
-  
-//   useEffect(() => {
-//       dispatch(getBizes()).then(() => setIsLoaded(true));
-//     }, [dispatch])
-    
-    console.log(biz)
+  //   console.log(reviews)
+
+
+  //   useEffect(() => {
+  //       dispatch(getBizes()).then(() => setIsLoaded(true));
+  //     }, [dispatch])
+
+  // console.log(biz)
   useEffect(() => {
     // dispatch(getBizes())
     dispatch(getOneBiz(bizId));
@@ -45,13 +45,13 @@ const BizPage = () => {
   return (
     <>
       <div className="biz-info-container">
-       <BizCard />
-       <div className="review-list-container">
-       <ReviewList/> 
-       </div>
-      <h2 className="create-review-container">
-      {(sessionUser && biz.ownerId !==sessionUser.id) && <CreateReviewForm/>}
-      </h2>
+        <BizCard />
+        <div className="review-list-container">
+          <ReviewList />
+        </div>
+        <h2 className="create-review-container">
+          {(sessionUser && biz.ownerId !== sessionUser.id) && <CreateReviewForm />}
+        </h2>
       </div>
     </>
   );

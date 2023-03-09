@@ -6,6 +6,7 @@ import { categoryReducer } from './categories';
 import { reviewsReducer } from './review';
 import { searchCategoryReducer } from './search';
 import { openBizReducer } from './openBiz';
+import { bizHoursReducer } from './bizHours';
 
 const rootReducer = combineReducers({
   session,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   categoryReducer,
   reviewsReducer,
   searchCategoryReducer,
-  openBizReducer
+  openBizReducer,
+  bizHoursReducer
 });
 
 
