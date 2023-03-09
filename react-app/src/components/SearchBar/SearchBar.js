@@ -37,7 +37,8 @@ const SearchBar = () => {
 
     const handleSubmit = (event) => {
         // event.preventDefault()
-        history.push(`/categories/${categoryId}`)
+        if(searchTerm.toLowerCase() === 'open') return history.push(`/search/open`)
+        return history.push(`/categories/${categoryId}`)
     }
 
     return (

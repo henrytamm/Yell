@@ -12,6 +12,7 @@ import CreateBizForm from "./components/Biz/CreateBizForm";
 import EditBizForm from "./components/Biz/EditBizForm";
 import EditReviewForm from "./components/EditReviewForm/EditReviewForm";
 import UserProfile from "./components/User/UserProfile";
+import OpenBizList from "./components/Open/OpenBizList/OpenBizList";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,11 +45,14 @@ function App() {
             <BizPage />
           </Route>
           <Route exact path='/users/:userId'>
-          <UserProfile />
+            <UserProfile />
           </Route>
           <Route path="/categories/:categoryId">
             <CategoryList />
             <BizByCategoryList />
+          </Route>
+          <Route path="/search/open">
+            <OpenBizList />
           </Route>
           <Route path="/">
             <CategoryList />

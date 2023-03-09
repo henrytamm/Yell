@@ -5,13 +5,15 @@ import { bizReducer } from './biz';
 import { categoryReducer } from './categories';
 import { reviewsReducer } from './review';
 import { searchCategoryReducer } from './search';
+import { openBizReducer } from './openBiz';
 
 const rootReducer = combineReducers({
   session,
   bizReducer,
   categoryReducer,
   reviewsReducer,
-  searchCategoryReducer
+  searchCategoryReducer,
+  openBizReducer
 });
 
 
