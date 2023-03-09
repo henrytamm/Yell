@@ -53,7 +53,10 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li>{user.username}</li>
+            <li><Link to={`/users/${user.id}`}>
+                  {user.username}
+              </Link>
+            </li>
             <li>{user.email}</li>
             <li><Link to='/biz/new' className="create-biz-button">
             Create your business!

@@ -45,9 +45,12 @@ const deleteReview = (reviewId) => {
 //GET ALL REVIEWS BY BUSINESS ID THUNK
 export const allReviewsByBizId = (bizId) => async (dispatch) => {
     const response = await fetch(`/api/biz/${bizId}/reviews`)
-    const data = await response.json();
-    dispatch(getReviews(data));
-    return {...data}
+
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getReviews(data));
+        return {...data}
+    }
 }
 
 //CREATE A REVIEW THUNK
