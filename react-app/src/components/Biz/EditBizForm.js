@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { useHistory, useParams, Link } from "react-router-dom";
+import { useHistory, useParams, Link, Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { editBiz, getOneBiz } from "../../store/biz";
 import { getAllCategory } from "../../store/categories";
@@ -27,24 +27,32 @@ const EditBizForm = () => {
   const [newCategory, setnewCategory] = useState('')
   const [bizCategories, setBizCategories] = useState([])
   const [errors, setErrors] = useState([])
+  const [isLoaded, setIsLoaded] = useState(false)
 
 
   useEffect(() => {
     dispatch(getAllCategory())
     dispatch(getOneBiz(bizId))
       .then((bizRes) => {
-        setName(bizRes.name)
-        setState(bizRes.state)
-        setAddress(bizRes.address)
-        setCity(bizRes.city)
-        setCountry(bizRes.country)
-        setDescription(bizRes.description)
-        setLat(bizRes.lat)
-        setLng(bizRes.lng)
-        setBizCategories(Object.values(bizRes.categoryObj))
-        setPreviewImage(bizRes.previewImage)
+        setIsLoaded(true)
+        if (bizRes) {
+          setName(bizRes.name)
+          setState(bizRes.state)
+          setAddress(bizRes.address)
+          setCity(bizRes.city)
+          setCountry(bizRes.country)
+          setDescription(bizRes.description)
+          setLat(bizRes.lat)
+          setLng(bizRes.lng)
+          setBizCategories(Object.values(bizRes.categoryObj))
+          setPreviewImage(bizRes.previewImage)
+        }
       })
   }, [dispatch])
+
+  if (isLoaded && !biz.id) {
+    return <Redirect to='/' />
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
