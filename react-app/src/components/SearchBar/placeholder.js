@@ -51,7 +51,7 @@ const SearchBar = () => {
             <i class="fa-solid fa-magnifying-glass"></i>
             </button>
             {recommendations.map((recommendation, index) => (
-                <div className='search-list' key={index}>{recommendation}</div>
+                <div key={index}>{recommendation}</div>
                 ))}
         </form>
 

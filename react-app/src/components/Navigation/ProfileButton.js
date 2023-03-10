@@ -54,13 +54,14 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li><Link to={`/users/${user.id}`}>
-                  {user.username}
+                  About Me
               </Link>
             </li>
             <li>{user.email}</li>
-            <li><Link to='/biz/new' className="create-biz-button">
+            <p><Link to='/biz/new' className="create-biz-button">
+            <i class="fa-solid fa-plus" style={{width:20}}></i>
             Create your business!
-              </Link></li>
+              </Link></p>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

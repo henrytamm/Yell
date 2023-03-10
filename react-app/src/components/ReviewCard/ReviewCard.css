@@ -1,0 +1,48 @@
+.profile-pic{
+    width: 80px;
+    height: 70px;
+    border-radius: 100%;
+}
+
+.review-border{
+    box-sizing: border-box;
+    border: 1px solid gainsboro
+}
+
+.review-username{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left:100px;
+    margin-top:-30px
+}
+
+.review-review{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    padding-left:10px;
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+.review-created-at{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 20px;
+    padding-left:10px;
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+.stars-container{
+    padding-left:10px;
+    margin-top:15px;
+    margin-bottom: 15px;
+}
+
+.edit-del-btn{
+    margin-top:15px;
+    margin-bottom:15px
+}

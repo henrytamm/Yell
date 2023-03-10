@@ -38,12 +38,13 @@ a:link{
 }
 
 .emojis-container{
-    font-size: 50px;
+    font-size: 75px;
+    display: flex;
 }
 
 .category-name-container {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     text-decoration: none;
 }
 
@@ -74,6 +75,7 @@ a:link{
 .biz-name{
     overflow: visible;
     flex-wrap: wrap;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .biz-title{

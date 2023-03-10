@@ -4,6 +4,7 @@ import { createHours } from "../../store/hours";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import "./HoursForm.css"
 
 
 const CreateHoursForm = () => {
@@ -198,7 +199,7 @@ const CreateHoursForm = () => {
               onChange={(e) => setSundayClose(e.target.value)}
             />
           </label>
-          <button type="submit">Create new Hours</button>
+          <button className="create-hours-button" type="submit">Create new Hours</button>
         </form>
       </div>
     </>

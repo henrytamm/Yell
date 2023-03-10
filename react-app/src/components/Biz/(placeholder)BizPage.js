@@ -6,6 +6,7 @@ import { NavLink, useParams, Redirect } from "react-router-dom";
 import { ReviewList } from '../ReviewList/ReviewList'
 import CreateReviewForm from '../CreateReviewForm/CreateReviewForm'
 import BizCard from "../Biz/BizCard/BizCard"
+import "./BizPage.css"
 
 
 const BizPage = () => {
@@ -47,6 +48,7 @@ const BizPage = () => {
       <div className="biz-info-container">
         <BizCard />
         <div className="review-list-container">
+          <p className="rec-reviews">Recommended Reviews</p>
           <ReviewList />
         </div>
         <h2 className="create-review-container">

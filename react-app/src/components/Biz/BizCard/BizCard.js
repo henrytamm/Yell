@@ -40,18 +40,25 @@ const BizCard = () => {
         <p className="biz-hours"><BizHoursCard/></p>
         <div>
         <h1 className="biz-name">{biz?.name}</h1>
+
+        <div className="biz-desc-container">
         <h2 className="biz-desc">About the business </h2>
         <h2 className="biz-desc-2">{biz?.description}</h2>
+        </div>
+
+        <div className="biz-location-container">
         <h2 className="biz-location">Location </h2>
         <p className="biz-address">{biz?.address}</p>
         <p className="biz-city-state">{biz?.city}, {biz?.state}</p>
         </div>
+
+        </div>
         <div>
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={editBizHandler}>
-            Edit Spot
+            Edit Business Details
         </button>}
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={deleteBizHandler}>
-            Delete Spot
+            Delete Business
         </button>}
         </div>
         <MyContainer biz={biz}/>

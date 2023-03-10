@@ -21,18 +21,24 @@ const ReviewCard = ({review}) => {
 
     return (
         <div>
-            <img className="profile-pic" src={review.userInfo.userPictureUrl} alt='profile pic' style={{width: 50, height:50}}/>
-            <NavLink to={`/users/${review.userInfo.id}`}>{review.userInfo.firstName} {review.userInfo.lastName} </NavLink>
-            <dl> {review.createdAt}</dl>
-            <dl> {review.review}</dl>
+            <div className="review-border">
+            <img className="profile-pic" src={review.userInfo.userPictureUrl} alt='profile pic'/>
+            <p className="review-username">
+            <NavLink to={`/users/${review.userInfo.id}`}>{review.userInfo.firstName} {review.userInfo.lastName[0].toUpperCase()}. </NavLink>
+            </p>
+            <dl className="review-created-at"> {review.createdAt}</dl>
+            <dl className="review-review"> {review.review}</dl>
             <div className="stars-container">
             <i class="fa-sharp fa-solid fa-star"></i>
                 {review.stars}
-                </div>
-            <div>
+            <div className="edit-del-btn">
             {(sessionUser && review.userId === sessionUser.id) && <button onClick={editedReviewInfo}>Edit Review {review.userId}</button>}
             {(sessionUser && review.userId === sessionUser.id) && <button onClick={deleteButton}>Delete Review</button>}
             </div>
+            </div>
+            </div>
+
+
         </div>
     )
 
