@@ -29,3 +29,7 @@ img {
 .biz-name:hover {
   text-decoration: underline;
 }
+
+.biz-img{
+  width:fit-content
+}

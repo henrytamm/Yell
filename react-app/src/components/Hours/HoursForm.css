@@ -1,0 +1,16 @@
+.create-hours-form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.create-hours-label{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    line-height:30px
+}
+
+.create-hours-button{
+    margin-top: 20px;
+}

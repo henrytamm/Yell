@@ -7,6 +7,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import * as sessionActions from '../../store/session';
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import yelplogo from "../../images/yelplogo.png"
 
 function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
@@ -25,9 +26,11 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<ul>
-			<li>
-				<NavLink exact to="/" className='home-button-container'>Home</NavLink>
-			</li>
+				<div className='logo-container'>
+				<NavLink exact to="/" className='home-button-container'>
+					<img className='logo' src={yelplogo}></img>
+				</NavLink>
+				</div>
 			{isLoaded && (
 				<li className='profile-button-container'>
 					<ProfileButton user={sessionUser} />
@@ -39,7 +42,7 @@ function Navigation({ isLoaded }) {
         </button>
       </form>
 			<div className='search-bar-container'>
-				<SearchBar/>
+				<p className='search-bar-input'><SearchBar/></p>
 			</div>
 		</ul>
 	);

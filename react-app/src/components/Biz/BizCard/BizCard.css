@@ -1,0 +1,69 @@
+.biz-image-container{
+    max-width: 900px;
+    max-height: 400px;
+}
+.biz-image{
+   background-size: cover;
+   width: 900px;
+   height: 400px;
+   padding-left: 10px;
+}
+
+.biz-name{
+    justify-content: center;
+    display:flex;
+    padding-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1px;
+    line-height: 50px;
+}
+
+.biz-desc{
+    padding-left: 10px;
+    font-weight: 800;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.biz-desc-2{
+    padding-left: 10px;
+    font-weight: 300;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.biz-desc-container{
+    box-sizing: border-box;
+    border: 1px solid gainsboro
+}
+.biz-location{
+    padding-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration:underline
+}
+
+.biz-location-container{
+    box-sizing: border-box;
+    border: 1px solid gainsboro;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.biz-address{
+    padding-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.biz-city-state{
+    padding-left: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.biz-hours-card-container{
+    position:relative
+}
+
+.biz-hours{
+    display: flex;
+    margin-left: 1050px;
+    margin-top: -420px;
+}
+
+

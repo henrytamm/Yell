@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getBizHours } from "../../store/bizHours";
+import "./BizHours.css"
 
 
 const BizHoursCard = () => {
@@ -18,20 +19,13 @@ const BizHoursCard = () => {
     return (
         <>
             <div className="biz-hours-container">
-                <h6>Monday Open Hours: {hours.mondayOpen}</h6>
-                <h6>Monday Closing Hours: {hours.mondayClose}</h6>
-                <h6>Tuesday Open Hours: {hours.tuesdayOpen}</h6>
-                <h6>Tuesday Closing Hours: {hours.tuesdayClose}</h6>
-                <h6>Wednesday Open Hours: {hours.wednesdayOpen}</h6>
-                <h6>Wednesday Closing Hours: {hours.wednesdayClose}</h6>
-                <h6>Thursday Open Hours: {hours.thursdayOpen}</h6>
-                <h6>Thursday Closing Hours: {hours.thursdayClose}</h6>
-                <h6>Friday Open Hours: {hours.fridayOpen}</h6>
-                <h6>Friday Closing Hours: {hours.fridayClose}</h6>
-                <h6>Saturday Open Hours: {hours.saturdayOpen}</h6>
-                <h6>Saturday Closing Hours: {hours.saturdayClose}</h6>
-                <h6>Sunday Open Hours: {hours.sundayOpen}</h6>
-                <h6>Sunday Closing Hours: {hours.sundayClose}</h6>
+            <h6 className="operating-hours">Mon {hours.mondayOpen} - {hours.mondayClose}</h6>
+            <h6 className="operating-hours">Tue {hours.tuesdayOpen} - {hours.tuesdayClose}</h6>
+            <h6 className="operating-hours">Wed {hours.wednesdayOpen} - {hours.wednesdayClose}</h6>
+            <h6 className="operating-hours">Thu {hours.thursdayOpen} - {hours.thursdayClose}</h6>
+            <h6 className="operating-hours">Fri {hours.fridayOpen} - {hours.fridayClose}</h6>
+            <h6 className="operating-hours">Sat {hours.saturdayOpen} - {hours.saturdayClose}</h6>
+            <h6 className="operating-hours">Sun {hours.sundayOpen} - {hours.sundayClose}</h6>
             </div>
         </>
     );
