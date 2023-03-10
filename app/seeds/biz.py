@@ -152,7 +152,7 @@ def seed_biz():
     bagel.categories.append(bakery)
     thai.categories.append(asian)
     ice_cream.categories.append(dessert)
-    
+
     db.session.add(girl_and_the_goat)
     db.session.add(panda_express)
     db.session.add(the_butcher_son)
@@ -185,8 +185,11 @@ def undo_biz():
             f"TRUNCATE table {SCHEMA}.bizes RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.categories RESTART IDENTITY CASCADE;")
+        db.session.execute(
+            f"TRUNCATE table {SCHEMA}.business_categories RESTART IDENTITY CASCADE;")
     else:
         db.session.execute("DELETE FROM bizes")
         db.session.execute("DELETE FROM categories")
+        db.session.execute("DELETE FROM business_categories")
 
     db.session.commit()
