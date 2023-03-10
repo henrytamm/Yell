@@ -2,7 +2,7 @@ import { getOneBiz } from "../../store/biz";
 import { editHours, getOneHours } from "../../store/hours";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams, Redirect } from "react-router-dom";
 
 
 const EditHoursForm = () => {
@@ -55,7 +55,7 @@ const EditHoursForm = () => {
 
   if (isLoaded) {
     if (ownerId != bizOwnerId) {
-      return ('You are not the owner of this business')
+      return <Redirect to="/"/>
     }
   }
   const handleSubmit = async (e) => {
