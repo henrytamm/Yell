@@ -1,4 +1,4 @@
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { editReviewThunk } from '../../store/review';
@@ -37,6 +37,10 @@ const EditReviewForm = () => {
                 }
             })
 
+    }
+
+    if (!editedReview) {
+        return <Redirect to='/' />
     }
 
     return (
