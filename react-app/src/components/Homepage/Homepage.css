@@ -18,10 +18,11 @@
 }
 
 .categories-container{
-    display: grid;
+    display: flex;
     grid-template-columns:25% 25% 25% 25%;
     justify-items: center;
     text-decoration: none;
+    flex-wrap: wrap;
 }
 
 .categories-card-container:hover{
@@ -49,7 +50,8 @@ a:link{
 }
 
 .biz-card-container{
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     grid-template-columns: 45% 45%;
     margin-bottom: 25px;
     justify-content: center;
@@ -82,4 +84,3 @@ a:link{
     display: flex;
     justify-content: center;
 }
-

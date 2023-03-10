@@ -13,7 +13,7 @@ function Navigation({ isLoaded }) {
 	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
 
-	
+
 
 
 
@@ -22,37 +22,30 @@ function Navigation({ isLoaded }) {
 		e.preventDefault();
 		<Redirect to="/" />
 		return dispatch(sessionActions.demoLoginThunk())
-	  }
+	}
 
 	return (
-		<ul>
-				<div className='logo-container'>
-				<NavLink exact to="/" className='home-button-container'>
+		<nav>
+			<div className='logo-container'>
+				<NavLink exact to="/">
 					<img className='logo' src={yelplogo}></img>
 				</NavLink>
-				</div>
-			{isLoaded && (
-				<li className='profile-button-container'>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-			<form onSubmit={handleSubmitDemo} className="demo-login-container">
-        <button>
-          Demo Login
-        </button>
-      </form>
-			<div className='search-bar-container'>
-				<p className='search-bar-input'><SearchBar/></p>
 			</div>
-		</ul>
+			<div className='search-bar-container'>
+				<p className='search-bar-input'><SearchBar /></p>
+			</div>
+			<form onSubmit={handleSubmitDemo} className="demo-login-container">
+				<button>
+					Demo Login
+				</button>
+			</form>
+			{isLoaded && (
+				<div className='profile-button-container'>
+					<ProfileButton user={sessionUser} />
+				</div>
+			)}
+		</nav>
 	);
 }
 
 export default Navigation;
-
-
-
-
-
-
-
