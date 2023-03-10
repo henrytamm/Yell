@@ -26,35 +26,35 @@ def seed_reviews():
     )
     review_4 = Review(
         id = 4,
-        biz_id = 2,
+        biz_id = 4,
         user_id = 3,
         review = "I think the fish was raw",
         stars = 1,
     )
     review_5 = Review(
         id = 5,
-        biz_id = 3,
+        biz_id = 5,
         user_id = 1,
         review = "Skimped on guac",
         stars = 3,
     )
     review_6 = Review(
         id = 6,
-        biz_id = 3,
+        biz_id = 6,
         user_id = 2,
         review = "10/10. Best place ever!",
         stars = 5,
     )
     review_7 = Review(
         id = 7,
-        biz_id = 4,
+        biz_id = 7,
         user_id = 1,
         review = "Don't know how to pronounce the name but the food is great!",
         stars = 4,
     )
     review_8 = Review(
         id = 8,
-        biz_id = 4,
+        biz_id = 8,
         user_id = 3,
         review = "I SCREAM FOR ICE CREAM!!!",
         stars = 5,

@@ -12,7 +12,7 @@ const CreateReviewForm = () => {
     const currentUser = useSelector(state => state.session.user);
 
     const [review, setReview] = useState('');
-    const [stars, setStars] = useState(0);
+    const [stars, setStars] = useState(1);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
@@ -54,6 +54,8 @@ const CreateReviewForm = () => {
                     />
                     <input
                         type='number'
+                        min='1'
+                        max='5'
                         placeholder='Stars'
                         value={stars}
                         onChange={e => setStars(e.target.value)}

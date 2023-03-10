@@ -26,8 +26,8 @@ def seed_biz():
         lat=37.7831880343032,
         lng=-122.43242058382866,
         name='Panda Express',
-        description='TThe fast food of Chinese food. It is great that no matter which restaurant you go to',
-        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/dSZncCICrCW38n-I9N4sGw/o.jpg',
+        description='The fast food of Chinese food. It is great that no matter which restaurant you go to',
+        preview_image='https://imgs.search.brave.com/VU8eLkxNcZyvJUz9FF6G8B3r7wjGQF62g_OhTdxbdIw/rs:fit:1200:630:1/g:ce/aHR0cHM6Ly9oaXAy/c2F2ZS5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMDMv/UGFuZGEtRXhwcmVz/cy1NZWFscy5qcGc',
     )
     the_butcher_son = Biz(
         id=3,
@@ -40,7 +40,7 @@ def seed_biz():
         lng=-122.27162666109074,
         name='The Butcher Son Vegan Delicatessen',
         description='Charming, industrial-chic bakery & vegan deli for pastries, coffee & creative vegetable-based mains.',
-        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/QdExMzmR8Rg1bjZLOkcFHQ/348s.jpg',
+        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/oCKqDs0vq6e3jjbJbR1t6A/o.jpg',
     )
     sushi_house = Biz(
         id=4,
@@ -53,7 +53,7 @@ def seed_biz():
         lng=-122.25051431057418,
         name='Sushi House',
         description='Japanese eatery offering creative sushi rolls, udon, tempura & mains in a busy, comfortable space.',
-        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/luf3-4MTjb06QfYSZfqIIg/o.jpg',
+        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/qooKsSJfsLrAMndzlaILeg/o.jpg',
     )
     chipotle = Biz(
         id=5,
@@ -105,7 +105,7 @@ def seed_biz():
         lng=-121.96137703450425,
         name='Fentons Creamery',
         description='Fentons Creamery is known for its handmade ice cream. ',
-        preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/mes4nvADFQhDskOz84QBmw/348s.jpg',
+        preview_image='https://cdn.britannica.com/50/80550-050-5D392AC7/Scoops-kinds-ice-cream.jpg',
     )
 
 

@@ -26,7 +26,7 @@ function Homepage(bizes) {
     return (
         <>
         <div className="homepage-img-container">
-            <img className='homepage-img' src='https://i.imgur.com/61wiR4s.png' ></img>
+            <img className='homepage-img' src='https://images.creativemarket.com/0.1.0/ps/3563313/2963/1214/m1/fpnw/wm0/qxp6ggnxhhij6ncr8ddxrt8mbizu00mzp6p9kbpkpbkfrozsnfkrlsh5yag7gydv-.jpg?1510492456&s=013b23b66f7a9e3bed6539a470368bea' ></img>
         </div>
         <div className='biz-list-container'>
             <h1 className='biz-title'>Check out these businesses!</h1>
