@@ -50,9 +50,11 @@ const SearchBar = () => {
             <button type="submit" className='search-bar-button'>
             <i class="fa-solid fa-magnifying-glass"></i>
             </button>
+            <div className='search-list'>
             {recommendations.map((recommendation, index) => (
-                <div className='search-list' key={index}>{recommendation}</div>
+                <p key={index}>{recommendation}</p>
                 ))}
+                </div>
         </form>
 
     );

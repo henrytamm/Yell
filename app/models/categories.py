@@ -13,7 +13,7 @@ class Category(db.Model):
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
     updated_at = db.Column(db.DateTime(timezone=True), onupdate=func.now())
 
-    biz = db.relationship('Biz', secondary=business_categories, back_populates="categories", passive_deletes=True)
+    biz = db.relationship('Biz', secondary=business_categories, back_populates="categories")
 
     def to_dict(self):
         return {
