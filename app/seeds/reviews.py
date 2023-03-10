@@ -3,72 +3,72 @@ from app.models import db, Review, environment, SCHEMA
 
 # Adds a demo user, you can add other users here if you want
 def seed_reviews():
-    soup_kitchen_review_1 = Review(
+    review_1 = Review(
         id = 1,
         biz_id = 1,
         user_id = 2,
-        review = "review1 text for soupkitchen!!!",
+        review = "I thought it was just a girl. Then I saw the goat. OMG!",
+        stars = 5,
+    )
+    review_2 = Review(
+        id = 2,
+        biz_id = 2,
+        user_id = 3,
+        review = "I found a bug in my food.",
         stars = 1,
     )
-    soup_kitchen_review_2 = Review(
-        id = 2,
-        biz_id = 1,
-        user_id = 3,
-        review = "review2 text for soupkitchen!!!",
-        stars = 2,
-    )
-    phosizzle_review_1 = Review(
+    review_3 = Review(
         id = 3,
-        biz_id = 2,
+        biz_id = 3,
         user_id = 1,
-        review = "review1 text for phosizzle!!!",
-        stars = 3,
+        review = "So great to find high protein vegan food!!",
+        stars = 5,
     )
-    phosizzle_review_2 = Review(
+    review_4 = Review(
         id = 4,
         biz_id = 2,
         user_id = 3,
-        review = "review2 text for phosizzle!!!",
-        stars = 4,
+        review = "I think the fish was raw",
+        stars = 1,
     )
-    vegan_for_the_win_review_1 = Review(
+    review_5 = Review(
         id = 5,
         biz_id = 3,
         user_id = 1,
-        review = "review1 text for vegan for the win!!!",
-        stars = 5,
+        review = "Skimped on guac",
+        stars = 3,
     )
-    vegan_for_the_win_review_2 = Review(
+    review_6 = Review(
         id = 6,
         biz_id = 3,
         user_id = 2,
-        review = "review2 text for vegan for the win!!!",
-        stars = 4,
-    )
-    curry_shop_review_1 = Review(
-        id = 7,
-        biz_id = 4,
-        user_id = 2,
-        review = "review1 text for curry shop!!!",
+        review = "10/10. Best place ever!",
         stars = 5,
     )
-    curry_shop_review_2 = Review(
+    review_7 = Review(
+        id = 7,
+        biz_id = 4,
+        user_id = 1,
+        review = "Don't know how to pronounce the name but the food is great!",
+        stars = 4,
+    )
+    review_8 = Review(
         id = 8,
         biz_id = 4,
         user_id = 3,
-        review = "review2 text for curry shop!!!",
-        stars = 4,
+        review = "I SCREAM FOR ICE CREAM!!!",
+        stars = 5,
     )
 
 
-    db.session.add(soup_kitchen_review_1)
-    db.session.add(soup_kitchen_review_2)
-    db.session.add(phosizzle_review_1)
-    db.session.add(phosizzle_review_2)
-    db.session.add(vegan_for_the_win_review_1)
-    db.session.add(vegan_for_the_win_review_2)
-    db.session.add(curry_shop_review_1)
-    db.session.add(curry_shop_review_2)
+    db.session.add(review_1)
+    db.session.add(review_2)
+    db.session.add(review_3)
+    db.session.add(review_4)
+    db.session.add(review_5)
+    db.session.add(review_6)
+    db.session.add(review_7)
+    db.session.add(review_8)
     db.session.commit()
 
 
