@@ -16,6 +16,9 @@ config = context.config
 fileConfig(config.config_file_name)
 logger = logging.getLogger('alembic.env')
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get('SCHEMA')
 
 def get_engine():
     try:
@@ -95,9 +98,18 @@ def run_migrations_online():
             **current_app.extensions['migrate'].configure_args
         )
 
-        with context.begin_transaction():
-            context.run_migrations()
+        # with context.begin_transaction():
+        #     context.run_migrations()
 
+     # Create a schema (only in production)
+        if environment == "production":
+            connection.execute(f"CREATE SCHEMA IF NOT EXISTS {SCHEMA}")
+
+        # Set search path to your schema (only in production)
+        with context.begin_transaction():
+            if environment == "production":
+                context.execute(f"SET search_path TO {SCHEMA}")
+            context.run_migrations()
 
 if context.is_offline_mode():
     run_migrations_offline()
