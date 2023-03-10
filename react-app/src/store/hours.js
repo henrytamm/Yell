@@ -30,7 +30,7 @@ export const getOneHours = (bizId) => async (dispatch) => {
 
 export const createHours = (payload, bizId) => async (dispatch) => {
 
-  const res = await fetch(`/api/biz/${bizId}/hours/edit`, {
+  const res = await fetch(`/api/biz/${bizId}/hours`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
