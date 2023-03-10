@@ -112,8 +112,8 @@ def seed_review_images():
 def undo_seed_review_images():
     if environment == "production":
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.reviewImages RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.review_images RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM reviewImages")
+        db.session.execute("DELETE FROM review_images")
 
     db.session.commit()

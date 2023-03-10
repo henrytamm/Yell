@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from sqlalchemy.sql import func
 
 class BusinessImage(db.Model):
-    __tablename__ = 'businessImages'
+    __tablename__ = 'business_images'
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
