@@ -3,20 +3,30 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getAllSearchCategory } from '../../store/search';
 import { useHistory } from 'react-router-dom';
 import "./SearchBar.css"
+import { getSearchBizes } from '../../store/searchBiz.js';
 
 const SearchBar = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [recommendations, setRecommendations] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory()
+    const biz = useSelector((state) => state.searchBizReducer)
+    const bizArr = biz ? Object.values(biz) : null;
 
     useEffect(() => {
         dispatch(getAllSearchCategory())
+        dispatch(getSearchBizes())
     }, [dispatch]);
 
     let categories = useSelector(state => state.searchCategoryReducer);
     let categoriesArr = Object.values(categories);
     let categoryId = 0
+    let bizId = 0
+    let bizIdArr = []
+
+    for (let x = 0; x < bizArr.length; x++) {
+        if (bizArr[x].name === searchTerm) bizId = bizArr[x].id
+    }
 
     for (let x = 0; x < categoriesArr.length; x++) {
         if (categoriesArr[x].name === searchTerm) categoryId = categoriesArr[x].id
@@ -24,6 +34,10 @@ const SearchBar = () => {
 
     let categoryNamesArr = categoriesArr.map(category => category.name)
     categoryNamesArr.push('open')
+    for (let x = 0; x < bizArr.length; x++){
+        categoryNamesArr.push(bizArr[x].name)
+        bizIdArr.push(bizArr[x].id)
+    }
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -39,7 +53,11 @@ const SearchBar = () => {
 
     const handleSubmit = (event) => {
         // event.preventDefault()
-        if (searchTerm.toLowerCase() === 'open') return history.push(`/search/open`)
+        if (searchTerm.toLowerCase() === 'open') {
+            return history.push(`/search/open`)
+        } else if (bizIdArr.includes(bizId)){
+            return history.push(`/biz/${bizId}`)
+        }
         return history.push(`/categories/${categoryId}`)
     }
 
