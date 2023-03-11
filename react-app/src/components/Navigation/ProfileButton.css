@@ -18,9 +18,9 @@
     background-color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 15px;
-    border: 1px solid tomato;
+    border: none;
     border-radius: 10px;
-    color: tomato
+    margin-left: 5px;
 }
 
 .log-out:hover{
@@ -44,3 +44,29 @@
     padding: 3px 3px 3px 10px;
     color: black
 }
+
+
+.log-in-btn{
+    cursor: pointer;
+    padding: 12px;
+    width: 150px;
+    background-color: white;
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.sign-up-btn{
+    cursor: pointer;
+    padding: 12px;
+    width: 150px;
+    background-color: white;
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
