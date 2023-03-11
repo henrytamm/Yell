@@ -6,6 +6,7 @@ import { getBizes } from "../../store/biz"
 import { useDispatch } from "react-redux";
 import { getAllCategory } from "../../store/categories";
 import "./Homepage.css"
+import Footer from '../Footer/Footer';
 
 function Homepage(bizes) {
     const dispatch = useDispatch();
@@ -90,6 +91,7 @@ function Homepage(bizes) {
                         </div>
                     </NavLink>
                 </div>
+                <Footer/>
             </div>
         </>
     )
