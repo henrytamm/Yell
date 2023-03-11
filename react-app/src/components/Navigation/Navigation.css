@@ -1,11 +1,3 @@
-.profile-dropdown {
-  position: absolute;
-  box-shadow: 0 0 10px rgba(190, 190, 190, 0.7);
-  background-color: white;
-  margin-left: -30px;
-  border-radius: 5px;
-}
-
 nav {
   display: flex;
   justify-content: space-around;
@@ -38,5 +30,9 @@ nav {
 .logo-container {
   display: flex;
   float: left;
-  padding-left: 150px;
+}
+
+.create-biz-button{
+  color: red;
+  margin-right: 50px;
 }

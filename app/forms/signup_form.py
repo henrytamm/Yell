@@ -26,5 +26,8 @@ class SignUpForm(FlaskForm):
     last_name = StringField('Last Name', validators=[DataRequired(), Length(min=2)])
     email = StringField('Email', validators=[DataRequired(), user_exists, Email()])
     password = StringField('Password', validators=[DataRequired(), Length(min=6)])
-    zipcode = IntegerField('Zip Code', validators=[DataRequired(), Length(min=5)])
+    zip_code = IntegerField('Zip Code', validators=[DataRequired()])
     user_picture_url = StringField('Password', validators=[DataRequired(), URL(require_tld=True)])
+
+    # class Meta:
+    #     csrf=False

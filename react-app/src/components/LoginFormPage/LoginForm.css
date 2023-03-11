@@ -1,0 +1,100 @@
+
+.login-button {
+    cursor: pointer;
+    width: 260px;
+    height: 40px;
+    border: none;
+    margin-top: 20px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.demo-btn {
+    cursor: pointer;
+    width: 260px;
+    height: 40px;
+    border: none;
+    margin-top: 5px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-input {
+    width: 250px;
+    height: 25px;
+    margin: 4px;
+    border: 1px solid #bababa;
+    border-radius: 5px;
+    background-color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 5px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: center;
+    max-width: 260px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-form-container {
+    display: flex;
+    margin-top:100px;
+    padding: 10px;
+    justify-content: center;
+}
+
+
+.login-header {
+    color: red;
+    font-size: 20px;
+    margin-left:-10px;
+}
+
+.signup-container {
+    display: flex;
+    align-items: center;
+}
+
+
+.signup-link {
+    font-size: 15px;
+    font-weight: 600;
+    margin-left:-10px;
+    margin-top:-10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.signup-btn {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top:-24px;
+    margin-left: 5px;
+    color: rgb(97, 138, 241);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.login-or {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 20px;
+}
+
+.or-line {
+    height: 3px;
+    width: 90px;
+    background-color: rgb(141, 133, 133)
+}
+
+.error-container{
+    margin-top: 15px;
+    color: red;
+    font-weight: 400;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

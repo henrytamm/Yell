@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import './LoginForm.css';
+import { NavLink } from "react-router-dom";
+import * as sessionActions from "../../store/session";
+import "./LoginForm.css";
 
 function LoginFormPage() {
   const dispatch = useDispatch();
@@ -21,37 +23,64 @@ function LoginFormPage() {
     }
   };
 
+  const handleSubmitDemo = (e) => {
+    e.preventDefault();
+    <Redirect to="/" />;
+    return dispatch(sessionActions.demoLoginThunk());
+  };
+
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
+      <div className="login-form-container">
+        <form className="login-form" onSubmit={handleSubmit}>
+            <div>
+              <h2 className="login-header">Log in to Yell</h2>
+            </div>
+            <div className="signup-container">
+              <p className="signup-link"> New to Yell?</p>
+              <NavLink className="signup-btn" to="/signup">
+                Sign Up
+              </NavLink>
+            </div>
+          <div className="email-container">
+            <label>
+            <input className="login-input"
+                type="text"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
+          </div>
+          <div className="password-container">
+            <input className="login-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button className="login-button" type="submit">
+            Log In
+          </button>
+          <h3 className="login-or">
+            <p className="or-line"></p>
+            <p className="or-label">OR</p>
+            <p className="or-line"></p>
+          </h3>
+          <div className="demo-user-container">
+            <button onClick={handleSubmitDemo} className="demo-btn">
+              Demo User
+            </button>
+          </div>
+          <div className="error-container">
+            {errors.map((error, idx) => (
+              <div key={idx}>{error}</div>
+            ))}
+          </div>
+        </form>
+      </div>
     </>
   );
 }
-
 export default LoginFormPage;

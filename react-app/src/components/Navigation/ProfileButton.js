@@ -1,92 +1,75 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
-import { Redirect } from "react-router-dom";
-import * as sessionActions from '../../store/session';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { NavLink, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import './Navigation.css';
+import { useSelector } from "react-redux";
+import * as sessionActions from '../../store/session';
+import "./ProfileButton.css"
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
-  const ulRef = useRef();
-
+  const history = useHistory();
+  
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
-
+  
   useEffect(() => {
     if (!showMenu) return;
 
     const closeMenu = () => {
-        setShowMenu(false);
+      setShowMenu(false);
     };
 
-    document.addEventListener("click", closeMenu);
-
+    document.addEventListener('click', closeMenu);
+  
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
-  const handleLogout = (e) => {
+  const logout = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(sessionActions.logout());
+    history.push('/')
   };
-
-  // const handleSubmitDemo = (e) => {
-  //   e.preventDefault();
-  //   <Redirect to="/" />
-  //   return dispatch(sessionActions.demoLoginThunk())
-  // }
-
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
-  const closeMenu = () => setShowMenu(false);
 
   return (
     <>
       <button onClick={openMenu}>
-      <i class="fa-solid fa-user"></i>
+        <i class="fa-solid fa-user"></i>
       </button>
-      <ul className={ulClassName} ref={ulRef}>
-        {user ? (
-          <>
-            <li><Link to={`/users/${user.id}`}>
-                  About Me
-              </Link>
+      {showMenu && (
+        <ul className="profile-dropdown">
+          <li>
+            {sessionUser && <Link to ={`/users/${user.id}`}>
+            <i class="fa-solid fa-id-card"></i>
+              About Me
+            </Link>}
+          </li>
+          <li> 
+          {sessionUser && <Link to='/biz/new' className="create-spot-button">
+          <i class="fa-regular fa-plus"></i>
+            Create your Business!
+            </Link>}
             </li>
-            <li>{user.email}</li>
-            <p><Link to='/biz/new' className="create-biz-button">
-            <i class="fa-solid fa-plus" style={{width:20}}></i>
-            Create your business!
-              </Link></p>
-            <li>
-              <button onClick={handleLogout}>Log Out</button>
-            </li>
-          </>
-        ) : (
-          <>
-            <OpenModalButton
-              buttonText="Log In"
-              onItemClick={closeMenu}
-              modalComponent={<LoginFormModal />}
-            />
+          <li>
+            {sessionUser && <button className='log-out' onClick={logout}>Log Out</button>}
+          </li>
 
-            <OpenModalButton
-              buttonText="Sign Up"
-              onItemClick={closeMenu}
-              modalComponent={<SignupFormModal />}
-            />
-          </>
-        )}
-      </ul>
-      {/* <form onSubmit={handleSubmitDemo}>
-        <button>
-          Demo Login
-        </button>
-      </form> */}
+          <li>
+            {!sessionUser && <button className="log-in-btn">
+            <NavLink to='/login'>Log In</NavLink>
+              </button>}
+          </li>
+          <li>
+            {!sessionUser && <button className="log-in-btn">
+            <NavLink to='/signup'>Sign Up</NavLink>
+              </button>}
+          </li>
+        </ul>
+      )}
     </>
   );
 }
