@@ -9,19 +9,19 @@ export const ReviewList = () => {
     const bizId = useParams()
     const [isLoaded, setisLoaded] = useState(false);
 
-    
+
     const bizReviewObj = useSelector(state => state?.reviewsReducer)
     const bizReviews = Object.values(bizReviewObj)
     useEffect(() => {
         dispatch(allReviewsByBizId(bizId)).then(() => setisLoaded(true))
     }, [dispatch, bizReviewObj])
-    
+
 
 
     return (
         <>
-            <div> 
-            {
+            <div>
+            {bizReviewObj &&
                 bizReviews.map(review => {
                     {
                         return <div>

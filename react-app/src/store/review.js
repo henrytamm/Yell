@@ -49,7 +49,7 @@ export const allReviewsByBizId = (bizId) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(getReviews(data));
-        return {...data}
+        return { ...data }
     }
 }
 
@@ -108,21 +108,21 @@ export const editReviewThunk = (reviewEdit) => async (dispatch) => {
 
 //DELETE A REVIEW THUNK
 export const deletedReview = (bizId, reviewId) => async (dispatch) => {
-   const response = await fetch(`/api/biz/${bizId}/reviews/${reviewId}`, {
+    const response = await fetch(`/api/biz/${bizId}/reviews/${reviewId}`, {
         method: 'DELETE',
-   });
+    });
 
-   if (response.ok) {
-    dispatch(deleteReview(reviewId))
-   }
+    if (response.ok) {
+        dispatch(deleteReview(reviewId))
+    }
 }
 
 
 const initialState = {}
 
 export const reviewsReducer = (state = initialState, action) => {
-    let newState = {...state}
-    switch(action.type) {
+    let newState = { ...state }
+    switch (action.type) {
         case GET_REVIEWS:
             newState = {}
             action.reviews?.reviews.forEach(review => {

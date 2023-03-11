@@ -26,14 +26,20 @@ const CreateReviewForm = () => {
 
         dispatch(createReview(newReview))
             .then(async (data) => {
-                if (data.ok) {
+                if (data.ok===false) {
+                    // window.alert(`Review successfully created!`)
+                    // setReview('')
+                    // setStars(0)
+                    // setErrors([])
+                    const dataErr = await data.json()
+                    setErrors(dataErr.errors)
+                } else {
+                    // const dataErr = await data.json()
+                    // setErrors(dataErr.errors)
                     window.alert(`Review successfully created!`)
                     setReview('')
                     setStars(0)
                     setErrors([])
-                } else {
-                    const dataErr = await data.json()
-                    setErrors(dataErr.errors)
                 }
             })
     }
