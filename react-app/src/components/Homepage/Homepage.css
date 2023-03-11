@@ -19,16 +19,11 @@
 
 .categories-container{
     display: flex;
-    /* grid-template-columns:25% 25% 25% 25%; */
-    /* justify-items: center; */
-    /* text-decoration: none; */
     flex-wrap: wrap;
     flex-direction: row;
-    /* column-gap: 200px; */
     padding-left: 210px;
     padding-right: 210px;
     justify-content: space-between;
-    
 }
 
 .categories-card-container:hover{
@@ -56,7 +51,7 @@ a:link{
 }
 
 .biz-card-container{
-    display: flex;
+    display: grid;
     grid-template-columns: 45% 45%;
     margin-bottom: 25px;
     justify-content: center;
@@ -90,4 +85,3 @@ a:link{
     display: flex;
     justify-content: center;
 }
-
