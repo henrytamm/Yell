@@ -31,7 +31,7 @@ const BizHoursCard = () => {
     console.log(todayStr)
     console.log(hours)
     for (let key in hours) {
-        console.log(`${key}: ${hours.key}`)
+        console.log( hours.key.includes(todayStr))
     }
 
     return (
