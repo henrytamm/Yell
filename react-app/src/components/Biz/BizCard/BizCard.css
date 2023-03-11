@@ -19,19 +19,20 @@
 }
 
 .biz-desc{
-    padding-left: 10px;
+    padding-left: 20px;
     font-weight: 800;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .biz-desc-2{
-    padding-left: 10px;
+    padding-left: 20px;
     font-weight: 300;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .biz-desc-container{
     box-sizing: border-box;
-    border: 1px solid gainsboro
+    border: 1px solid gainsboro;
+    padding-left: 15px
 }
 .biz-location{
     padding-left: 10px;
@@ -44,6 +45,7 @@
     border: 1px solid gainsboro;
     margin-bottom: 15px;
     margin-top: 15px;
+    margin-left: 10px;
 }
 
 .biz-address{
@@ -60,10 +62,40 @@
     position:relative
 }
 
-.biz-hours{
-    display: flex;
-    margin-left: 1050px;
-    margin-top: -420px;
+.edit-biz-btn{
+    cursor: pointer;
+    padding: 12px;
+    width: 150px;
+    background-color: red;
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px; 
+    margin-bottom: 20px;
 }
 
+.delete-biz-btn{
+    cursor: pointer;
+    padding: 12px;
+    width: 150px;
+    background-color: red;
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px; 
+}
 
+.map-n-hours{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 10px;
+
+}
+
+.biz-hours{
+    margin-left: 100px;
+    padding: 10px;
+}

@@ -10,14 +10,14 @@ const BizByCategoryCard = ({ biz }) => {
       <NavLink className='biz-name' to={`/biz/${biz.biz_id}`}>
         {biz.name}
       </NavLink>
-      <div>Description: {biz.description}</div>
-      <div>Owner Id: {biz.owner_id}</div>
-      <div>Address: {biz.address}</div>
-      <div>City: {biz.city}</div>
-      <div>State: {biz.state}</div>
-      <div>Country: {biz.country}</div>
-      <div>Latitude: {biz.lat}</div>
-      <div>Longitude: {biz.lng}</div>
+      <div className='biz-details-category-card'>Description: {biz.description}</div>
+      <div className='biz-details-category-card'>Owner Id: {biz.owner_id}</div>
+      <div className='biz-details-category-card'>Address: {biz.address}</div>
+      <div className='biz-details-category-card'>City: {biz.city}</div>
+      <div className='biz-details-category-card'>State: {biz.state}</div>
+      <div className='biz-details-category-card'>Country: {biz.country}</div>
+      <div className='biz-details-category-card'>Latitude: {biz.lat}</div>
+      <div className='biz-details-category-card'>Longitude: {biz.lng}</div>
     </div>
   )
 }

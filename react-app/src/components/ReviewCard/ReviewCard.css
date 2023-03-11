@@ -46,3 +46,29 @@
     margin-top:15px;
     margin-bottom:15px
 }
+
+.edit-review-button{
+    cursor: pointer;
+    width: 150x;
+    height: 20px;
+    border: none;
+    margin-top: 20px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-right: 20px
+}
+
+.delete-review-button{
+    cursor: pointer;
+    width: 150x;
+    height: 20px;
+    border: none;
+    margin-top: 20px;
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-right: 20px
+}

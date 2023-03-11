@@ -4,6 +4,7 @@ import { useHistory, useParams, Link, Redirect } from "react-router-dom";
 import { useEffect } from "react";
 import { editBiz, getOneBiz } from "../../store/biz";
 import { getAllCategory } from "../../store/categories";
+import { NavLink } from "react-router-dom";
 import "./BizForm.css"
 
 const EditBizForm = () => {
@@ -140,7 +141,7 @@ const EditBizForm = () => {
         </label>
 
         <label className='create-biz-label'>
-          Latitiude
+          Latitude
           <input
             type="number"
             step='0.00001'
@@ -163,7 +164,8 @@ const EditBizForm = () => {
 
         <label className='create-biz-label'>
           Description
-          <input
+          <textarea
+            rows={15}
             type="text"
             // value={this?.description}
             defaultValue={description}
@@ -201,9 +203,7 @@ const EditBizForm = () => {
             {bizCategories.map((category, idx) => <li key={idx}>{category}</li>)}
           </ul>
           <select
-            // value={biz?.category}
             defaultValue={oldCategory}
-            // multiple={true}
             onChange={(e) => setoldCategory(e.target.value)}
           >
             <option value={'default'}>Pick your category</option>
@@ -212,10 +212,14 @@ const EditBizForm = () => {
             ))}
           </select>
         </label>
-
-        <button className="submitButton" type="submit">
-          Update Spot
-        </button>
+        <div className="btn-container">
+            <NavLink to={`/biz/${biz.id}`}>
+              <button className="cancel-btn">Cancel</button>
+            </NavLink>
+            <button className="create-btn" type="submit">
+              Save Changes
+            </button>
+          </div>
       </form>
     </div>
   );

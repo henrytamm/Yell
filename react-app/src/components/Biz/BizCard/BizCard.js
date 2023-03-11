@@ -37,8 +37,7 @@ const BizCard = () => {
     <>
       <div className="biz-top-container">
         <img className="biz-image" src={biz?.previewImage}></img>
-        <p className="biz-hours"><BizHoursCard/></p>
-        <div>
+        <div className="biz-information-container">
         <h1 className="biz-name">{biz?.name}</h1>
 
         <div className="biz-desc-container">
@@ -53,15 +52,18 @@ const BizCard = () => {
         </div>
 
         </div>
-        <div>
-        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={editBizHandler}>
-            Edit Business Details
+        <div className="edit-biz-btn-container">
+        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-biz-btn" onClick={editBizHandler}>
+            Edit Business Info
         </button>}
-        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-and-delete-button" onClick={deleteBizHandler}>
+        {(sessionUser && biz.ownerId === sessionUser.id) && <button className="delete-biz-btn" onClick={deleteBizHandler}>
             Delete Business
         </button>}
         </div>
+        <div className="map-n-hours">
         <MyContainer biz={biz}/>
+        <p className="biz-hours"><BizHoursCard/></p>
+        </div>
       </div>
     </>
   );
