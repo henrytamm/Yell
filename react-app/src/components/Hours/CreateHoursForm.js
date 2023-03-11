@@ -83,7 +83,7 @@ const CreateHoursForm = () => {
       <div>Create Hours for your Business
         <form method="POST" onSubmit={handleSubmit} className='create-hours-form-container'>
           <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {errors && errors.length > 0 && errors.map((error, idx) => <li key={idx}>{error}</li>)}
           </ul>
           <label className='create-hours-label'>Monday Open:
             <input
