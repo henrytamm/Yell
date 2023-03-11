@@ -2,17 +2,16 @@
 Yell is our attempt at creating a Yelp Clone which allows users to create a business page containing information about their business as well as the ability to review other's businesses.
 
 ### Screenshots
+##### Login Page
 ![Login]
-
-
-[Sign up]: <img width="1226" alt="Screen Shot 2023-03-11 at 3 37 52 PM" src="https://user-images.githubusercontent.com/102117347/224516384-305f8546-421a-4959-a2bc-5b72a9ea76cb.png">
-
-[Homepage]: <img width="1435" alt="Screen Shot 2023-03-11 at 3 38 23 PM" src="https://user-images.githubusercontent.com/102117347/224516406-842a33a4-1215-4ec7-8efd-59a3ef796bec.png">
-
-[Business Page + Google Map API]: <img width="1170" alt="Screen Shot 2023-03-11 at 3 39 21 PM" src="https://user-images.githubusercontent.com/102117347/224516444-7dbca847-3cb3-44b8-ac1e-d3ec3c081ad3.png">
-
+##### Signup Page
+![Signup]
+##### Business Page
+![BusinessPage]
 
 [Login]: Login.png
+[Signup]: Signup.png
+[BusinessPage]: BusinessPage.png
 
 
 
