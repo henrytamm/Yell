@@ -86,7 +86,7 @@ export const createReview = (newReview) => async (dispatch) => {
 //EDIT A REVIEW THUNK
 export const editReviewThunk = (reviewEdit) => async (dispatch) => {
     const { bizId, reviewId, review, stars } = reviewEdit
-    console.log('bizId, reviewId', bizId, reviewId);
+    // console.log('bizId, reviewId', bizId, reviewId);
     const response = await fetch(`/api/biz/${bizId}/reviews/${reviewId}`, {
         method: 'PUT',
         headers: {

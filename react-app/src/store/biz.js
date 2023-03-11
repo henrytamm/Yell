@@ -48,7 +48,7 @@ export const getOneBiz = (bizId) => async (dispatch) => {
 };
 
 export const createBiz = (payload) => async (dispatch) => {
-  console.log("create biz", payload);
+  // console.log("create biz", payload);
   const res = await fetch("/api/biz/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -58,14 +58,14 @@ export const createBiz = (payload) => async (dispatch) => {
   if (res.ok) {
     const biz = await res.json();
     dispatch(createBizAction(biz));
-    console.log('printing biz from thunk', biz)
+    // console.log('printing biz from thunk', biz)
     return biz;
   }
   return res
 };
 
 export const editBiz = (payload, bizId) => async (dispatch) => {
-  console.log('payload from editbiz thunk', payload)
+  // console.log('payload from editbiz thunk', payload)
   const res = await fetch(`/api/biz/${bizId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
@@ -81,7 +81,7 @@ export const editBiz = (payload, bizId) => async (dispatch) => {
 };
 
 export const removeBiz = (bizId) => async (dispatch) => {
-  console.log('this is bizid', bizId)
+  // console.log('this is bizid', bizId)
   const res = await fetch(`/api/biz/${bizId}`, {
     method: "DELETE",
   });

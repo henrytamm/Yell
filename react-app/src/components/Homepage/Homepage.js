@@ -11,7 +11,7 @@ function Homepage(bizes) {
     const dispatch = useDispatch();
     const biz = useSelector((state) => state.bizReducer)
     const bizArr = biz ? Object.values(biz) : null;
-    console.log('biz in an array', bizArr)
+    // console.log('biz in an array', bizArr)
 
     const categories = useSelector((state) => state.categoryReducer)
     const categoriesArr = categories ? Object.values(categories) : null
