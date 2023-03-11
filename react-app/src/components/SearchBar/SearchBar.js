@@ -39,22 +39,26 @@ const SearchBar = () => {
 
     const handleSubmit = (event) => {
         // event.preventDefault()
-        if(searchTerm.toLowerCase() === 'open') return history.push(`/search/open`)
+        if (searchTerm.toLowerCase() === 'open') return history.push(`/search/open`)
         return history.push(`/categories/${categoryId}`)
+    }
+
+    const handleSearch = (recommendation) => {
+        setSearchTerm(recommendation)
     }
 
     return (
 
         <form onSubmit={handleSubmit}>
-            <input className='search-bar' placeholder='Search...'type="text" value={searchTerm} onChange={handleInputChange} />
+            <input className='search-bar' placeholder='Search...' type="text" value={searchTerm} onChange={handleInputChange} />
             <button type="submit" className='search-bar-button'>
-            <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-magnifying-glass"></i>
             </button>
             <div className='search-list'>
-            {recommendations.map((recommendation, index) => (
-                <p key={index}>{recommendation}</p>
+                {recommendations.map((recommendation, index) => (
+                    <div className='search-entry' key={index} onClick={() => handleSearch(recommendation)}>{recommendation}</div>
                 ))}
-                </div>
+            </div>
         </form>
 
     );

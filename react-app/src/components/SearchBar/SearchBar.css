@@ -17,6 +17,10 @@
     text-align: center
 }
 
+.search-entry:hover{
+    background-color: red;
+}
+
 .search-list{
     position: absolute;
     background-color: white;
