@@ -3,6 +3,7 @@ import { editHours, getOneHours } from "../../store/hours";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams, Redirect } from "react-router-dom";
+import "./HoursForm.css"
 
 
 const EditHoursForm = () => {
@@ -94,7 +95,10 @@ const EditHoursForm = () => {
 
   return (
     <>
-      <div>Edit Hours for your Business
+      <div>
+        <h1 className="edit-hours-header">
+        Edit when your business is open!
+          </h1>
         <form method="POST" onSubmit={handleSubmit} className='create-hours-form-container'>
           <ul>
             {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -211,7 +215,7 @@ const EditHoursForm = () => {
               onChange={(e) => setSundayClose(e.target.value)}
             />
           </label>
-          <button type="submit">Edit Hours</button>
+          <button className="edit-hours-submit" type="submit">Confirm</button>
         </form>
       </div>
     </>

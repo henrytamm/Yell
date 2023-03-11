@@ -26,8 +26,8 @@ input{
 }
 
 .btn-container{
-   margin-top:30px;
-   margin-left: 280px
+    display: flex;
+    justify-content: center;
 }
 
 .create-btn{

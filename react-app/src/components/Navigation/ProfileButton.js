@@ -55,7 +55,10 @@ function ProfileButton({ user }) {
             </Link>}
             </li>
           <li>
-            {sessionUser && <button className='log-out' onClick={logout}>Log Out</button>}
+            {sessionUser && <button className='log-out' onClick={logout}>
+            <i class="fa-solid fa-right-from-bracket"></i>
+              Log Out
+            </button>}
           </li>
 
           <li>
@@ -64,7 +67,7 @@ function ProfileButton({ user }) {
               </button>}
           </li>
           <li>
-            {!sessionUser && <button className="log-in-btn">
+            {!sessionUser && <button className="sign-up-btn">
             <NavLink to='/signup'>Sign Up</NavLink>
               </button>}
           </li>
