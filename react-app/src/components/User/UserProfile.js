@@ -7,12 +7,10 @@ const UserProfile = () => {
     const history = useHistory()
 
     const user = useSelector(state => state?.session.user)
-    console.log(user)
 
     const userMonth = user.createdAt.split(' ')[2]
-    console.log('this is month', userMonth)
+
     const userYear = user.createdAt.split(' ')[3]
-    console.log('this is year', userYear)
 
     return (
         <>

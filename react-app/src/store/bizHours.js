@@ -7,12 +7,10 @@ const getBizHoursAction = (hours) => ({
 
 
 export const getBizHours = (bizId) => async (dispatch) => {
-    console.log('bizid fro getBizhours', bizId)
     const res = await fetch(`/api/biz/${bizId}/hours`);
     if (res.ok) {
         const hours = await res.json();
         dispatch(getBizHoursAction(hours));
-        console.log('printing hours', hours)
         return hours;
     }
     return res

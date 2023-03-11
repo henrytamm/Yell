@@ -39,7 +39,6 @@ export const createHours = (payload, bizId) => async (dispatch) => {
   if (res.ok) {
     const hours = await res.json();
     dispatch(createHoursAction(hours));
-    console.log('hours from thunk', hours)
     return hours
   }
 
@@ -70,7 +69,6 @@ export const hoursReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case GET_ONE_HOURS:
-      console.log('printing action', action)
       newState = { ...action.hours };
       return newState;
 

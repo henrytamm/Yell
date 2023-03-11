@@ -18,23 +18,9 @@ const BizPage = () => {
   const bizReviewsObj = useSelector((state) => state?.reviewsReducer)
   const sessionUser = useSelector(state => state.session.user)
 
-
-  // let isOwner;
-  // if (biz) {
-  //   isOwner = sessionUser.id == biz.id
-  // }
-
   const reviews = Object.values(bizReviewsObj)
-  //   console.log(reviews)
 
-
-  //   useEffect(() => {
-  //       dispatch(getBizes()).then(() => setIsLoaded(true));
-  //     }, [dispatch])
-
-  // console.log(biz)
   useEffect(() => {
-    // dispatch(getBizes())
     dispatch(getOneBiz(bizId));
     dispatch(allReviewsByBizId(bizId)).then(() => setIsLoaded(true));
   }, [dispatch]);
