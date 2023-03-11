@@ -32,10 +32,10 @@ const SearchBar = () => {
         if (categoriesArr[x].name === searchTerm) categoryId = categoriesArr[x].id
     }
 
-    let categoryNamesArr = categoriesArr.map(category => category.name)
-    categoryNamesArr.push('open')
+    let searchNamesArr = categoriesArr.map(category => category.name)
+    searchNamesArr.push('open')
     for (let x = 0; x < bizArr.length; x++){
-        categoryNamesArr.push(bizArr[x].name)
+        searchNamesArr.push(bizArr[x].name)
         bizIdArr.push(bizArr[x].id)
     }
 
@@ -45,7 +45,7 @@ const SearchBar = () => {
     };
 
     const getRecommendations = (searchTerm) => {
-        return categoryNamesArr.filter(
+        return searchNamesArr.filter(
             (recommendation) =>
                 recommendation.toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm !== ''
         );
