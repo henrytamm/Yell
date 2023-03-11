@@ -15,6 +15,24 @@ const BizHoursCard = () => {
         dispatch(getBizHours(bizId));
     }, [dispatch]);
 
+    const today = new Date();
+
+    let dayObj = {
+        1: "Monday",
+        2: "Tuesday",
+        3: "Wednesday",
+        4: "Thursday",
+        5: "Friday",
+        6: "Saturday",
+        7: "Sunday"
+    }
+
+    let todayStr = dayObj[`${today.getDay()}`];
+    console.log(todayStr)
+    console.log(hours)
+    for (let key in hours) {
+        console.log(`${key}: ${hours.key}`)
+    }
 
     return (
         <>
