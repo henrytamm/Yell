@@ -21,8 +21,11 @@ const BizPage = () => {
   const reviews = Object.values(bizReviewsObj)
 
   useEffect(() => {
-    dispatch(getOneBiz(bizId));
-    dispatch(allReviewsByBizId(bizId)).then(() => setIsLoaded(true));
+    dispatch(getOneBiz(bizId))
+    .then(()=>{
+      dispatch(allReviewsByBizId(bizId))
+    })
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   if (isLoaded && !biz.id) {
