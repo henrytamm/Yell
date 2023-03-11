@@ -1,42 +1,42 @@
 .profile-dropdown {
   position: absolute;
-  box-shadow:0 0 10px rgba(190, 190, 190, 0.7);
+  box-shadow: 0 0 10px rgba(190, 190, 190, 0.7);
   background-color: white;
-  margin-left: 30px;
-  border-radius: 20%;
+  margin-left: -30px;
+  border-radius: 5px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .hidden {
   display: none;
 }
 
-.home-button-container{
-  display: flex;
-  padding: 3px 3px 3px 10px;
-}
-
-.profile-button-container{
+.profile-button-container {
   display: flex;
   float: right;
-  margin-right:150px;
-  margin-top:20px
+  margin-top: 20px;
+  margin-left: 500px;
 }
 
 .demo-login-container {
+  position: absolute;
+  display: flex;
   float: right;
-  margin-top:20px
+  margin-top: 20px;
+  margin-left: 500px;
 }
 
-
-.search-bar-input{
-  overflow: auto;
+.search-bar-container {
+  position: absolute;
 }
 
-.logo-container{
+.logo-container {
+  display: flex;
   float: left;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  margin-right:30px
+  padding-left: 150px;
 }
-
