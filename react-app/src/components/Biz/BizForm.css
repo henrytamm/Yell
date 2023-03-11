@@ -9,4 +9,45 @@
     flex-direction: column;
     width: 500px;
     line-height: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 15px;
 }
+
+input{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.create-container{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.btn-container{
+   margin-top:30px;
+   margin-left: 280px
+}
+
+.create-btn{
+    cursor: pointer;
+    padding: 12px;
+    width: 150px;
+    background-color: red;
+    color: white;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+.cancel-btn{
+    padding: 12px;
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    cursor:pointer;
+    color:rgb(19, 17, 17);
+    font-size: 15px;
+}
+
