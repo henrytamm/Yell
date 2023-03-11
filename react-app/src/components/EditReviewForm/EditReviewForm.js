@@ -2,6 +2,7 @@ import { useParams, useHistory, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { editReviewThunk } from '../../store/review';
+import "./EditReviewForm.css"
 
 const EditReviewForm = () => {
     const { bizId, reviewId } = useParams();
@@ -39,31 +40,94 @@ const EditReviewForm = () => {
 
     }
 
+    const [starOne, setStarOne] = useState('fa-solid fa-star');
+    const [starTwo, setStarTwo] = useState('fa-solid fa-star');
+    const [starThree, setStarThree] = useState('fa-solid fa-star');
+    const [starFour, setStarFour] = useState('fa-solid fa-star');
+    const [starFive, setStarFive] = useState('fa-solid fa-star');
+
+    const handleStarOne = () => {
+        setStarOne('fa-solid fa-star');
+        setStarTwo('fa-regular fa-star');
+        setStarThree('fa-regular fa-star');
+        setStarFour('fa-regular fa-star');
+        setStarFive('fa-regular fa-star');
+        setStars(1);
+    }
+
+    const handleStarTwo = () => {
+        setStarOne('fa-solid fa-star');
+        setStarTwo('fa-solid fa-star');
+        setStarThree('fa-regular fa-star');
+        setStarFour('fa-regular fa-star');
+        setStarFive('fa-regular fa-star');
+        setStars(2);
+    }
+
+    const handleStarThree = () => {
+        setStarOne('fa-solid fa-star');
+        setStarTwo('fa-solid fa-star');
+        setStarThree('fa-solid fa-star');
+        setStarFour('fa-regular fa-star');
+        setStarFive('fa-regular fa-star');
+        setStars(3);
+    }
+
+    const handleStarFour = () => {
+        setStarOne('fa-solid fa-star');
+        setStarTwo('fa-solid fa-star');
+        setStarThree('fa-solid fa-star');
+        setStarFour('fa-solid fa-star');
+        setStarFive('fa-regular fa-star');
+        setStars(4);
+    }
+
+    const handleStarFive = () => {
+        setStarOne('fa-solid fa-star');
+        setStarTwo('fa-solid fa-star');
+        setStarThree('fa-solid fa-star');
+        setStarFour('fa-solid fa-star');
+        setStarFive('fa-solid fa-star');
+        setStars(5);
+    }
+
     if (!editedReview) {
         return <Redirect to='/' />
     }
+
+
 
     return (
         <>
             <h1>Edit Review Form</h1>
             <section>
-                <form onSubmit={handleSubmit}>
-                    <ul>
-                        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            <form onSubmit={handleSubmit}>
+                    <ul className='errors-container'>
+                        {errors && errors.length > 0 && errors.map((error, idx) => <li key={idx}>{error}</li>)}
                     </ul>
+
+                    <div className='review-container'>
+                    <div className='review-stars'>
+                    <i onClick={handleStarOne} className={starOne}></i>
+                    <i onClick={handleStarTwo} className={starTwo}></i>
+                    <i onClick={handleStarThree} className={starThree}></i>
+                    <i onClick={handleStarFour} className={starFour}></i>
+                    <i onClick={handleStarFive} className={starFive}></i>
+                    </div>
+                    <p>
+
                     <textarea
+                        rows={12}
+                        cols={40}
                         type='text'
-                        placeholder='Edit Review'
+                        placeholder='Add Review'
                         value={review}
                         onChange={e => setReview(e.target.value)}
-                    />
-                    <input
-                        type='number'
-                        placeholder='Stars'
-                        value={stars}
-                        onChange={e => setStars(e.target.value)}
-                    />
-                    <button type='submit'>Edit Review</button>
+                        />
+                    </p>
+                    </div>
+
+                    <button className='submit-btn'type='submit'>Edit Review</button>
                 </form>
             </section>
         </>

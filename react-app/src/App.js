@@ -64,8 +64,8 @@ function App() {
             <UserProfile />
           </Route>
           <Route exact path="/categories/:categoryId">
-            <CategoryList />
             <BizByCategoryList />
+            <CategoryList />
           </Route>
           <Route exact path="/search/open">
             <OpenBizList />

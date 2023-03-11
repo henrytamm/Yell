@@ -1,5 +1,6 @@
 .search-bar{
     width: 250px;
+    height: 25px;
     padding: 0px 10px;
     overflow:auto;
     cursor: text;
@@ -9,12 +10,18 @@
     font-weight: 200;
     margin-left: 90px;
     margin-top: 20px;
+    margin-right: 2px;
 }
 
-.search-btn{
+.search-bar-button{
     /* border: none; */
     box-sizing: border-box;
-    text-align: center
+    text-align: center;
+    background-color: rgb(200, 0, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 10%;
+    width: 30px;
+    height: 30px
 }
 
 .search-entry:hover{
@@ -32,3 +39,4 @@
     width: 255px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+

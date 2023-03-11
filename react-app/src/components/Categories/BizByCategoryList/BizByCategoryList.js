@@ -19,7 +19,7 @@ const BizByCategoryList = () => {
   let bizesArr = Object.values(bizes);
 
   if (bizesArr.length == 0) {
-    return "No businesses in that category"
+    return <h1 className='error-msg'>No businesses in that category</h1>
   }
 
   let categoryName;
