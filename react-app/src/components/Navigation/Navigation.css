@@ -10,9 +10,8 @@ nav {
 
 .profile-button-container {
   display: flex;
-  float: right;
-  margin-top: 20px;
   margin-left: 500px;
+
 }
 
 .demo-login-container {

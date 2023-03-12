@@ -36,12 +36,16 @@ const BizCard = () => {
   return (
     <>
       <div className="biz-top-container">
+      <div className="map-n-hours">
+        <MyContainer biz={biz}/>
+        <p className="biz-hours"><BizHoursCard/></p>
+        </div>
         <img className="biz-image" src={biz?.previewImage}></img>
         <div className="biz-information-container">
         <h1 className="biz-name">{biz?.name}</h1>
 
         <div className="biz-desc-container">
-        <h2 className="biz-desc">About the business </h2>
+        <h2 className="biz-desc">About the Business </h2>
         <h2 className="biz-desc-2">{biz?.description}</h2>
         </div>
 

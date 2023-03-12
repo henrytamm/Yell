@@ -5,7 +5,6 @@
     overflow:auto;
     cursor: text;
     box-shadow: 0 0 10px rgba(142, 142, 142, 0.5);
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 16px;
     font-weight: 200;
     margin-left: 90px;
@@ -37,6 +36,5 @@
     border-radius: 5px;
     padding-left:7px;
     width: 255px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 

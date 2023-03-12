@@ -5,7 +5,6 @@
 
 .category-card-container{
     text-transform: lowercase;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     color:black;
     border: 1px solid gainsboro;
@@ -45,17 +44,14 @@ a:link{
 }
 
 .category-name-container {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
     text-decoration: none;
 }
 
 .biz-card-container{
     display: flex;
-    grid-template-columns: 45% 45%;
     margin-bottom: 25px;
     justify-content: center;
-    justify-items: center;
     flex-wrap:wrap
 }
 
@@ -69,16 +65,17 @@ a:link{
     border: 1px solid gainsboro
 }
 
+
 .biz-img{
     object-fit: cover;
     width: 200px;
-    height: 130px;
+    height: 190px;
+    border-radius: 4px;
 }
 
 .biz-name{
-    overflow: visible;
-    flex-wrap: wrap;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 15px;
+    margin-top: -20px;
 }
 
 .biz-title{
