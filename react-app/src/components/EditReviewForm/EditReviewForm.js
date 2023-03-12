@@ -40,11 +40,11 @@ const EditReviewForm = () => {
 
     }
 
-    const [starOne, setStarOne] = useState('fa-solid fa-star');
-    const [starTwo, setStarTwo] = useState('fa-solid fa-star');
-    const [starThree, setStarThree] = useState('fa-solid fa-star');
-    const [starFour, setStarFour] = useState('fa-solid fa-star');
-    const [starFive, setStarFive] = useState('fa-solid fa-star');
+    const [starOne, setStarOne] = useState('fa-regular fa-star');
+    const [starTwo, setStarTwo] = useState('fa-regular fa-star');
+    const [starThree, setStarThree] = useState('fa-regular fa-star');
+    const [starFour, setStarFour] = useState('fa-regular fa-star');
+    const [starFive, setStarFive] = useState('fa-regular fa-star');
 
     const handleStarOne = () => {
         setStarOne('fa-solid fa-star');
@@ -99,7 +99,7 @@ const EditReviewForm = () => {
 
     return (
         <>
-            <h1>Edit Review Form</h1>
+            <h1 className='edit-review-header'>Edit Review Form</h1>
             <section>
             <form onSubmit={handleSubmit}>
                     <ul className='errors-container'>

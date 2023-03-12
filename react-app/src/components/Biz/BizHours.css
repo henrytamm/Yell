@@ -1,3 +1,10 @@
 .operating-hours{
-    font-size: small
+    font-size: small;
+    margin-bottom: -10px;
+}
+
+.open-label{
+    color: rgb(61, 172, 61);
+    padding-left: 5px;
+    font-style: italic;
 }

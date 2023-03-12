@@ -116,8 +116,9 @@ const CreateReviewForm = () => {
                     <p>
 
                     <textarea
-                        rows={12}
-                        cols={40}
+                        style={{borderRadius:"5px"}}
+                        rows={10}
+                        cols={53}
                         type='text'
                         placeholder='Add Review'
                         value={review}
@@ -125,8 +126,10 @@ const CreateReviewForm = () => {
                         />
                     </p>
                     </div>
-
-                    <button className='submit-btn'type='submit'>Add Review</button>
+                    <button className='submit-btn'type='submit'>
+                    <i class="fa-solid fa-star" style={{paddingRight:"5px"}}></i>
+                        Submit Review
+                        </button>
                 </form>
             </section>
         </>

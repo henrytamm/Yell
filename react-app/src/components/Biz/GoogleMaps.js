@@ -2,10 +2,10 @@ import React from 'react'
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '500px',
-  height: '400px',
-  border: "thin solid",
-  padding: "10px"
+  width: '300px',
+  height: '250px',
+  padding: "10px",
+  borderRadius: "10px",
 };
 
 function MyComponent({biz}) {
@@ -16,7 +16,7 @@ function MyComponent({biz}) {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{lat: biz.lat, lng: biz.lng}}
-        zoom={15}
+        zoom={18}
       >
         { /* Child components, such as markers, info windows, etc. */ }
         <>

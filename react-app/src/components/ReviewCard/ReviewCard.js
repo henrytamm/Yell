@@ -32,8 +32,12 @@ const ReviewCard = ({review}) => {
             <i class="fa-sharp fa-solid fa-star"></i>
                 {review.stars}
             <div className="edit-del-btn">
-            {(sessionUser && review.userId === sessionUser.id) && <button className="edit-review-button" onClick={editedReviewInfo}>Edit Review</button>}
-            {(sessionUser && review.userId === sessionUser.id) && <button className="delete-review-button" onClick={deleteButton}>Delete Review</button>}
+            {(sessionUser && review.userId === sessionUser.id) && <button className="edit-review-button" onClick={editedReviewInfo}>
+            <i class="fa-solid fa-pencil" style={{paddingRight:"5px"}}></i>
+                Edit Review</button>}
+            {(sessionUser && review.userId === sessionUser.id) && <button className="delete-review-button" onClick={deleteButton}>
+            <i class="fa-solid fa-x" style={{paddingRight:"5px"}}></i>
+                Delete Review</button>}
             </div>
             </div>
             </div>

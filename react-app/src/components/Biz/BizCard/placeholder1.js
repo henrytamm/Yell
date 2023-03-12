@@ -36,34 +36,33 @@ const BizCard = () => {
   return (
     <>
       <div className="biz-top-container">
-        <div className="biz-name-2">{biz?.name}</div>
-        <div className="main-biz-holder">
         <img className="biz-image" src={biz?.previewImage}></img>
-        <h2 className="map-holder">
-        <h3 className="biz-location-hours">Location & Business Hours</h3>
-        <h4 className="biz-address">{biz?.address}</h4>
-        <h4 className="biz-city-state">{biz?.city}, {biz?.state}</h4>
-        <MyContainer biz={biz}/>
-        </h2>
-        <h4 className="biz-hours"><BizHoursCard/></h4>
-        </div>
+        <div className="biz-information-container">
+        <h1 className="biz-name">{biz?.name}</h1>
 
-        <div>
+        <div className="biz-desc-container">
         <h2 className="biz-desc">About the Business </h2>
-        <h3 className="biz-desc-2">{biz?.description}</h3>
+        <h2 className="biz-desc-2">{biz?.description}</h2>
         </div>
 
+        <div className="biz-location-container">
+        <h2 className="biz-location">Location </h2>
+        <p className="biz-address">{biz?.address}</p>
+        <p className="biz-city-state">{biz?.city}, {biz?.state}</p>
+        </div>
 
+        </div>
         <div className="edit-biz-btn-container">
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="edit-biz-btn" onClick={editBizHandler}>
-        <i class="fa-solid fa-pencil" style={{paddingRight:"5px"}}></i>
             Edit Business Info
         </button>}
         {(sessionUser && biz.ownerId === sessionUser.id) && <button className="delete-biz-btn" onClick={deleteBizHandler}>
-        <i class="fa-solid fa-x" style={{paddingRight:"5px"}}></i>
             Delete Business
         </button>}
-        <div className="end-of-info-line"></div>
+        </div>
+        <div className="map-n-hours">
+        <MyContainer biz={biz}/>
+        <p className="biz-hours"><BizHoursCard/></p>
         </div>
       </div>
     </>
