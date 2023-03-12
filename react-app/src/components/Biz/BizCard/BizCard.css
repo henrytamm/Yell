@@ -45,6 +45,7 @@
     flex-wrap: wrap;
     padding: 10px;
     padding-top: 60px;
+    justify-content: center;
  }
 
 .biz-location-hours{
