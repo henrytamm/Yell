@@ -3,6 +3,8 @@
     font-weight: 800;
     font-style: italic;
     margin-top: 100px;
+    display: flex;
+    justify-content: center;
 }
 
 .review-list-container{

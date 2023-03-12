@@ -63,8 +63,8 @@ const BizCard = () => {
         <i class="fa-solid fa-x" style={{paddingRight:"5px"}}></i>
             Delete Business
         </button>}
-        <div className="end-of-info-line"></div>
         </div>
+        <div className="end-of-info-line"></div>
       </div>
     </>
   );

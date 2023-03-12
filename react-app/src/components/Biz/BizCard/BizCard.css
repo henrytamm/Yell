@@ -9,12 +9,14 @@
     margin-left: 10px;
     font-size: 12px; 
     margin-bottom: 20px;
+    height: 40px;
 }
 
 .delete-biz-btn{
     cursor: pointer;
     padding: 12px;
     width: 150px;
+    height: 40px;
     background-color: red;
     color: white;
     border: 1px solid rgba(200, 200, 200, 1);
@@ -78,6 +80,8 @@
     padding-left: 40px;
     font-size: 20px;
     font-style: italic;
+    display: flex;
+    justify-content: center;
 }
 
 .biz-desc-2{
@@ -85,10 +89,15 @@
     font-size: 20px;
     font-weight: 200;
     padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .edit-biz-btn-container{
     padding-left: 30px;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
 }
 
 .end-of-info-line{

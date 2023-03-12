@@ -82,3 +82,10 @@ a:link{
     display: flex;
     justify-content: center;
 }
+
+.biz-name-link{
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+    padding-left: 10px
+}
