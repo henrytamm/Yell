@@ -12,7 +12,7 @@ const CreateReviewForm = () => {
     const currentUser = useSelector(state => state.session.user);
 
     const [review, setReview] = useState('');
-    const [stars, setStars] = useState(1);
+    const [stars, setStars] = useState(0);
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = async (e) => {
@@ -44,11 +44,11 @@ const CreateReviewForm = () => {
             })
     }
 
-    const [starOne, setStarOne] = useState('fa-solid fa-star');
-    const [starTwo, setStarTwo] = useState('fa-solid fa-star');
-    const [starThree, setStarThree] = useState('fa-solid fa-star');
-    const [starFour, setStarFour] = useState('fa-solid fa-star');
-    const [starFive, setStarFive] = useState('fa-solid fa-star');
+    const [starOne, setStarOne] = useState('fa-regular fa-star');
+    const [starTwo, setStarTwo] = useState('fa-regular fa-star');
+    const [starThree, setStarThree] = useState('fa-regular fa-star');
+    const [starFour, setStarFour] = useState('fa-regular fa-star');
+    const [starFive, setStarFive] = useState('fa-regular fa-star');
 
     const handleStarOne = () => {
         setStarOne('fa-solid fa-star');
