@@ -16,33 +16,33 @@
     font-size: 20px;
     font-weight: 500;
     padding-left:100px;
-    margin-top: -60px;
+    margin-top: -70px;
 }
 
 .review-review{
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
     margin-bottom: 15px;
-    padding: 20px;
+    padding-left: 20px;
 }
 
 .review-created-at{
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 20px;
     padding-left: 20px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    font-style: italic;
 }
 .stars-container{
     padding-left:20px;
-    margin-top:15px;
+    margin-top:50px;
     margin-bottom: 15px;
 }
 
 .edit-del-btn{
     margin-top:15px;
-    margin-bottom:15px
+    margin-bottom:15px;
+    padding-left: 20px;
 }
 
 .edit-review-button{
@@ -50,7 +50,6 @@
     width: 150x;
     height: 20px;
     border: none;
-    margin-top: 20px;
     background-color: red;
     border-radius: 5px;
     color: white;

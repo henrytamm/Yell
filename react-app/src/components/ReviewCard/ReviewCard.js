@@ -33,14 +33,13 @@ const ReviewCard = ({ review }) => {
             {review.userInfo.lastName[0].toUpperCase()}.{" "}
           </NavLink>
         </p>
-        <dl className="review-created-at"> {review.createdAt}</dl>
-        <dl className="review-review"> {review.review}</dl>
         <div className="stars-container">
           {new Array(review.stars).fill(1).map((star, i) => (
             <i key={i} className="fa-solid fa-star"></i>
-          ))}
-          {/* <i class="fa-sharp fa-solid fa-star"></i>
-                {review.stars} */}
+          ))} 
+          </div>
+        <dl className="review-review"> {review.review}</dl>
+        <dl className="review-created-at"> {review.createdAt}</dl>
           <div className="edit-del-btn">
             {sessionUser && review.userId === sessionUser.id && (
               <button className="edit-review-button" onClick={editedReviewInfo}>
@@ -60,7 +59,6 @@ const ReviewCard = ({ review }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
