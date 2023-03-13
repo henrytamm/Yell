@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, NavLink, useHistory } from "react-router-dom";
+import "./UserProfile.css"
 
 const UserProfile = () => {
     const dispatch = useDispatch()

@@ -41,10 +41,10 @@ const BizPage = () => {
           <h1 className="rec-reviews">Reviews</h1>
           <div className="review-card-comp">
           <ReviewList />
-          {(sessionUser && biz.ownerId !== sessionUser.id) && <CreateReviewForm />}
+          <dl className="create-review-container">
 
-          </div>
-          <div className="create-review-container">
+          {(sessionUser && biz.ownerId !== sessionUser.id) && <CreateReviewForm />}
+          </dl>
 
           </div>
       </div>

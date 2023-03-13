@@ -26,12 +26,11 @@
 }
 
 .biz-name-2{
-    font-size: 100px;
+    font-size: 80px;
     display: flex;
     border-bottom: 1px solid #d7d6d6;
     justify-content: center;
     margin-top: 50px;
-
 }
 
 .biz-image{

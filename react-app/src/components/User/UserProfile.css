@@ -1,0 +1,25 @@
+.profile-container{
+    display: flex;
+    justify-content: center;
+}
+
+.username-container{
+    display: flex;
+    justify-content: center;     
+}
+
+.zipcode-container{
+    display: flex;
+    justify-content: center;
+}
+
+.user-since-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.date-container{
+    display: flex;
+    justify-content: center;
+}
