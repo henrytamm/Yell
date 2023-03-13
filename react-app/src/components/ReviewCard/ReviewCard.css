@@ -7,8 +7,9 @@
 
 .review-border{
     box-sizing: border-box;
-    border: .3px solid gainsboro;
+    border-bottom: .5px solid gainsboro;
     border-radius: 5px;
+    max-width: 500px;
 }
 
 .review-username{
@@ -34,7 +35,7 @@
     margin-bottom: 15px;
 }
 .stars-container{
-    padding-left:10px;
+    padding-left:20px;
     margin-top:15px;
     margin-bottom: 15px;
 }

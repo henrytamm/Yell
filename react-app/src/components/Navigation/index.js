@@ -7,7 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import * as sessionActions from "../../store/session";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import yelplogo from "../../images/yelplogo.png";
+import YELL from "../../images/YELL.png";
 
 function Navigation({ isLoaded }) {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
     <nav>
       <div className="logo-container">
         <NavLink exact to="/">
-          <img className="logo" src={yelplogo}></img>
+          <img className="logo" src={YELL}></img>
         </NavLink>
       </div>
       <div className="search-bar-container">

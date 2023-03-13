@@ -108,11 +108,11 @@ const EditReviewForm = () => {
 
                     <div className='review-container'>
                     <div className='review-stars'>
-                    <i onClick={handleStarOne} className={starOne}></i>
-                    <i onClick={handleStarTwo} className={starTwo}></i>
-                    <i onClick={handleStarThree} className={starThree}></i>
-                    <i onClick={handleStarFour} className={starFour}></i>
-                    <i onClick={handleStarFive} className={starFive}></i>
+                    <i title="Terrible" onClick={handleStarOne} className={starOne}></i>
+                    <i title="Not That Good"onClick={handleStarTwo} className={starTwo}></i>
+                    <i title="Alright"onClick={handleStarThree} className={starThree}></i>
+                    <i title="Great"onClick={handleStarFour} className={starFour}></i>
+                    <i title="Perfect"onClick={handleStarFive} className={starFive}></i>
                     </div>
                     <p>
 

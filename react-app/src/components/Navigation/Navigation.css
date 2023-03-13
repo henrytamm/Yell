@@ -1,7 +1,7 @@
 nav {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px 30px 20px
 }
 
 .hidden {
@@ -10,20 +10,7 @@ nav {
 
 .profile-button-container {
   display: flex;
-  margin-left: 500px;
-
-}
-
-.demo-login-container {
-  position: absolute;
-  display: flex;
-  float: right;
-  margin-top: 20px;
-  margin-left: 500px;
-}
-
-.search-bar-container {
-  position: absolute;
+  margin-right: 200px;
 }
 
 .logo-container {
@@ -34,4 +21,9 @@ nav {
 .create-biz-button{
   color: red;
   margin-right: 50px;
+}
+
+.logo{
+  width: 100px;
+  height: 60px;
 }

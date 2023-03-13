@@ -8,6 +8,7 @@
     padding: 20px;
     background-color: white;
     list-style-type: none;
+    border-radius: 5px;
 }
 
 .create-spot-button{
@@ -69,3 +70,9 @@
     font-size: 15px;
 }
 
+.profile-button-click{
+    width: 30px;
+    height: 30px;
+    margin-top: 30px;
+    cursor: pointer
+}

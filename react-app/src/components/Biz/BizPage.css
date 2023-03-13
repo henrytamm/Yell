@@ -7,11 +7,18 @@
     justify-content: center;
 }
 
+
 .review-list-container{
-    padding-left: 40px;
+    display: grid;
+    grid-row: 50% 50%;
+}
+
+.review-card-comp{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .create-review-container{
-    padding-left: 40px;
-    margin-top: -80px
+    display: flex;
+    margin-right: 300px;
 }

@@ -6,7 +6,9 @@ const BizByCategoryCard = ({ biz }) => {
 
   return (
     <div className="BizByCategoryCard">
+      <NavLink className='biz-img-categorycard' to={`/biz/${biz.biz_id}`}>
       <img className='biz-image-categorycard' src={biz.preview_image} />
+      </NavLink>
       <NavLink className='biz-name-categorycard' to={`/biz/${biz.biz_id}`}>
         {biz.name}
       </NavLink>
