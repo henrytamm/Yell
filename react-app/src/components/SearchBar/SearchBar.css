@@ -13,6 +13,7 @@
 .search-bar-container{
     display: flex;
     margin-right: 500px;
+    min-width: max-content;
 }
 
 .search-bar-button{
@@ -33,7 +34,6 @@
 
 .search-list{
     position: absolute;
-    background-color: rgb(201, 198, 198);   
+    background-color: rgb(201, 198, 198);
     width: 270px;
 }
-
