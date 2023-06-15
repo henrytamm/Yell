@@ -11,3 +11,11 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get(
         'DATABASE_URL').replace('postgres://', 'postgresql://')
     SQLALCHEMY_ECHO = True
+
+       # CORS configuration
+    CORS_HEADERS = 'Content-Type'
+    CORS_RESOURCES = {r"/*": {"origins": "*"}}
+
+    @staticmethod
+    def init_app(app):
+        pass

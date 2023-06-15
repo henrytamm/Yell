@@ -55,11 +55,13 @@ export const createBiz = (payload) => async (dispatch) => {
   });
 
   if (res.ok) {
+    console.log('res ok', res)
     const biz = await res.json();
     dispatch(createBizAction(biz));
     console.log('printing biz from thunk', biz)
     return biz;
   }
+  console.log('res not ok', res)
   return res
 };
 
