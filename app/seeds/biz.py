@@ -4,7 +4,7 @@ from app.models import db, Biz, Category, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_biz():
     girl_and_the_goat = Biz(
-        id=1,
+        # id=1,
         owner_id=1,
         address='555-3 Mateo St Ste 300',
         city='Lost Angeles',
@@ -17,7 +17,7 @@ def seed_biz():
         preview_image='https://lh3.googleusercontent.com/p/AF1QipPNuCwaHVHqER_uLmReh1U8ouZXM4i76y4lVdmU=s680-w680-h510',
     )
     panda_express = Biz(
-        id=2,
+        # id=2,
         owner_id=2,
         address='1480 Fillmore St',
         city='San Francisco',
@@ -30,7 +30,7 @@ def seed_biz():
         preview_image='https://imgs.search.brave.com/VU8eLkxNcZyvJUz9FF6G8B3r7wjGQF62g_OhTdxbdIw/rs:fit:1200:630:1/g:ce/aHR0cHM6Ly9oaXAy/c2F2ZS5jb20vd3At/Y29udGVudC91cGxv/YWRzLzIwMjAvMDMv/UGFuZGEtRXhwcmVz/cy1NZWFscy5qcGc',
     )
     the_butcher_son = Biz(
-        id=3,
+        # id=3,
         owner_id=3,
         address='1954 University Ave',
         city='Berkeley',
@@ -43,7 +43,7 @@ def seed_biz():
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/oCKqDs0vq6e3jjbJbR1t6A/o.jpg',
     )
     sushi_house = Biz(
-        id=4,
+        # id=4,
         owner_id=3,
         address='2375 Shore Line Dr',
         city='Alameda',
@@ -56,7 +56,7 @@ def seed_biz():
         preview_image='https://s3-media0.fl.yelpcdn.com/bphoto/qooKsSJfsLrAMndzlaILeg/o.jpg',
     )
     chipotle = Biz(
-        id=5,
+        # id=5,
         owner_id=3,
         address='1050 Gilman St',
         city='Berkeley',
@@ -69,7 +69,7 @@ def seed_biz():
         preview_image='https://tb-static.uber.com/prod/image-proc/processed_images/8ea6182d78b6a4b6cf52bd181606ae72/3ac2b39ad528f8c8c5dc77c59abb683d.jpeg',
     )
     bagel = Biz(
-        id=6,
+        # id=6,
         owner_id=3,
         address='3170 College Ave',
         city='Berkeley',
@@ -82,7 +82,7 @@ def seed_biz():
         preview_image='https://cdn.shopify.com/s/files/1/0367/7621/4668/files/Social-Boichik_1024x1024.png?v=1613762178',
     )
     thai = Biz(
-        id=7,
+        # id=7,
         owner_id=2,
         address='14704 Ventura Blvd',
         city='Sherman Oaks',
@@ -95,7 +95,7 @@ def seed_biz():
         preview_image='https://lh3.googleusercontent.com/p/AF1QipOwBD47vEMpStAqQzI5Vn9wk-eFulGuz6tn7D8=s1360-w1360-h1020',
     )
     ice_cream = Biz(
-        id=8,
+        # id=8,
         owner_id=1,
         address='1669 E Monte Vista Ave',
         city='Vacaville',

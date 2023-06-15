@@ -4,32 +4,32 @@ from app.models import db, BusinessImage, environment, SCHEMA
 # Adds a demo user, you can add other users here if you want
 def seed_business_images():
     soup_kitchen_image_1 = BusinessImage(
-        id=1,
+        # id=1,
         biz_id = 1,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwUbqm7PzL4jsPfa26nUSyoQsWnjNG6vYdhZKwcAMasV04R5wZVtCumQ5werObGSivppo&usqp=CAU',
     )
     soup_kitchen_image_2 = BusinessImage(
-        id=2,
+        # id=2,
         biz_id = 1,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKDanrLadg08kMKRU8ikI2pNxyzz88mTKE1A&usqp=CAU',
     )
     phosizzle_image_1 = BusinessImage(
-        id=3,
+        # id=3,
         biz_id = 2,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWIEdKIvIjE83z2dc_zVzKjiptekO4cae5Fw&usqp=CAU',
     )
     phosizzle_image_2 = BusinessImage(
-        id=4,
+        # id=4,
         biz_id = 2,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMTViA0vciZJHZ4TIq8aOs_hWLqn1yInHoSg&usqp=CAU',
     )
     vegan_for_the_win_image_1 = BusinessImage(
-        id=5,
+        # id=5,
         biz_id = 3,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlJDqjfFx2eWbB5Ut_OXkqs22ifdfg-aSYMA&usqp=CAU',
     )
     vegan_for_the_win_image_2 = BusinessImage(
-        id=6,
+        # id=6,
         biz_id = 3,
         url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_uZUp9sLP19EjIrp8iplYiFmbRPouS0mq0g&usqp=CAU',
     )

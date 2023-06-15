@@ -5,7 +5,7 @@ from datetime import datetime, date, time, timedelta
 # Adds a demo user, you can add other users here if you want
 def seed_business_hours():
     biz_1_hours = Hour(
-        id=1,
+        # id=1,
         biz_id = 1,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -23,7 +23,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_2_hours = Hour(
-        id=2,
+        # id=2,
         biz_id = 2,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -41,7 +41,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_3_hours = Hour(
-        id=3,
+        # id=3,
         biz_id = 3,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -59,7 +59,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_4_hours = Hour(
-        id=4,
+        # id=4,
         biz_id = 4,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -77,7 +77,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_5_hours = Hour(
-        id=5,
+        # id=5,
         biz_id = 5,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -95,7 +95,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_6_hours = Hour(
-        id=6,
+        # id=6,
         biz_id = 6,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -113,7 +113,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_7_hours = Hour(
-        id=7,
+        # id=7,
         biz_id = 7,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
@@ -131,7 +131,7 @@ def seed_business_hours():
         sunday_close = time(18, 00),
     )
     biz_8_hours = Hour(
-        id=8,
+        # id=8,
         biz_id = 8,
         monday_open = time(10, 00),
         monday_close = time(18, 00),
