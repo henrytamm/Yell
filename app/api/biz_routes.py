@@ -196,6 +196,7 @@ def new_bizes():
     form = BizForm()
 
     data = form.data
+    print('printing data from backend', data)
     if form.validate_on_submit():
         new_biz = Biz(
             owner_id=current_user.get_id(),
