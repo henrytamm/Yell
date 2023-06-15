@@ -327,6 +327,8 @@ def review_create(bizId):
 
     data = form.data
 
+    print('printing data from backend', data)
+
     try:
         biz = Biz.query.get(bizId)
         if biz is None:
