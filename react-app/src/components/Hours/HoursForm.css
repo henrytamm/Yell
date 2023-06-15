@@ -1,28 +1,53 @@
-.create-hours-form-container{
+.create-hours-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center
-}
+    align-items: center;
+  }
 
-.create-hours-label{
+  .create-hours-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .create-hours-form {
     display: flex;
     flex-direction: column;
-    width: 200px;
-    line-height:30px;
-    border-radius: 10%;
-}
-
-.create-hours-button{
-    margin-top: 20px;
-}
-
-.edit-hours-header{
-    display: flex;
     justify-content: center;
-    margin-top: 100px;
-}
+    align-items: center;
+  }
 
-.edit-hours-submit{
+  .form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 20px;
+  }
+
+  .create-hours-label {
+    font-weight: bold;
+    width: 150px;
+    margin-left: 40px;
+  }
+
+  .create-hours-input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid black;
+    width: fit-content;
+  }
+
+  .errors-list {
+    list-style-type: none;
+    color: red;
+    margin-bottom: 10px;
+  }
+
+  .create-hours-button {
     cursor: pointer;
     padding: 12px;
     width: 150px;
@@ -30,7 +55,10 @@
     color: white;
     border: 1px solid rgba(200, 200, 200, 1);
     border-radius: 5px;
-    margin-left: 10px;
     font-size: 15px;
-    margin-top: 10px
-}
+  }
+
+  .create-hours-button:hover {
+    cursor: pointer;
+    padding: 14px;
+  }

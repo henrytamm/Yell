@@ -6,7 +6,7 @@ import { NavLink, useParams } from "react-router-dom";
 
 export const ReviewList = () => {
     const dispatch = useDispatch();
-    const bizId = useParams()
+    const {bizId} = useParams()
     const [isLoaded, setisLoaded] = useState(false);
 
 
@@ -14,7 +14,7 @@ export const ReviewList = () => {
     const bizReviews = Object.values(bizReviewObj)
     useEffect(() => {
         dispatch(allReviewsByBizId(bizId)).then(() => setisLoaded(true))
-    }, [dispatch, bizReviewObj])
+    }, [dispatch, bizId])
 
 
 
