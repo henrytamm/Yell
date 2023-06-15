@@ -6,7 +6,7 @@ class BusinessImage(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     biz_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('bizes.id')),  nullable=False)
     url = db.Column(db.String, nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
