@@ -11,7 +11,7 @@ const containerStyle = {
 function MyComponent({biz}) {
   return (
     <LoadScript
-      googleMapsApiKey="AIzaSyD6Boi-1gBAbcH4GugbnxiwKr2ImX0Ildg"
+      googleMapsApiKey="AIzaSyCzE55ntSoN9r45wvEzyV4NrgI6mE5rgro"
     >
       <GoogleMap
         mapContainerStyle={containerStyle}
