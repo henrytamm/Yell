@@ -21,8 +21,15 @@ flask run
 #for mac users make sure to change port to 5005 in react-app/package.json and when running flask run -p 5005
 
 
+when we deployed, we were told not to delete the migration folder and instance folder. We were told to run the following commands:
 
+optionally, delete the instance folder
 
+pipenv shell
+flask db init
+flask db migrate
+flask db upgrade
+flask seed all
 
 
 #review in bizPage.js needs to be put in a card, placeholder atm

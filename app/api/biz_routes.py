@@ -85,7 +85,7 @@ def createBizHours(id):
     """
     form = HoursForm()
     data = form.data
-    print('printing data from backend', data)
+    # print('printing data from backend', data)
     try:
         biz = Biz.query.get(id)
         if biz is None:
@@ -196,6 +196,7 @@ def new_bizes():
     form = BizForm()
 
     data = form.data
+    # print('printing data from backend', data)
     if form.validate_on_submit():
         new_biz = Biz(
             owner_id=current_user.get_id(),
@@ -325,6 +326,8 @@ def review_create(bizId):
     form = ReviewForm()
 
     data = form.data
+
+    # print('printing data from backend', data)
 
     try:
         biz = Biz.query.get(bizId)

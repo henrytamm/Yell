@@ -6,7 +6,7 @@ class Hour(db.Model):
     if environment == "production":
         __table_args__ = {'schema': SCHEMA}
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     biz_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('bizes.id')), nullable=False)
     monday_open = db.Column(db.Time, nullable=False)
     monday_close = db.Column(db.Time, nullable=False)

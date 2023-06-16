@@ -95,128 +95,158 @@ const EditHoursForm = () => {
 
   return (
     <>
-      <div>
+      <div className="create-hours-container">
         <h1 className="edit-hours-header">
         Edit when your business is open!
           </h1>
-        <form method="POST" onSubmit={handleSubmit} className='create-hours-form-container'>
-          <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-          </ul>
-          <label className='create-hours-label'>Monday Open:
-            <input
-              type="time"
-              placeholder="Monday Open"
+          <form onSubmit={handleSubmit} className="create-hours-form">
+        <ul className="errors-list">
+          {errors && errors.length > 0 &&
+            errors.map((error, idx) => <li key={idx}>{error}</li>)
+          }
+        </ul>
+        <div className="form-row">
+          <label className="create-hours-label">Monday Open:</label>
+          <input
+            type="time"
+            placeholder="Monday Open"
+              required
               defaultValue={mondayOpen}
-              onChange={(e) => setMondayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Monday Close:
-            <input
-              type="time"
-              placeholder="Monday Close"
+            className="create-hours-input"
+            onChange={(e) => setMondayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Monday Close:</label>
+          <input
+            type="time"
+            placeholder="Monday Close"
+              required
               defaultValue={mondayClose}
-              onChange={(e) => setMondayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Tuesday Open:
-            <input
-              type="time"
-              placeholder="Tuesday Open"
+            className="create-hours-input"
+            onChange={(e) => setMondayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Tuesday Open:</label>
+          <input
+            type="time"
+            placeholder="Tuesday Open"
+              required
               defaultValue={tuesdayOpen}
-              onChange={(e) => setTuesdayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Tuesday Close:
-            <input
-              type="time"
-              placeholder="Tuesday Close"
+            className="create-hours-input"
+            onChange={(e) => setTuesdayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Tuesday Close:</label>
+          <input
+            type="time"
+            placeholder="Tuesday Close"
+              required
               defaultValue={tuesdayClose}
-              onChange={(e) => setTuesdayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Wednesday Open:
-            <input
-              type="time"
-              placeholder="Wednesday Open"
+            className="create-hours-input"
+            onChange={(e) => setTuesdayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Wednesday Open:</label>
+          <input
+            type="time"
+            placeholder="Wednesday Open"
+              required
               defaultValue={wednesdayOpen}
-              onChange={(e) => setWednesdayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Wednesday Close:
-            <input
-              type="time"
-              placeholder="Wednesday Close"
+            className="create-hours-input"
+            onChange={(e) => setWednesdayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Wednesday Close:</label>
+          <input
+            type="time"
+            placeholder="Wednesday Close"
+              required
               defaultValue={wednesdayClose}
-              onChange={(e) => setWednesdayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Thursday Open:
-            <input
-              type="time"
-              placeholder="Thursday Open"
+            className="create-hours-input"
+            onChange={(e) => setWednesdayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Thursday Open:</label>
+          <input
+            type="time"
+            placeholder="Thursday Open"
+              required
               defaultValue={thursdayOpen}
-              onChange={(e) => setThursdayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Thursday Close:
-            <input
-              type="time"
-              placeholder="Thursday Close"
+            className="create-hours-input"
+            onChange={(e) => setThursdayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Thursday Close:</label>
+          <input
+            type="time"
+            placeholder="Thursday Close"
+              required
               defaultValue={thursdayClose}
-              onChange={(e) => setThursdayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Friday Open:
-            <input
-              type="time"
-              placeholder="Friday Open"
+            className="create-hours-input"
+            onChange={(e) => setThursdayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Friday Open:</label>
+          <input
+            type="time"
+            placeholder="Friday Open"
+              required
               defaultValue={fridayOpen}
-              onChange={(e) => setFridayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Friday Close:
-            <input
-              type="time"
-              placeholder="Friday Close"
+            className="create-hours-input"
+            onChange={(e) => setFridayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Friday Close:</label>
+          <input
+            type="time"
+            placeholder="Friday Close"
+              required
               defaultValue={fridayClose}
-              onChange={(e) => setFridayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Saturday Open:
-            <input
-              type="time"
-              placeholder="Saturday Open"
+            className="create-hours-input"
+            onChange={(e) => setFridayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Saturday Open:</label>
+          <input
+            type="time"
+            placeholder="Saturday Open"
+              required
               defaultValue={saturdayOpen}
-              onChange={(e) => setSaturdayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Saturday Close:
-            <input
-              type="time"
-              placeholder="Saturday Close"
+            className="create-hours-input"
+            onChange={(e) => setSaturdayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Saturday Close:</label>
+          <input
+            type="time"
+            placeholder="Saturday Close"
+              required
               defaultValue={saturdayClose}
-              onChange={(e) => setSaturdayClose(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Sunday Open:
-            <input
-              type="time"
-              placeholder="Sunday Open"
+            className="create-hours-input"
+            onChange={(e) => setSaturdayClose(e.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label className="create-hours-label">Sunday Open:</label>
+          <input
+            type="time"
+            placeholder="Sunday Open"
+              required
               defaultValue={sundayOpen}
-              onChange={(e) => setSundayOpen(e.target.value)}
-            />
-          </label>
-          <label className='create-hours-label'>Sunday Close:
-            <input
-              type="time"
-              placeholder="Sunday Close"
+            className="create-hours-input"
+            onChange={(e) => setSundayOpen(e.target.value)}
+          />
+          <label className="create-hours-label">Sunday Close:</label>
+          <input
+            type="time"
+            placeholder="Sunday Close"
+              required
               defaultValue={sundayClose}
-              onChange={(e) => setSundayClose(e.target.value)}
-            />
-          </label>
-          <button className="edit-hours-submit" type="submit">Confirm</button>
-        </form>
+            className="create-hours-input"
+            onChange={(e) => setSundayClose(e.target.value)}
+          />
+        </div>
+        <button className="create-hours-button" type="submit">Submit New Hours</button>
+      </form>
       </div>
     </>
   )
